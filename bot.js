@@ -690,8 +690,8 @@ message.channel.send({embed});
 client.on('message', message => {
   if(message.content === '$inv') {
   const embed = new Discord.RichEmbed()
-  .setTitle('اضغت هنا')
-  .setURL('https://discordapp.com/oauth2/authorize?client_id=460491129062948874&permissions=2080374975&scope=bot')
+  .setTitle('Click here')
+  .setURL('https://discordapp.com/oauth2/authorize?client_id=472111075114876968&permissions=2080374975&scope=bot')
   .setColor('RANDOM')
   message.channel.send({embed: embed});
   }
@@ -1769,28 +1769,4 @@ message.channel.send('**لديك 15 ثانيه لتدمج الكلمه**').then(
     })
 }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
