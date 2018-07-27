@@ -96,6 +96,7 @@ client.on('message', message => {
          message.react('👌')
 	 message.channel.send('**تم ارسالك في الخاص** :mailbox_with_mail: ');
   const embed = new Discord.RichEmbed() 
+      .setThumbnail('https://www.google.com.eg/search?tbs=sbi:AMhZZitJn9_1mOCu1JFE-ffebNga61rKs8Vjp2elgbbWsLT5IypcdPTFolgT2xPggeK-N_1hp2AlS7EjdoN8m1tbdJ2tDrvAzZh90jV4IIiHhs0v2AU09sMOaOJfv6mJsvbHwRQtP43OqIMXqP957DfzqujmcdJ1Xs49vsrfssBv9FRUydb176kYo01xgqosnisngr3xPVKT74Rd-9Xk5eomVukECqcfsjeCN0hEQL7nymGFtE5d8EJyzJvB2zLStA3VbB-5pomBrAaUtOt9ZOvOURY_11MlwhgGWjcRFkxeEhFbeZEWf7kMo4s9dYLjz_1M78SIdi-U2DYdDv_1HFlFEDtTbao6RbePk9w')
       .setColor("#000000")
       .setDescription(`
 			  اوامر ادمنيه
@@ -126,6 +127,7 @@ client.on("message", message => {
 	var prefix = "$";
  if (message.content === "$help") {
   const embed = new Discord.RichEmbed() 
+      .setThumbnail('https://www.google.com.eg/search?tbs=sbi:AMhZZivAULSYjazUXsdrx6c3zx-cToVnq-kVcOe8gPZrDZlnmh1k9XLsz4D-urjRAZ-8vL5EGcbthbu-fPdb-XOyPmznrplh82PKicr1BIaiWnhIdiTpz2LeLH0MclZH_1sDg7oPLS7PazihF0BnVAkPUbw-u9Kz24FjPvpJs7LQSzG7s6EEKGMA3_1JMZYYLsuAyKTSVaM9HtFHZ5NFBumAeeM9fSabS7kDCWSbc5-0-0MkYJeoVAJcUEu_1kn93FPvLwrWvl60-EUf2kGi2h-JnuyHP_1x9TrSg7RC6a3q8lnTSDQWgUKbSIxLpOd9gDZM_1onL7AxX4RCgThIheZW_1CtFBVIiRr7JPVQ')
       .setColor("#000000")
       .setDescription(`
 			  اوامر عامة
