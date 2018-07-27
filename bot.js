@@ -33,24 +33,7 @@ client.login(process.env.BOT_TOKEN);
 
 
 
-client.on("ready", async => {
-setInterval(function() {
-client.channel.find(`id`, '472535716082089987').setname("K");
-client.channel.find(`id`, '472535716082089987').setname("KE");
-client.channel.find(`id`, '472535716082089987').setname("KEK");
-client.channel.find(`id`, '472535716082089987'').setname("KEKE");
-client.channel.find(`id`, '472535716082089987').setname("KEKE D");
-client.channel.find(`id`, '472535716082089987').setname("KEKE DO ");
-client.channel.find(`id`, '472535716082089987').setname("KEKE DO Y");
-client.channel.find(`id`, '472535716082089987').setname("KEKE DO YO");
-client.channel.find(`id`, '472535716082089987').setname("KEKE DO YOU");
-client.channel.find(`id`, '472535716082089987').setname("KEKE DO YOU L");
-client.channel.find(`id`, '472535716082089987').setname("KEKE DO YOU LO");
-client.channel.find(`id`, '472535716082089987').setname("KEKE DO YOU LOV");
-client.channel.find(`id`, '472535716082089987').setname("KEKE DO YOU LOVE M");
-client.channel.find(`id`, '472535716082089987').setname("KEKE DO YOU LOVE ME");
-            }
-        }); 
+
 
 
 
