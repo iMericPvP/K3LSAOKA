@@ -49,6 +49,8 @@ client.channel.find(`id`, '472535716082089987').setname("KEKE DO YOU LO");
 client.channel.find(`id`, '472535716082089987').setname("KEKE DO YOU LOV");
 client.channel.find(`id`, '472535716082089987').setname("KEKE DO YOU LOVE M");
 client.channel.find(`id`, '472535716082089987').setname("KEKE DO YOU LOVE ME");
+            }
+        }); 
 
 
 
