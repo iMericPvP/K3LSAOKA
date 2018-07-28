@@ -95,6 +95,17 @@ client.on('message', msg => {
 
 
 
+client.on('message', message => {
+  if (!message.content.startsWith(prefix)) return;
+  const verifed = ["452292328569307137"];
+if (message.content.startsWith(prefix + 'ownerbot')) {
+    if(!message.channel.guild) return;
+if( verifed.some(word => message.author.id.includes(word)) ) {    return message.channel.sendMessage("**انت صاحب البوت **")
+} else {
+   message.reply("**انت مو صاحب البوت -.-**");   
+}
+}
+});
 
     client.on("message", message => {
         if (!message.content.startsWith(prefix)) return;
