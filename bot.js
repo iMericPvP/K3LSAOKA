@@ -32,80 +32,9 @@ client.login(process.env.BOT_TOKEN);
 
 
 
-client.on('message' , message => {
-var prefix = "$"
-
-if (message.author.bot) return;
-if (message.content.startsWith(prefix + "contact")) {
-if (!message.channel.guild) return;
 
 
 
-let args = message.content.split(" ").slice(1).join(" ");
-
-
-Client.users.get("452292328569307137").send(
-    "\n" + "**" + "● السيرفر :" + "**" +
-    "\n" + "**" + "» " + message.guild.name + "**" +
-    "\n" + "**" + " ● المرسل : " + "**" +
-    "\n" + "**" + "» " + message.author.tag + "**" +
-    "\n" + "**" + " ● الرسالة : " + "**" +
-    "\n" + "**" + args + "**")
-
-let embed = new Discord.RichEmbed()
-     .setAuthor(message.author.username, message.author.avatarURL)
-     .setDescription('تم بنجاح')
-     .setThumbnail(message.author.avatarURL)
-     .setFooter("NoobBot")
-                                                
-
-message.channel.send(embed);
-
-
-}
-    
-});
-
-
-
-
-client.on('message', msg => {
-    if(msg.author.bot) return;
-    
-    if(msg.content === '$serv') {
-      client.guilds.forEach(g => {
-        
-        let l = g.id
-        g.channels.get(g.channels.first().id).createInvite({
-          maxUses: 5,
-          maxAge: 86400
-        }).then(i => msg.channel.send(`
-        **
-        Invite Link : <https://discord.gg/${i.code}>
-        Server : ${g.name} | Id : ${g.id} 
-        Owner ID : ${g.owner.id}
-        **
-        `))
-  
-  
-      })
-    }
-    
-  })
-
-
-
-client.on('message', message => {
-  if (!message.content.startsWith(prefix)) return;
-  const verifed = ["452292328569307137"];
-if (message.content.startsWith(prefix + 'ownerbot')) {
-    if(!message.channel.guild) return;
-if( verifed.some(word => message.author.id.includes(word)) ) {    return message.channel.sendMessage("**انت صاحب البوت **")
-} else {
-   message.reply("**انت مو صاحب البوت -.-**");   
-}
-}
-});
 
     client.on("message", message => {
         if (!message.content.startsWith(prefix)) return;
@@ -119,7 +48,22 @@ if( verifed.some(word => message.author.id.includes(word)) ) {    return message
             }
         }); 
 
+client.on('message' , async (message) => {
+ if (message.content.startsWith(prefix + 'say')) {
+  const args = message.content.substring(prefix.length).split(' ');
 
+ message.delete();
+args.shift() 
+let msg = args.join(' ') 
+message.channel.createWebhook(message.author.username, message.author.avatarURL) 
+    .then(wb => {
+        const user = new Discord.WebhookClient(wb.id, wb.token) 
+        user.send(msg); 
+        user.delete() 
+    })
+    .catch(console.error)
+ }
+});
 
 
 client.on('message', message => {
@@ -195,7 +139,6 @@ client.on("message", message => {
 ❖$الي انضاف بلبوت اليوم | الجديد
 ❖$day | تفاصيل اليوم
 ❖$draw | كتابه كلامك في صوره
-❖$ownerbot | يعرف اذا انت صاحب البوت لو مو انت
 ❖$bot | معلومات البوت
 ❖$id | ايديك
 ❖$stim | منبه
@@ -247,8 +190,6 @@ client.on("message", message => {
    }
    }); 
 
-
-   
 
 
 client.on('message', message => {
@@ -441,25 +382,7 @@ client.on('message', message => {
 });
 
 
-   client.on('message' , async (message) => {
-	   let command = message.content.split(" ")[0];
-	   let args = message.content.split(" ").slice(1);
-	   let reason = message.content.split(" ").slice(2).join(" ");
- if (message.content.startsWith(prefix + 'say')) {
-  const args = message.content.substring(prefix.length).split(' ');
 
- message.delete();
-args.shift() 
-let msg = args.join(' ') 
-message.channel.createWebhook(args, reason) 
-    .then(wb => {
-        const user = new Discord.WebhookClient(wb.id, wb.token) 
-        user.send(msg); 
-        user.delete() 
-    })
-    .catch(console.error)
- }
-});
 
 
 client.on('message', message => {   
