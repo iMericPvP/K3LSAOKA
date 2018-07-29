@@ -119,22 +119,7 @@ if( verifed.some(word => message.author.id.includes(word)) ) {    return message
             }
         }); 
 
-client.on('message' , async (message) => {
- if (message.content.startsWith(prefix + 'say')) {
-  const args = message.content.substring(prefix.length).split(' ');
 
- message.delete();
-args.shift() 
-let msg = args.join(' ') 
-message.channel.createWebhook(message.author.username, message.author.avatarURL) 
-    .then(wb => {
-        const user = new Discord.WebhookClient(wb.id, wb.token) 
-        user.send(msg); 
-        user.delete() 
-    })
-    .catch(console.error)
- }
-});
 
 
 client.on('message', message => {
@@ -262,6 +247,8 @@ client.on("message", message => {
    }
    }); 
 
+
+   
 
 
 client.on('message', message => {
@@ -454,7 +441,25 @@ client.on('message', message => {
 });
 
 
+   client.on('message' , async (message) => {
+	   let command = message.content.split(" ")[0];
+	   let args = message.content.split(" ").slice(1);
+	   let reason = message.content.split(" ").slice(2).join(" ");
+ if (message.content.startsWith(prefix + 'say')) {
+  const args = message.content.substring(prefix.length).split(' ');
 
+ message.delete();
+args.shift() 
+let msg = args.join(' ') 
+message.channel.createWebhook(args, reason) 
+    .then(wb => {
+        const user = new Discord.WebhookClient(wb.id, wb.token) 
+        user.send(msg); 
+        user.delete() 
+    })
+    .catch(console.error)
+ }
+});
 
 
 client.on('message', message => {   
