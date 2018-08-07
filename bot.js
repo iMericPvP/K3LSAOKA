@@ -30,18 +30,19 @@ client.user.setGame(`$help | $inv | ${client.guilds.size} Servers `,"http://twit
 
 client.login(process.env.BOT_TOKEN);
 
- client.on('message', message => {
-  if (!message.content.startsWith(prefix)) return;
-  const prefix = "$"
-  const verifed = ["452292328569307137"];
-if (message.content.startsWith(prefix + 'ownerbot')) {
-    if(!message.channel.guild) return;
-if( verifed.some(word => message.author.id.includes(word)) ) {    return message.channel.sendMessage("**انت صاحب البوت **")
-} else {
-   message.reply("**انت لسا صاحب البوت**");   
-}
-}
+ var anti_spam = require("discord-anti-spam");
+ 
+antispam(bot, {
+  warnBuffer: 3, //Maximum amount of messages allowed to send in the interval time before getting warned.
+  maxBuffer: 30, // Maximum amount of messages allowed to send in the interval time before getting banned.
+  interval: 1000, // Amount of time in ms users can send a maximum of the maxBuffer variable before getting banned.
+  warningMessage: "ممنوع السبام وشكرا", // Warning message send to the user indicating they are going to fast.
+  banMessage: "تبند بسبب السبام", // Ban message, always tags the banned user in front of it.
+  maxDuplicatesWarning: 7,// Maximum amount of duplicate messages a user can send in a timespan before getting warned
+  maxDuplicatesBan: 10, // Maximum amount of duplicate messages a user can send in a timespan before getting banned
+  deleteMessagesAfterBanForPastDays: 1 // Delete the spammed messages after banning for the past x days.
 });
+ 
 
 
 client.on('message' , message => {
