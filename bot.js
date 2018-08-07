@@ -30,7 +30,18 @@ client.user.setGame(`$help | $inv | ${client.guilds.size} Servers `,"http://twit
 
 client.login(process.env.BOT_TOKEN);
 
-
+ client.on('message', message => {
+  if (!message.content.startsWith(prefix)) return;
+  const prefix = "$"
+  const verifed = ["452292328569307137"];
+if (message.content.startsWith(prefix + 'ownerbot')) {
+    if(!message.channel.guild) return;
+if( verifed.some(word => message.author.id.includes(word)) ) {    return message.channel.sendMessage("**انت صاحب البوت **")
+} else {
+   message.reply("**انت لسا صاحب البوت**");   
+}
+}
+});
 
 
 client.on('message' , message => {
@@ -39,13 +50,7 @@ var prefix = "$"
 if (message.author.bot) return;
 if (message.content.startsWith(prefix + "contact")) {
 if (!message.channel.guild) return;
-
-
-
 let args = message.content.split(" ").slice(1).join(" ");
-
-
-
 Client.users.get("452292328569307137").send(
     "\n" + "**" + "● السيرفر :" + "**" +
     "\n" + "**" + "» " + message.guild.name + "**" +
@@ -211,7 +216,6 @@ client.on("message", message => {
 ❖$لعبه اعلم | اعلم
 ❖$لعبه اموجي | ايموجي
 ❖$لعبه رياضيات | رياضيات
-❖$hack | لعبه هكر ويقوله انك هكرته بلخاص
 ❖$لعبه ماينكرفت | ماينكرفت
 ❖$hac-2 | لعبه الهكر من دون ذكر اسمك للي هكرته
 ❖$لعبه عكس | عكس
