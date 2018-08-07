@@ -30,18 +30,7 @@ client.user.setGame(`$help | $inv | ${client.guilds.size} Servers `,"http://twit
 
 client.login(process.env.BOT_TOKEN);
 
- client.on('message', message => {
-  if (!message.content.startsWith(prefix)) return;
-  const prefix = "$"
-  const verifed = ["452292328569307137"];
-if (message.content.startsWith(prefix + 'ownerbot')) {
-    if(!message.channel.guild) return;
-if( verifed.some(word => message.author.id.includes(word)) ) {    return message.channel.sendMessage("**انت صاحب البوت **")
-} else {
-   message.reply("**انت لسا صاحب البوت**");   
-}
-}
-});
+
 
 
 client.on('message' , message => {
