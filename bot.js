@@ -628,7 +628,7 @@ client.on('message', function(msg) {
       .addField('الرومات الصوتيه',`[** __${msg.guild.channels.filter(m => m.type === 'voice').size}__ **]`,true)
 	  .addField('اونر السيرفر',`[** __${msg.guild.owner}__ **]`,true)
       .addField('صنع السيرفر في',msg.guild.createdAt.toLocaleString())
-	  .setFooter("لرئيه رتب السيرفر قم بكتابه $roles ")  
+	  .setFooter("لكي تعرف حالات الاعضاء  قم بكتابه $members")  
       msg.channel.send({embed:embed});
     }
   });
@@ -1159,7 +1159,7 @@ client.on('message',  (message) => {
      * The command was ran with invalid parameters.
      * @fires commandUsage
      */
-    return message.emit('commandUsage', message, this.help);
+    return message.lemit('commandUsage', message, this.help);
   }
 
   let punches = [
