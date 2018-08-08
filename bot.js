@@ -605,14 +605,7 @@ client.on('message', message => {
 });
 
 
-  var hi = 'هل';
 
-client.on('message', message => {
-    if(msg.content.startsWith (hi  + 'ا')) {
-    message.reply("هلا ولله");
-}
-
-});
 
 
 client.on('message', function(msg) {
