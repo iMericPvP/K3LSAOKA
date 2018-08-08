@@ -64,17 +64,7 @@ message.channel.send(embed);
 });
 
 
-    client.on("message", message => {
-        if (!message.content.startsWith(prefix)) return;
-          let command = message.content.split(" ")[0];
-          command = command.slice(prefix.length);
-            if(command === "emoje") {
-                    const args = message.content.split(" ").slice(1).join(" ")
-            if (!args) return message.channel.send("**اكتب اسم يموجي**");
-            message.author.sendMessage(`**https://emojipedia.org/${args}**`);
-            message.channel.send("**شوف خاصك**");
-            }
-        }); 
+
 
 client.on('message' , async (message) => {
  if (message.content.startsWith(prefix + 'say')) {
@@ -98,24 +88,18 @@ client.on('message', message => {
             if (message.content.startsWith(prefix + "bot")) {
      let embed = new Discord.RichEmbed()
 .setThumbnail(message.author.avatarURL)
-.addField(' سيرفرات البوت',`[${client.guilds.size}]  `)
-.addField(' مستخدمين',` [${client.users.size}] `)
-.addField('رومات',`[${client.channels.size}]`) 
-.addField(' بنق البوت ',`[${Date.now() - message.createdTimestamp}]`) 
+.addField('Servers',`[${client.guilds.size}]  `)
+.addField('Users',` [${client.users.size}] `)
+.addField('Channels',`[${client.channels.size}]`) 
+.addField('Ping',`[${Date.now() - message.createdTimestamp}]`) 
+.addField('Language',`JS`) 
+.addField('Bot Owner',`『LB』Mohamed192837465#7033`) 
 .setColor('#7d2dbe')
   message.channel.sendEmbed(embed);
     }
 });
 
-client.on('message', message => {
-            if (message.content.startsWith(prefix + "الجديد")) {
-     let embed = new Discord.RichEmbed()
-.setThumbnail(message.author.avatarURL)
-.addField('     **امر $say** ' ,' **يقوم هذه الامر بصنع بوت باسمك وصورتك ويقول الكلام الي تبيه وبعدها يمسح البوت** ')
-.setColor('#7d2dbe')
-  message.channel.sendEmbed(embed);
-    }
-});
+
 
 
    client.on("message", message => {
@@ -133,12 +117,10 @@ client.on('message', message => {
 ❖$unmute | ازاله الميوت من العضو
 ❖$clear| مسح الرسائل
 ❖$role @someone [rank] | اعطاء رتبه لشخص 
-❖$roleall [rank]| اعطاء رتبه للكل
+❖$role all [rank]| اعطاء رتبه للكل
 ❖$role bots [rank]| اعطاء رتبه لكل البوتات
 ❖$role humans [rank] | اعطاء رتبه للبشريين
-❖$roleRemove @someone [rank] | ازاله الرتبه من شخص معين
-❖$role-bc | رساله لكل من يملك الرتبه الممشنه
-❖$bc | رساله جماعيه
+❖$roleremove @someone [rank] | ازاله الرتبه من شخص معين
 ❖$comeall | يجيب الكل لرومك الصوتي بس يسحب الي بلرومات الصوتيه
 ❖$mutechannel | قفل الشات
 ❖$unmutechannel | فك منع الكتابه بلروم
@@ -164,7 +146,6 @@ client.on("message", message => {
 ❖$serveravatar | صوره السيرفر
 ❖$inv | رابط اضافه البوت
 ❖$say | تكرار كلامك ببوت بنفس صورتك واسمك
-❖$الي انضاف بلبوت اليوم | الجديد
 ❖$day | تفاصيل اليوم
 ❖$draw | كتابه كلامك في صوره
 ❖$bot | معلومات البوت
@@ -188,6 +169,8 @@ client.on("message", message => {
 ❖$bc | بورد كاست للكل و مطور
 ❖$2bc | بورد كاست للكل غير مطور
 ❖$3bc | بورد كاست للونلاين فقط و غير مطور
+❖$userbc | رساله لشخص واحد 
+❖$role-bc | رساله لكل من يملك الرتبه الممشنه
 `)
    message.author.sendEmbed(embed)
     
@@ -203,11 +186,11 @@ client.on("message", message => {
 			  العاب
 ❖$rps [ حجر - ورقه - مقص ] | لعبه حجر ورقه مقص
 ❖$hack | لعبه الهكر مع ذكر اسمك للي هكرته
+❖$hac-2 | لعبه الهكر من دون ذكر اسمك للي هكرته
 ❖$لعبه اعلم | اعلم
 ❖$لعبه اموجي | ايموجي
 ❖$لعبه رياضيات | رياضيات
 ❖$لعبه ماينكرفت | ماينكرفت
-❖$hac-2 | لعبه الهكر من دون ذكر اسمك للي هكرته
 ❖$لعبه عكس | عكس
 ❖$لعبه عواصم | عواصم
 ❖$لعبه فكك | فكك
@@ -315,10 +298,10 @@ client.on("message", message => {
       .setColor("#000000")
       .setDescription(`
 			  معلومات البوت
-❖مطورين البوت |  『LB』Mohamed192837465#7033 + ! 『LB』  l̷e̷g̷e̷n̷d̷ ᵈᵉᵛ || 🌙#7418 
+❖مطورين البوت |  『LB』Mohamed192837465#7033 
 ❖لغه البوت | JS
-❖رابط البوت | https://discordapp.com/oauth2/authorize?client_id=460491129062948874&permissions=2080374975&scope=bot
-❖سيرفر السبورت | https://discord.gg/myJNfc
+❖رابط البوت | https://discordapp.com/oauth2/authorize?client_id=472111075114876968&permissions=2080374975&scope=bot
+❖سيرفر السبورت | https://discord.gg/EAv9B2y
 `)
    message.author.sendEmbed(embed)
     
@@ -622,20 +605,27 @@ client.on('message', message => {
 });
 
 
+  var hi = 'هل';
+
+client.on('message', message => {
+    if(msg.content.startsWith (hi  + 'ا')) {
+    message.reply("هلا ولله");
+}
+
+});
+
+
 client.on('message', function(msg) {
     if(msg.content.startsWith (prefix  + 'server')) {
       let embed = new Discord.RichEmbed()
       .setColor('RANDOM')
       .setThumbnail(msg.guild.iconURL)
-      .setTitle(`Showing Details Of  **${msg.guild.name}*`)
-      .addField(':globe_with_meridians:** نوع السيرفر**',`[** __${msg.guild.region}__ **]`,true)
-      .addField(':medal:** __الرتب__**',`[** __${msg.guild.roles.size}__ **]`,true)
-      .addField(':red_circle:**__ عدد الاعضاء__**',`[** __${msg.guild.memberCount}__ **]`,true)
-      .addField(':large_blue_circle:**__ عدد الاعضاء الاونلاين__**',`[** __${msg.guild.members.filter(m=>m.presence.status == 'online').size}__ **]`,true)
-      .addField(':pencil:**__ الرومات الكتابية__**',`[** __${msg.guild.channels.filter(m => m.type === 'text').size}__** ]`,true)
-      .addField(':microphone:**__ رومات الصوت__**',`[** __${msg.guild.channels.filter(m => m.type === 'voice').size}__ **]`,true)
-      .addField(':id:**__ ايدي السيرفر__**',`**${msg.guild.id}**`,true)
-      .addField(':date:**__ تم عمل السيرفر في__**',msg.guild.createdAt.toLocaleString())
+      .setTitle(`Noobbot`)
+      .addField('عدد الرتب',`[** __${msg.guild.roles.size}__ **]`,true)
+      .addField('عدد الاعضاء',`[** __${msg.guild.memberCount}__ **]`,true)
+      .addField('الرومات الكتابيه',`[** __${msg.guild.channels.filter(m => m.type === 'text').size}__** ]`,true)
+      .addField('الرومات الصوتيه',`[** __${msg.guild.channels.filter(m => m.type === 'voice').size}__ **]`,true)
+      .addField('صنع السيرفر في',msg.guild.createdAt.toLocaleString())
       msg.channel.send({embed:embed});
     }
   });
@@ -672,7 +662,7 @@ message.channel.send(image)
 });
    
    
-   
+
    
    
          client.on('message',function(message) {
@@ -811,39 +801,6 @@ moment.locale('ar-TN');
 });
 
 
-client.on('message', message => {
-    if(message.channel.type === "dm") return;
-      if(message.content.startsWith ("$marry")) {
-      if(!message.channel.guild) return message.reply(' This command only for servers ')
-      var proposed = message.mentions.members.first()
-
-      if(!message.mentions.members.first()) return message.reply('لازم تطلب ايد وحدة').catch(console.error);
-      if(message.mentions.users.size > 1) return message.reply('ولد ما يضبط لازم بنت تذكر لازم بنت الحلال').catch(console.error);
-       if(proposed === message.author) return message.reply(`**خنثى ؟ **`);
-        if(proposed === client.user) return message.reply(`** تبي تتزوجني؟ **`);
-              message.channel.send(`**${proposed} 
- بدك تقبلي عرض الزواج من ${message.author}
- العرض لمدة 10 ثانية 
- اكتب موافقة او لا**`)
-
-const filter = m => m.content.startsWith("موافقة");
-message.channel.awaitMessages(filter, { max: 1, time: 15000, errors: ['time'] })
-.then(collected =>{ 
-    message.channel.send(`**${message.author} و ${proposed} الف الف مبروك انشاء الله تستمتعون بحياتكم الزوجية ويطول اعماركم ولا تنسون شهر العسل**`);
-})
-   .catch(collected => message.channel.send(`**السكوت علامة الرضا نقول قلللوش مبروك**`))
-
-   const filte = m => m.content.startsWith("لا");
-message.channel.awaitMessages(filte, { max: 1, time: 15000, errors: ['time'] })
-.then(collected =>{ 
-   message.channel.send(`**${message.author} تم رفض عرضك**`);
-})
-
-
-
-
-  }
-});
 
    const ms = require("ms");
 client.on('message' , async (message) => {
@@ -935,26 +892,6 @@ client.on('message',async message => {
 
 
 
-client.on('message' , async (message) => {
-       if(message.content.startsWith(`<@${client.user.id}>`)) {
-              
- let responses = [
-        'احد ناداني؟',
-        'سوي $help',
-        'لا تزعجني',
-        'ايش تبي ',
-        'هلا',
-        'كيفك',
-        'سم؟',
-        'تمنشن بوت ياغبي؟'
-    ]
-    
-    // Fetch a random item from the array
-    let fetched = responses[Math.floor(Math.random() * responses.length)];
-   message.reply(fetched)
-       }
-  
-});
 
 
 
@@ -1782,7 +1719,7 @@ message.channel.send('**لديك 15 ثانيه لتدمج الكلمه**').then(
     msg.channel.sendEmbed(embed).then(() => {
         message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
         .then((collected) => {
-        message.channel.send(`${collected.first().author} ✅ **الاجابه صحيحه**`); //mohamed192837465#7033صاحب الكود
+        message.channel.send(`${collected.first().author} ✅ **الاجابه صحيحه**`); 
 
         console.log(`[Typing] ${collected.first().author} typed the word.`);
             let won = collected.first().author; 
