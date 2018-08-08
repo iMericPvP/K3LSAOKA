@@ -34,7 +34,7 @@ client.login(process.env.BOT_TOKEN);
 
 
 
- 
+ 
 
 
 
@@ -93,12 +93,12 @@ client.on('message', message => {
             if (message.content.startsWith(prefix + "bot")) {
      let embed = new Discord.RichEmbed()
 .setThumbnail(message.author.avatarURL)
-.addField('Servers',`[${client.guilds.size}]  `)
-.addField('Users',` [${client.users.size}] `)
-.addField('Channels',`[${client.channels.size}]`) 
-.addField('Ping',`[${Date.now() - message.createdTimestamp}]`) 
-.addField('Language',`JS`) 
-.addField('Bot Owner',`『LB』Mohamed192837465#7033`) 
+.addField('Servers | سيرفرات',`[${client.guilds.size}]  `)
+.addField('Users | مستخديمن',` [${client.users.size}] `)
+.addField('Channels | رومات',`[${client.channels.size}]`) 
+.addField('Ping | سرعه اتصال',`[${Date.now() - message.createdTimestamp}]`) 
+.addField('Language | لغه برمجه البوت',`JS`) 
+.addField('Bot Owner | صانع البوت',`『LB』Mohamed192837465#7033`) 
 .setColor('#7d2dbe')
   message.channel.sendEmbed(embed);
     }
@@ -115,7 +115,7 @@ client.on('message', message => {
   const embed = new Discord.RichEmbed() 
       .setColor("#000000")
       .setDescription(`
-			  اوامر ادمنيه
+			:red_circle:   اوامر ادمنيه :red_circle: 
 ❖$ban | اعطاء العضو باند
 ❖$kick | اعطاء العضو كيك
 ❖$mute | اعطاء العضو ميوت
@@ -143,7 +143,7 @@ client.on("message", message => {
   const embed = new Discord.RichEmbed() 
       .setColor("#000000")
       .setDescription(`
-			  اوامر عامة
+			 :speaking_head:  اوامر عامة :speaking_head: 
 ❖$avatar | صورتك او صوره الي منشنته
 ❖$server | معلومات السيرفر
 ❖$angaz | كتابه كلامك بصوره انجاز ماينكرفتي
@@ -170,11 +170,11 @@ client.on("message", message => {
   const embed = new Discord.RichEmbed() 
       .setColor("#000000")
       .setDescription(`
-			  اوامر بورد كاست
+			 :loudspeaker:  اوامر بورد كاست :loudspeaker: 
 ❖$bc | بورد كاست للكل و مطور
 ❖$2bc | بورد كاست للكل غير مطور
 ❖$3bc | بورد كاست للونلاين فقط و غير مطور
-❖$userbc | رساله لشخص واحد 
+❖$user-bc | رساله لشخص واحد 
 ❖$role-bc | رساله لكل من يملك الرتبه الممشنه
 `)
    message.author.sendEmbed(embed)
@@ -188,7 +188,7 @@ client.on("message", message => {
   const embed = new Discord.RichEmbed() 
       .setColor("#000000")
       .setDescription(`
-			  العاب
+			 :joystick:  العاب :joystick: 
 ❖$rps [ حجر - ورقه - مقص ] | لعبه حجر ورقه مقص
 ❖$hack | لعبه الهكر مع ذكر اسمك للي هكرته
 ❖$hac-2 | لعبه الهكر من دون ذكر اسمك للي هكرته
@@ -288,7 +288,7 @@ client.on("message", message => {
   const embed = new Discord.RichEmbed() 
       .setColor("#000000")
       .setDescription(`
-			  موسيقي
+			 :musical_note:  موسيقي :musical_note: 
 قريبا
 `)
    message.author.sendEmbed(embed)
@@ -302,7 +302,7 @@ client.on("message", message => {
   const embed = new Discord.RichEmbed() 
       .setColor("#000000")
       .setDescription(`
-			  معلومات البوت
+			 :information_source:  معلومات البوت :information_source: 
 ❖مطورين البوت |  『LB』Mohamed192837465#7033 
 ❖لغه البوت | JS
 ❖رابط البوت | https://discordapp.com/oauth2/authorize?client_id=472111075114876968&permissions=2080374975&scope=bot
@@ -345,9 +345,9 @@ client.on("message", message => {
   .setAuthor(`BANNED!`, user.displayAvatarURL)
   .setColor("RANDOM")
   .setTimestamp()
-  .addField("**المستخدم**",  '**[ ' + `${user.tag}` + ' ]**')
-  .addField("**من قبل**", '**[ ' + `${message.author.tag}` + ' ]**')
-  .addField("**السبب**", '**[ ' + `${reason}` + ' ]**')
+  .addField("**اسم | Name**",  '**[ ' + `${user.tag}` + ' ]**')
+  .addField("**من قبل | By**", '**[ ' + `${message.author.tag}` + ' ]**')
+  .addField("**السبب | Reason**", '**[ ' + `${reason}` + ' ]**')
   message.channel.send({
     embed : banembed
   })
@@ -387,9 +387,9 @@ client.on('message', message => {
   .setAuthor(`Kicked!`, user.displayAvatarURL)
   .setColor("RANDOM")
   .setTimestamp()
-  .addField("**المستخدم**",  '**[ ' + `${user.tag}` + ' ]**')
-  .addField("**من قبل**", '**[ ' + `${message.author.tag}` + ' ]**')
-  .addField("**السبب**", '**[ ' + `${reason}` + ' ]**')
+  .addField("**اسم | Name**",  '**[ ' + `${user.tag}` + ' ]**')
+  .addField("**من قبل | By**", '**[ ' + `${message.author.tag}` + ' ]**')
+  .addField("**السبب | Reason**", '**[ ' + `${reason}` + ' ]**')
   message.channel.send({
     embed : banembed
   })
@@ -421,18 +421,17 @@ const muteembed = new Discord.RichEmbed()
 .setColor("RANDOM")
 .setAuthor(`Muted!`, user.displayAvatarURL)
 .setThumbnail(user.displayAvatarURL)
-.addField("**:busts_in_silhouette:  المستخدم**",  '**[ ' + `${user.tag}` + ' ]**',true)
-.addField("**:hammer:  تم بواسطة **", '**[ ' + `${message.author.tag}` + ' ]**',true)
-.addField("**:book:  السبب**", '**[ ' + `${reason}` + ' ]**',true)
+.addField("**اسم | Name**",  '**[ ' + `${user.tag}` + ' ]**',true)
+.addField("**من قبل | By**", '**[ ' + `${message.author.tag}` + ' ]**',true)
+.addField("**السبب | Reason**", '**[ ' + `${reason}` + ' ]**',true)
 .addField("User", user, true)  
 message.channel.send({embed : muteembed});
 var muteembeddm = new Discord.RichEmbed()
 .setAuthor(`Muted!`, user.displayAvatarURL)
 .setDescription(`
-${user} انت معاقب بميوت كتابي بسبب مخالفة القوانين 
- ${message.author.tag} تمت معاقبتك بواسطة
-[ ${reason} ] : السبب
-اذا كانت العقوبة عن طريق الخطأ تكلم مع المسؤلين 
+انت معاقب بميوت! 
+ ${message.author.tag} من قبل
+[ ${reason} ] السبب
 `)
 .setFooter(`في سيرفر : ${message.guild.name}`)
 .setColor("RANDOM")
@@ -452,9 +451,9 @@ const unmuteembed = new Discord.RichEmbed()
 .setColor("RANDOM")
 .setAuthor(`UnMute!`, user.displayAvatarURL)
 .setThumbnail(user.displayAvatarURL)
-.addField("**:busts_in_silhouette:  المستخدم**",  '**[ ' + `${user.tag}` + ' ]**',true)
-.addField("**:hammer:  تم بواسطة **", '**[ ' + `${message.author.tag}` + ' ]**',true)
-.addField("**:book:  السبب**", '**[ ' + `${reason}` + ' ]**',true)
+.addField("**اسم | Name**",  '**[ ' + `${user.tag}` + ' ]**',true)
+.addField("**من قبل | By**", '**[ ' + `${message.author.tag}` + ' ]**',true)
+.addField("**السبب | Reason**", '**[ ' + `${reason}` + ' ]**',true)
 .addField("User", user, true)  
 message.channel.send({embed : unmuteembed}).then(msg => msg.delete(5000));
 var unmuteembeddm = new Discord.RichEmbed()
@@ -477,9 +476,9 @@ client.on("message", message => {
     
     message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
     message.channel.sendMessage("", {embed: {
-      title: "Done | تــم",
+      title: "Done | تم",
       color: 0x06DF00,
-      description: "تم مسح الرسايل بنجاح :white_check_mark: ",
+      description: "تم المسح بنجاح",
       footer: {
         text: "NoobBot"
       }
@@ -610,7 +609,22 @@ client.on('message', message => {
 });
 
 
+var AsciiTable = require('ascii-data-table').default
+client.on('message', message =>{
 
+    if(message.content == "$ranks"){
+        var 
+        ros=message.guild.roles.size,
+        data = [['Rank', 'RoleName']]
+        for(let i =0;i<ros;i++){
+            if(message.guild.roles.array()[i].id !== message.guild.id){
+         data.push([i,`${message.guild.roles.filter(r => r.position == ros-i).map(r=>r.name)}`])
+        }}
+        let res = AsciiTable.table(data)
+
+        message.channel.send(`**\`\`\`xl\n${res}\`\`\`**`);
+    }
+});
 
 
 client.on('message', function(msg) {
@@ -623,7 +637,9 @@ client.on('message', function(msg) {
       .addField('عدد الاعضاء',`[** __${msg.guild.memberCount}__ **]`,true)
       .addField('الرومات الكتابيه',`[** __${msg.guild.channels.filter(m => m.type === 'text').size}__** ]`,true)
       .addField('الرومات الصوتيه',`[** __${msg.guild.channels.filter(m => m.type === 'voice').size}__ **]`,true)
+	  .addField('اونر السيرفر',`[** __${msg.guild.owner}__ **]`,true)
       .addField('صنع السيرفر في',msg.guild.createdAt.toLocaleString())
+	  .setFooter("لرئيه رتب السيرفر قم بكتابه $ranks ")  
       msg.channel.send({embed:embed});
     }
   });
@@ -673,16 +689,20 @@ message.channel.send(image)
  const embed = new Discord.RichEmbed()
 
     .setDescription(`**Members info ✨
-💚 اونلاين:   ${message.guild.members.filter(m=>m.presence.status == 'online').size}
-❤  حاله حمراء       ${message.guild.members.filter(m=>m.presence.status == 'dnd').size}
-💛  حاله صفراء:     ${message.guild.members.filter(m=>m.presence.status == 'idle').size}
-💛  الاوفلاين:     ${message.guild.members.filter(m=>m.presence.status == 'offline').size}
-💠   عدد الاعضاء:  ${message.guild.memberCount - message.guild.members.filter(m=>m.user.bot).size}
-💡 البوتات: ${message.guild.members.filter(m=>m.user.bot).size} **`)
+ اونلاين:   ${message.guild.members.filter(m=>m.presence.status == 'online').size}
+  حاله حمراء       ${message.guild.members.filter(m=>m.presence.status == 'dnd').size}
+  حاله صفراء:     ${message.guild.members.filter(m=>m.presence.status == 'idle').size}
+  الاوفلاين:     ${message.guild.members.filter(m=>m.presence.status == 'offline').size}
+   عدد الاعضاء:  ${message.guild.memberCount - message.guild.members.filter(m=>m.user.bot).size}
+ البوتات: ${message.guild.members.filter(m=>m.user.bot).size} **`)
          message.channel.send({embed});
 
     }
       }); 
+	  
+	  
+	  
+	  
    
    
    
@@ -692,7 +712,7 @@ if(message.author.bot) return;
 if(message.content === "$serveravatar"){ 
     const embed = new Discord.RichEmbed()
 
-.setTitle(`صوره سيرفر ** ${message.guild.name} **`)
+.setTitle(`**NoobBot**`)
 .setAuthor(message.author.username, message.guild.iconrURL)
 .setColor('RANDOM')
 .setImage(message.guild.iconURL)
@@ -705,7 +725,7 @@ message.channel.send({embed});
 client.on('message', message => {
   if(message.content === '$inv') {
   const embed = new Discord.RichEmbed()
-  .setTitle('Click here')
+  .setTitle('Click here | قم بلضغت هنا')
   .setURL('https://discordapp.com/oauth2/authorize?client_id=472111075114876968&permissions=2080374975&scope=bot')
   .setColor('RANDOM')
   message.channel.send({embed: embed});
@@ -811,7 +831,7 @@ if(!args[0]){
 if(args[0] <= 0){
   return message.channel.send("يجب كتابه الفتره الزمنيه");
 }
-message.channel.send(":white_check_mark: تم " + `${ms(ms(Timer), {long: true})}`)
+message.channel.send("تم" + `${ms(ms(Timer), {long: true})}`)
 
 setTimeout(function(){
   message.channel.send(`الوقت انتها, ${ms(ms(Timer), {long: true})}` + message.author.toString())
@@ -830,14 +850,14 @@ setTimeout(function(){
         .setTimestamp();
 
     if (!user) {
-        embed.addField("Noobbot", `تبي من يجيه الرساله؟ ${message.author.tag}?`)
+        embed.addField("UserBC", `تبي من يجيه الرساله؟ ${message.author.tag}?`)
             .setFooter(`NoobBot`);
         return message.channel.send({embed});
     } if (!reason) {
-        embed.addField("Noobbot", `تبي الرساله وش؟ ${user.tag}?`)
+        embed.addField("UserBC", `تبي الرساله وش؟ ${user.tag}?`)
         return message.channel.send({embed});
     }
-    embed.addField("NoobBot", `تم بنجاح${user.tag}!`)
+    embed.addField("UserBC", `تم بنجاح`)
         .setFooter(`Noob Bot `);
     message.channel.send({embed});
     const embed1 = new Discord.RichEmbed()
@@ -1129,59 +1149,6 @@ client.on('message' , message => {
 	
 	
 	
-	
-	
-	
-
-	
-	
-	
-	
-	
-	
-	
-
-	
-
-
-	
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-	
-	
-	
-	
-	
-	
-	
-
-
-
-
-
-
-
-
-
-
-
-
 
 client.on('message',  (message) => {
         if(message.content.startsWith('$punch')) {
@@ -1219,11 +1186,6 @@ client.on('message',  (message) => {
 
 
 
-
-
-
-   
-   
 client.on('message' , async (message) => {
        if(message.content.startsWith(`$rps حجر`)) {
               
@@ -1239,7 +1201,6 @@ client.on('message' , async (message) => {
        }
   
 });
-
 
 
 
@@ -1360,7 +1321,7 @@ client.on('message' , async (message) => {
 
   const catembed = new Discord.RichEmbed()
   .setColor("#7289DA")
-  .setTitle("كيوت ")
+  .setTitle("Cat | قطه")
   .setImage(body.file);
     
  message.channel.send(catembed);
@@ -1379,7 +1340,7 @@ client.on('message' , async (message) => {
     .get('https://dog.ceo/api/breeds/image/random');
     const embed = new Discord.RichEmbed()
     .setColor(0x954D23)
-    .setTitle("كيوت")
+    .setTitle("Dog")
     .setImage(body.message)
     message.channel.send({embed})
     
@@ -1732,4 +1693,3 @@ message.channel.send('**لديك 15 ثانيه لتدمج الكلمه**').then(
     })
 }
 });
-
