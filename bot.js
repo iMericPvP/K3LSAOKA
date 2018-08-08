@@ -30,7 +30,7 @@ client.user.setGame(`$help | $inv | ${client.guilds.size} Servers `,"http://twit
 
 client.login(process.env.BOT_TOKEN);
 
-
+const fs = require('fs');
 let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
 
  
@@ -1979,7 +1979,6 @@ message.channel.send('**اديك 15 ثاني�� لتوجد العاصمه ا�
 }
 });
 
-const fs = require('fs');
 let points = JSON.parse(fs.readFileSync('./Points.json', 'utf8'));
 client.on('message', message => {
 if (!points[message.author.id]) points[message.author.id] = {
