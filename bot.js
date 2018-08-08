@@ -98,7 +98,8 @@ client.on('message', message => {
 .addField('Channels | رومات',`[${client.channels.size}]`) 
 .addField('Ping | سرعه اتصال',`[${Date.now() - message.createdTimestamp}]`) 
 .addField('Language | لغه برمجه البوت',`JS`) 
-.addField('Bot Owner | صانع البوت',`『LB』Mohamed192837465#7033`) 
+.addField('Bot Owner | صانع البوت',`『LB』 Mohamed192837465#7033`)
+.addField('Support | سيرفر السبورت',`https://discord.gg/knNsyZ`) 
 .setColor('#7d2dbe')
   message.channel.sendEmbed(embed);
     }
@@ -120,7 +121,7 @@ client.on('message', message => {
 ❖$kick | اعطاء العضو كيك
 ❖$mute | اعطاء العضو ميوت
 ❖$unmute | ازاله الميوت من العضو
-❖$clear| مسح الرسائل
+❖$clean| مسح الرسائل
 ❖$role @someone [rank] | اعطاء رتبه لشخص 
 ❖$role all [rank]| اعطاء رتبه للكل
 ❖$role bots [rank]| اعطاء رتبه لكل البوتات
@@ -151,7 +152,10 @@ client.on("message", message => {
 ❖$serveravatar | صوره السيرفر
 ❖$inv | رابط اضافه البوت
 ❖$say | تكرار كلامك ببوت بنفس صورتك واسمك
+❖$support | رابط سيرفر السبورت
 ❖$day | تفاصيل اليوم
+❖$cat | صور قطط
+❖$dog | صور كلاب
 ❖$draw | كتابه كلامك في صوره
 ❖$bot | معلومات البوت
 ❖$id | ايديك
@@ -469,7 +473,7 @@ client.on("message", message => {
   var prefix = "$";
 
           var args = message.content.substring(prefix.length).split(" ");
-          if (message.content.startsWith(prefix + "clear")) {
+          if (message.content.startsWith(prefix + "clean")) {
  if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('انت لا تملك صلاحيه مسح الشات');
       var msg;
       msg = parseInt();
@@ -609,22 +613,16 @@ client.on('message', message => {
 });
 
 
-var AsciiTable = require('ascii-data-table').default
-client.on('message', message =>{
-
-    if(message.content == "$ranks"){
-        var 
-        ros=message.guild.roles.size,
-        data = [['Rank', 'RoleName']]
-        for(let i =0;i<ros;i++){
-            if(message.guild.roles.array()[i].id !== message.guild.id){
-         data.push([i,`${message.guild.roles.filter(r => r.position == ros-i).map(r=>r.name)}`])
-        }}
-        let res = AsciiTable.table(data)
-
-        message.channel.send(`**\`\`\`xl\n${res}\`\`\`**`);
+client.on('message', function(msg) {
+    if(msg.content.startsWith (prefix  + 'roles')) {
+      let embed = new Discord.RichEmbed()
+      .setColor('RANDOM')
+      .setThumbnail(msg.guild.iconURL)
+      .setTitle(`Noobbot`)
+      .addField('عدد الرتب',`[${msg.guild.roles}]`,true)
+      msg.channel.send({embed:embed});
     }
-});
+  });
 
 
 client.on('message', function(msg) {
@@ -639,7 +637,7 @@ client.on('message', function(msg) {
       .addField('الرومات الصوتيه',`[** __${msg.guild.channels.filter(m => m.type === 'voice').size}__ **]`,true)
 	  .addField('اونر السيرفر',`[** __${msg.guild.owner}__ **]`,true)
       .addField('صنع السيرفر في',msg.guild.createdAt.toLocaleString())
-	  .setFooter("لرئيه رتب السيرفر قم بكتابه $ranks ")  
+	  .setFooter("لرئيه رتب السيرفر قم بكتابه $roles ")  
       msg.channel.send({embed:embed});
     }
   });
@@ -719,6 +717,18 @@ if(message.content === "$serveravatar"){
 
 message.channel.send({embed});
 }
+});
+
+
+
+client.on('message', message => {
+  if(message.content === '$support') {
+  const embed = new Discord.RichEmbed()
+  .setTitle('Click here | قم بلضغت هنا')
+  .setURL('https://discord.gg/knNsyZd')
+  .setColor('RANDOM')
+  message.channel.send({embed: embed});
+  }
 });
 
 
