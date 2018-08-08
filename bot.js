@@ -613,16 +613,7 @@ client.on('message', message => {
 });
 
 
-client.on('message', function(msg) {
-    if(msg.content.startsWith (prefix  + 'roles')) {
-      let embed = new Discord.RichEmbed()
-      .setColor('RANDOM')
-      .setThumbnail(msg.guild.iconURL)
-      .setTitle(`Noobbot`)
-      .addField('عدد الرتب',`[${msg.guild.roles}]`,true)
-      msg.channel.send({embed:embed});
-    }
-  });
+
 
 
 client.on('message', function(msg) {
