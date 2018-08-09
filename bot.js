@@ -1555,6 +1555,7 @@ message.channel.send('**اديك 15 ثاني�� لتوجد العاصمه ا�
 }
 });
 
+const fs = require("fs")
 
 let points = JSON.parse(fs.readFileSync('./Points.json', 'utf8'));
 client.on('message', message => {
