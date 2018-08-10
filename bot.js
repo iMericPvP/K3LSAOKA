@@ -308,7 +308,7 @@ client.on("message", message => {
 ❖مطورين البوت |  『LB』Mohamed192837465#7033 
 ❖لغه البوت | JS
 ❖رابط البوت | https://discordapp.com/oauth2/authorize?client_id=472111075114876968&permissions=2080374975&scope=bot
-❖سيرفر السبورت | https://discord.gg/EAv9B2y
+❖سيرفر السبورت | https://discord.gg/knNsyZd
 `)
    message.author.sendEmbed(embed)
     
@@ -426,7 +426,6 @@ const muteembed = new Discord.RichEmbed()
 .addField("**اسم | Name**",  '**[ ' + `${user.tag}` + ' ]**',true)
 .addField("**من قبل | By**", '**[ ' + `${message.author.tag}` + ' ]**',true)
 .addField("**السبب | Reason**", '**[ ' + `${reason}` + ' ]**',true)
-.addField("User", user, true)  
 message.channel.send({embed : muteembed});
 var muteembeddm = new Discord.RichEmbed()
 .setAuthor(`Muted!`, user.displayAvatarURL)
@@ -456,7 +455,6 @@ const unmuteembed = new Discord.RichEmbed()
 .addField("**اسم | Name**",  '**[ ' + `${user.tag}` + ' ]**',true)
 .addField("**من قبل | By**", '**[ ' + `${message.author.tag}` + ' ]**',true)
 .addField("**السبب | Reason**", '**[ ' + `${reason}` + ' ]**',true)
-.addField("User", user, true)  
 message.channel.send({embed : unmuteembed}).then(msg => msg.delete(5000));
 var unmuteembeddm = new Discord.RichEmbed()
 .setDescription(`تم فك الميوت عنك ${user}`)
@@ -939,8 +937,7 @@ client.on('message', message => {
      if(message.content.startsWith(prefix + "hack")) {
  let args = message.content.split(" ").slice(1);
 
-    var user = message.mentions.users.first();
-    var reason = args.slice(1).join(' ');
+    var user = message.mentions.users.first();    var reason = args.slice(1).join(' ');
     const embed = new Discord.RichEmbed()
         .setColor(0xFFB200)
         .setTimestamp();
@@ -1143,7 +1140,7 @@ client.on('message' , message => {
 
 	
 	
-	
+
 	
 	
 	
@@ -1166,6 +1163,9 @@ client.on('message',  (message) => {
     'https://i.giphy.com/media/GoN89WuFFqb2U/giphy.gif',
     'https://i.giphy.com/media/xT0BKiwgIPGShJNi0g/giphy.gif',
     'https://i.giphy.com/media/Lx8lyPHGfdNjq/giphy.gif'
+	'https://media.giphy.com/media/l0Iyey3m9aNlZs5i0/giphy.gif'
+	'https://media.giphy.com/media/26xBPQU5sWj6KvDqM/giphy.gif'
+	'https://media.giphy.com/media/3o6ZtrxkK4jLkmn8He/giphy.gif'
   ];
 
   message.channel.send({
@@ -1381,7 +1381,7 @@ const filter = response => {
 message.channel.send('**لديك 15 ثانيه**').then(msg => {
     let embed = new Discord.RichEmbed()
     .setColor('#000000')
-    .setFooter("اعلم  | NoobBot", 'https://cdn.discordapp.com/avatars/439427357175185408/3eb163b7656922ebc9e90653d50231f1.png?size=2048')
+    .setFooter("اعلم  | NoobBot", 'https://cdn.discordapp.com/attachments/462239154630164511/477536845777993728/NOOB_BOT_1.png')
     .setDescription(`** ${item.type}**`)
 
     msg.channel.sendEmbed(embed).then(() => {
@@ -1394,8 +1394,8 @@ message.channel.send('**لديك 15 ثانيه**').then(msg => {
             points[won.id].points++;
           })
           .catch(collected => { 
-            message.channel.send(`:x: ماحد جاوب الاجابه الصحيحه والاجابه كانت **${item.answers}**`);
-            console.log(`[Typing] ماحد فكك الكلمه `);
+            message.channel.send(`:x: لم يقم احد بكتابه الجواب الصحيحه في الوقت المناسب`);
+            console.log(`[Typing] علم  `);
           })
         })
     })
@@ -1430,7 +1430,7 @@ m.edit({embed: new Discord.RichEmbed().setTitle('لديك 15 ثانيه للاج
                 points[won.id].points++;
               })
               .catch(collected => { 
-                message.channel.send(`:x: ماحد جاوب الاجابه الصحيحه والاجابه كانت **${item.answers}**`);
+                message.channel.send(`:x: لم يقم احد بكتابه الاجابه الصحيحه في الوقت المناسب`);
                 console.log(`[Game] ماحد قال الاجابه`);
                     })
             })
@@ -1456,7 +1456,7 @@ const filter = response => {
 message.channel.send('**لديك 15 ثانيه**').then(msg => {
     let embed = new Discord.RichEmbed()
     .setColor('#000000')
-    .setFooter("رياضيات  | NoobBot", 'https://cdn.discordapp.com/avatars/439427357175185408/3eb163b7656922ebc9e90653d50231f1.png?size=2048')
+    .setFooter("رياضيات  | NoobBot", 'https://cdn.discordapp.com/attachments/462239154630164511/477536845777993728/NOOB_BOT_1.png')
     .setDescription(`** ${item.type}**`)
 
     msg.channel.sendEmbed(embed).then(() => {
@@ -1469,7 +1469,7 @@ message.channel.send('**لديك 15 ثانيه**').then(msg => {
             points[won.id].points++;
           })
           .catch(collected => { 
-            message.channel.send(`:x: ماحد جاوب الاجابه الصحيحه والاجابه كانت **${item.answers}**`);
+            message.channel.send(`:x: لم يقم احد بكتابه الاجابه الصحيحه في الوقت المناسب`);
             console.log(`[Typing] ماحد قال الاجابه `);
           })
         })
@@ -1494,7 +1494,7 @@ const filter = response => {
 message.channel.send('**لديك 15 ثانيه**').then(msg => {
     let embed = new Discord.RichEmbed()
     .setColor('#000000')
-    .setFooter("ماينكرفت  | NoobBot", 'https://cdn.discordapp.com/avatars/439427357175185408/3eb163b7656922ebc9e90653d50231f1.png?size=2048')
+    .setFooter("ماينكرفت  | NoobBot", 'https://cdn.discordapp.com/attachments/462239154630164511/477536845777993728/NOOB_BOT_1.png')
     .setDescription(`** ${item.type}**`)
 
     msg.channel.sendEmbed(embed).then(() => {
@@ -1507,7 +1507,7 @@ message.channel.send('**لديك 15 ثانيه**').then(msg => {
             points[won.id].points++;
           })
           .catch(collected => { 
-            message.channel.send(`:x: ماحد جاوب الاجابه الصحيحه والاجابه كانت**${item.answers}**`);
+            message.channel.send(`:x: لم يقم احد بكتابه الجواب الصحيح في الوقت المناسب`);
             console.log(`[Typing] ماحد قال الاجابه `);
           })
         })
@@ -1534,7 +1534,7 @@ const filter = response => {
 message.channel.send('**اديك 15 ثاني�� لتوجد العاصمه الصحيحه**').then(msg => {
     let embed = new Discord.RichEmbed()
     .setColor('#000000')
-    .setFooter("عواصم  | NoobBot", 'https://cdn.discordapp.com/avatars/439427357175185408/3eb163b7656922ebc9e90653d50231f1.png?size=2048')
+    .setFooter("عواصم  | NoobBot", 'https://cdn.discordapp.com/attachments/462239154630164511/477536845777993728/NOOB_BOT_1.png')
     .setDescription(`**اكتب عاصمه: ${item.type}**`)
 
     msg.channel.sendEmbed(embed).then(() => {
@@ -1547,7 +1547,7 @@ message.channel.send('**اديك 15 ثاني�� لتوجد العاصمه ا�
             points[won.id].points++;
           })
           .catch(collected => { 
-            message.channel.send(`:x: ماحد جاوب الاجابه الصحيحه والاجابه كانت **${item.answers}**`);
+            message.channel.send(`:x: لم يقم احد بكتابه الاجابه الصحيحه في الوقت المناسب`);
             console.log(`[Typing] ماحد قال الاجابه `);
           })
         })
@@ -1574,7 +1574,7 @@ const filter = response => {
 message.channel.send('**لديك 15 ثانيه لتفكك الكلمه **').then(msg => {
     let embed = new Discord.RichEmbed()
     .setColor('#000000')
-    .setFooter("فكك  | NoobBot", 'https://cdn.discordapp.com/avatars/439427357175185408/3eb163b7656922ebc9e90653d50231f1.png?size=2048')
+    .setFooter("فكك  | NoobBot", 'https://cdn.discordapp.com/attachments/462239154630164511/477536845777993728/NOOB_BOT_1.png')
     .setDescription(`**قم بكتابه الكلمه مفككه : ${item.type}**`)
 
     msg.channel.sendEmbed(embed).then(() => {
@@ -1587,7 +1587,7 @@ message.channel.send('**لديك 15 ثانيه لتفكك الكلمه **').then
             points[won.id].points++;
           })
           .catch(collected => { 
-            message.channel.send(`:x: ماحد جاوب و الاجابه كانت **${item.answers}**`);
+            message.channel.send(`:x: لم يقم احد بكتابه الاجابه الصحيحه في الوقت المناسب`);
             console.log(`[Typing] ماحد فكك الكلمه `);
           })
         })
@@ -1618,7 +1618,7 @@ const filter = response => {
 message.channel.send('**لديك 15 ثانيه لتعكس الكلمه**').then(msg => {
     let embed = new Discord.RichEmbed()
     .setColor('#000000')
-    .setFooter("عكس | NoobBot", 'https://cdn.discordapp.com/avatars/439427357175185408/3eb163b7656922ebc9e90653d50231f1.png?size=2048')
+    .setFooter("عكس | NoobBot", 'https://cdn.discordapp.com/attachments/462239154630164511/477536845777993728/NOOB_BOT_1.png')
     .setDescription(`**قم بعكس هذه الكلمه :${item.type}**`)
 
     msg.channel.sendEmbed(embed).then(() => {
@@ -1631,7 +1631,7 @@ message.channel.send('**لديك 15 ثانيه لتعكس الكلمه**').then(
             points[won.id].points++;
           })
           .catch(collected => { 
-            message.channel.send(`:x: ماحد جاوب و الاجابه كانت **${item.answers}**`);
+            message.channel.send(`:x: لم يقم احد بكتابه الاجابه الصحيحه في القوت المناسب`);
             console.log(`[Typing] ماحد فكك الكلمه `);
           })
         })
@@ -1672,7 +1672,7 @@ const filter = response => {
 message.channel.send('**لديك 15 ثانيه لتدمج الكلمه**').then(msg => {
     let embed = new Discord.RichEmbed()
     .setColor('#000000')
-    .setFooter("دمج | NoobBot", 'https://cdn.discordapp.com/avatars/439427357175185408/3eb163b7656922ebc9e90653d50231f1.png?size=2048')
+    .setFooter("دمج | NoobBot", 'https://cdn.discordapp.com/attachments/462239154630164511/477536845777993728/NOOB_BOT_1.png')
     .setDescription(`**قم بدمج هذه الكلمه :${item.type}**`)
 
     msg.channel.sendEmbed(embed).then(() => {
@@ -1685,7 +1685,7 @@ message.channel.send('**لديك 15 ثانيه لتدمج الكلمه**').then(
             points[won.id].points++;
           })
           .catch(collected => { 
-            message.channel.send(`:x: ماحد جاوب و الاجابه كانت **${item.answers}**`);
+            message.channel.send(`:x: لم يقم احد بكتابه الاجابه الحيحه في الوقت المناسب`);
             console.log(`[Typing] ماحد فكك الكلمه `);
           })
         })
