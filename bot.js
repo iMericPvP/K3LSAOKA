@@ -1154,7 +1154,7 @@ client.on('message',  (message) => {
      * The command was ran with invalid parameters.
      * @fires commandUsage
      */
-     return message.memit('commandUsage', message, this.help);
+     return message.emit('commandUsage', message, this.help);
  }
 
   let punches = [
