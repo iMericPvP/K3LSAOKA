@@ -1162,9 +1162,9 @@ client.on('message',  (message) => {
     'https://i.giphy.com/media/DViGV8rfVjw6Q/giphy.gif',
     'https://i.giphy.com/media/GoN89WuFFqb2U/giphy.gif',
     'https://i.giphy.com/media/xT0BKiwgIPGShJNi0g/giphy.gif',
-    'https://i.giphy.com/media/Lx8lyPHGfdNjq/giphy.gif'
-	'https://media.giphy.com/media/l0Iyey3m9aNlZs5i0/giphy.gif'
-	'https://media.giphy.com/media/26xBPQU5sWj6KvDqM/giphy.gif'
+    'https://i.giphy.com/media/Lx8lyPHGfdNjq/giphy.gif',
+	'https://media.giphy.com/media/l0Iyey3m9aNlZs5i0/giphy.gif',
+	'https://media.giphy.com/media/26xBPQU5sWj6KvDqM/giphy.gif',
 	'https://media.giphy.com/media/3o6ZtrxkK4jLkmn8He/giphy.gif'
   ];
 
