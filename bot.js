@@ -1154,7 +1154,8 @@ client.on('message',  (message) => {
      * The command was ran with invalid parameters.
      * @fires commandUsage
      */
-  }
+     return message.memit('commandUsage', message, this.help);
+ }
 
   let punches = [
     'https://i.giphy.com/media/iWEIxgPiAq58c/giphy.gif',
