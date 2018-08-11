@@ -163,14 +163,15 @@ message.channel.createWebhook(message.author.username, message.author.avatarURL)
 ❖$ban @someone [reason] | اعطاء العضو باند
 ❖$kick @someone [reason] | اعطاء العضو كيك
 ❖$mute @someone [reason] | اعطاء العضو ميوت
+❖$cc [number] | صنع رتب برقم
 ❖$unmute @someone [reason] | ازاله الميوت من العضو
-❖$clear [number] | مسح الرسائل
+❖$clear [number] | مسح الرسائل [NEW]
 ❖$role @someone [rank] | اعطاء رتبه لشخص 
 ❖$role all [rank]| اعطاء رتبه للكل
 ❖$role bots [rank]| اعطاء رتبه لكل البوتات
 ❖$role humans [rank] | اعطاء رتبه للبشريين
 ❖$roleremove @someone [rank] | ازاله الرتبه من شخص معين
-❖$move @someone | سحب شخص الي روم
+❖$move @someone | سحب شخص الي روم [NEW]
 ❖$mutechannel | قفل الشات
 ❖$unmutechannel | فك منع الكتابه بلروم
 `)
@@ -211,9 +212,26 @@ client.on("message", message => {
 ❖$roll [number] | قرعه
 ❖$draw [message] | كتابه كلامك في صوره
 ❖$bot | معلومات البوت
+❖$ranks | يعرض لك الرتب الي بلسيرفر [NEW]
 ❖$id | ايديك
 ❖$stim | منبه
-❖$user-bc | رساله لشخص واحد بلخاص
+`)
+   message.author.sendEmbed(embed)
+    
+   }
+   }); 
+   
+   
+      client.on("message", message => {
+	var prefix = "$";
+ if (message.content === "$help") {
+  const embed = new Discord.RichEmbed() 
+      .setColor("#000000")
+      .setDescription(`
+			:family_mmbb:   الترحيب :family_mmbb:  [NEW]
+❖$setWlc style [text, embed, image] | تغيير ستايل الترحيب [NEW]
+❖$setWlc channel #channel_name | تغير روم الترحيب [NEW]
+❖$setWlc message [message] | تغير رساله الترحيب [NEW]
 `)
    message.author.sendEmbed(embed)
     
@@ -621,6 +639,7 @@ client.on('guildCreate', guild => {
 
 
 
+
 client.on('message', message => {
 	var prefix = "$";
 if(!message.channel.guild) return;
@@ -640,7 +659,7 @@ var embed = new Discord.RichEmbed()
 var embed = new Discord.RichEmbed()
 .setTitle(`تم سحبك الي روم ثاني في سيرفر ${message.guild.name}`)
  .setColor("RANDOM")
-.setDescription(`**<@${message.author.id}> Moved You To His Channel!\nServer --> ${message.guild.name}**`)
+.setDescription(`**<@${message.author.id}> تم سحبك الي روم صوتي اخر**`)
  message.guild.members.get(usermentioned).setVoiceChannel(authorchannel).then(m => message.channel.send(embed))
 message.guild.members.get(usermentioned).send(embed)
 } else {
@@ -708,7 +727,405 @@ client.on('message', message => {
 
 
 
+const Discord = require('discord.js');
+const client = new Discord.Client();
+const prefix = "!"
 
+client.on('ready', () => {
+  console.log(`Logged in as ${client.user.tag}!`);
+});
+const Canvas = require("canvas")
+const fs = require("fs")
+const jimp = require("jimp")
+
+let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
+
+ 
+
+    client.on('message', message => {
+
+
+ 
+
+        let mothed = ['text', 'embed', 'image'];
+
+        let sets = message.content.split(" ").slice(1).join(" ")
+
+        let style = message.content.split(" ").slice(2).join(" ")
+
+        let stym = message.content.split(" ").slice(3).join(" ")
+
+        let msz = message.content.split(" ").slice(2).join(" ")
+
+        let ch = message.content.split(" ").slice(2).join(" ")
+
+        let r = message.content.split(" ").slice(4).join(" ")
+
+ 
+
+ 
+
+        if(message.content.startsWith(prefix + "setWlc")) {
+
+    if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**تحتاج صلاحيه**")
+
+            if(!sw[message.guild.id]) sw[message.guild.id] = {
+
+                cha: "welcome",
+
+                msz: "Welcome Bro",
+
+                styler: "text"
+
+            };
+
+ 
+
+            if(!sets) {
+
+                message.channel.send(`**للستخدام:
+
+            ${prefix}setWlc style <text, image, embed>
+
+            ${prefix}setWlc msg <message>
+
+            ${prefix}setWlc channal <channel name>**`)
+
+            }
+
+ 
+
+            if(!mothed) {
+
+                message.channel.send(`**للستخدام: ${prefix}setWlc style <text, imgae, embed>**`)
+
+            }
+
+ 
+
+            if(message.content === prefix + 'setWlc style image') {
+
+                if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**تحتاج صلاحيه**")
+
+                sw[message.guild.id].styler = 'image'
+
+                message.channel.send(`**تم تغير الي ${sw[message.guild.id].styler}**`)
+
+            }
+
+ 
+
+            if(message.content === prefix + 'setWlc style embed') {
+
+                if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**تحتاج صلاحيه**")
+
+                 sw[message.guild.id].styler = 'embed'
+
+                message.channel.send(`**تم تغير الي ${sw[message.guild.id].styler}**`)            }
+
+ 
+
+            if(message.content === prefix + 'setWlc style text') {
+
+                if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**لا تملك صلاحيات**")
+
+                 sw[message.guild.id].styler = 'text'
+
+                message.channel.send(`**تم تغير الي  ${sw[message.guild.id].styler}**`)
+
+            }
+
+ 
+
+        }
+
+ 
+
+        if(message.content.startsWith(prefix + "setWlc msg")) {
+
+            if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("**لا تملك صلاحيه**")
+
+            if(!msz) {
+
+                message.channel.send("للستخدام: <setWlc msg <message>")
+
+            } else {
+
+                message.channel.send(`**Your server welcome message has been changed to __${msz}__**`)
+
+                sw[message.guild.id].msk = msz
+
+            }
+
+        }
+
+ 
+
+        if(message.content.startsWith(prefix + "setWlc channel")) {
+
+            if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**لا تملك صلاحيه**")
+
+            if(!ch) {
+
+                message.channel.send("للستخدام: <setWlc channel <channel name>")
+
+            }
+
+            let chn = message.guild.channels.find("name", ch)
+
+            if(!chn) {
+
+                message.channel.send("**لا ينكنني ان ارا هذه الروم**")
+
+            }
+
+            else {
+
+                 sw[message.guild.id].cha = chn.name
+
+                 message.channel.send(`**تم تغير الي __${chn.name}__**`)
+
+                 }
+
+        }
+
+ 
+
+        fs.writeFile('./setWlc.json', JSON.stringify(sw), (err) => {
+
+if (err) console.error(err);
+
+})
+
+})
+
+ 
+
+ 
+
+client.on('guildMemberAdd', member => {
+
+    let channel = member.guild.channels.find("name", sw[member.guild.id].cha)
+
+ 
+
+    if(sw[member.guild.id].styler === "text") {
+
+        channel.sendMessage(`<@${member.user.id}>, ${sw[member.guild.id].msk}`)
+
+    }
+
+ 
+
+    if(sw[member.guild.id].styler === "embed") {
+
+ 
+
+        const embed = new Discord.RichEmbed()
+
+        .setTitle("Member joind.")
+
+        .setColor("GREEN")
+
+        .setThumbnail(member.user.avatarURL)
+
+        .setDescription(`**${sw[member.guild.id].msk}**`)
+
+        .addField("**Member name**", `[<@${member.user.id}>]`,true)
+
+        .addField("**Now we are**", `[${member.guild.memberCount}]`,true)
+
+        channel.sendMessage(`<@${member.user.id}>`)
+
+        channel.sendEmbed(embed)
+
+    }
+
+ 
+
+    if(sw[member.guild.id].styler === "image") {
+
+        if (member.user.bot) return;
+
+const w = ['./setwelcome.png'];
+
+        let Image = Canvas.Image,
+
+            canvas = new Canvas(749, 198),
+
+            ctx = canvas.getContext('2d');
+
+        ctx.patternQuality = 'bilinear';
+
+        ctx.filter = 'bilinear';
+
+        ctx.antialias = 'subpixel';
+
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
+
+        ctx.shadowOffsetY = 2;
+
+        ctx.shadowBlur = 2;
+
+        ctx.stroke();
+
+        ctx.beginPath();
+
+ 
+
+        fs.readFile(`${w[Math.floor(Math.random() * w.length)]}`, function (err, Background) {
+
+            if (err) return console.log(err);
+
+            let BG = Canvas.Image;
+
+            let ground = new Image;
+
+            ground.src = Background;
+
+            ctx.drawImage(ground, 0, 0, 749, 198);
+
+ 
+
+})
+
+ 
+
+                let url = member.user.displayAvatarURL.endsWith(".webp") ? member.user.displayAvatarURL.slice(5, -20) + ".png" : member.user.displayAvatarURL;
+
+                jimp.read(url, (err, ava) => {
+
+                    if (err) return console.log(err);
+
+                    ava.getBuffer(jimp.MIME_PNG, (err, buf) => {
+
+                 if (err) return console.log(err);
+
+ 
+
+ctx.font = '35px Aeland';
+
+                        ctx.fontSize = '40px';
+
+                        ctx.fillStyle = "#FFFFFF";
+
+                        ctx.textAlign = "center";
+
+
+ 
+
+                        //ur name
+
+                        ctx.font = '40px Impact';
+
+                        ctx.fontSize = '48px';
+
+                        ctx.fillStyle = "#FFFFFF";
+
+                        ctx.textAlign = "center";
+
+                        ctx.fillText(member.user.username, 420, 100);
+
+ 
+
+                         ctx.font = '30px Impact';
+
+                        ctx.fontSize = '20px';
+
+                        ctx.fillStyle = "#FFFFFF";
+
+                        ctx.textAlign = "center";
+
+                        ctx.fillText(sw[member.guild.id].msk, 410, 170);
+
+ 
+
+ 
+
+                        //Avatar
+
+                        let Avatar = Canvas.Image;
+
+                              let ava = new Avatar;
+
+                              ava.src = buf;
+
+                              ctx.beginPath();
+
+                              ctx.arc(115, 100, 90, 0, Math.PI*2);
+
+                                 ctx.closePath();
+
+                                 ctx.clip();
+
+                                 ctx.drawImage(ava, 5, 5, 200, 200);
+
+              
+ 
+        channel.sendFile(canvas.toBuffer())
+
+ 
+
+ 
+
+ 
+
+})
+
+})
+
+ 
+
+    }
+
+ 
+
+})
+var dat = JSON.parse("{}");
+function forEachObject(obj, func) {
+    Object.keys(obj).forEach(function (key) { func(key, obj[key]) });
+}
+client.on("ready", () => {
+    var guild;
+    while (!guild)
+        guild = client.guilds.get("398497261635764224");
+    guild.fetchInvites().then((data) => {
+        data.forEach((Invite, key, map) => {
+            var Inv = Invite.code;
+            dat[Inv] = Invite.uses;
+        });
+    });
+});
+
+
+
+client.on("guildMemberAdd", (member) => {
+    let channel = member.guild.channels.get("456651745649754122");
+    if (!channel) {
+        console.log("!the channel id it's not correct");
+        return;
+    }
+    if (member.id == client.user.id) {
+        return;
+    }
+    console.log('-');
+    var guild;
+    while (!guild)
+        guild = client.guilds.get("456651745649754122");
+    guild.fetchInvites().then((data) => {
+        data.forEach((Invite, key, map) => {
+            var Inv = Invite.code;
+            if (dat[Inv])
+                if (dat[Inv] < Invite.uses) {
+                    setTimeout(function() {
+ channel.send(`**invited by** ${Invite.inviter} `) ;
+                    },1500);
+ }
+            dat[Inv] = Invite.uses;
+       
+       });
+    });
+});
 
 client.on('message', function(msg) {
     if(msg.content.startsWith (prefix  + 'server')) {
@@ -722,7 +1139,7 @@ client.on('message', function(msg) {
       .addField('الرومات الصوتيه',`[** __${msg.guild.channels.filter(m => m.type === 'voice').size}__ **]`,true)
 	  .addField('اونر السيرفر',`[** __${msg.guild.owner}__ **]`,true)
       .addField('صنع السيرفر في',msg.guild.createdAt.toLocaleString())
-	  .setFooter("لكي تعرف حالات الاعضاء  قم بكتابه $members")  
+	  .setFooter("لكي تعرف حالات الاعضاء  قم بكتابه $members | لكي تعرف ماهي رتب السيرفر قم بكتابه $ranks")  
       msg.channel.send({embed:embed});
     }
   });
@@ -785,7 +1202,7 @@ message.channel.send(image)
 	  
 	  
 	  
-	  
+
    
    
    
@@ -873,6 +1290,25 @@ message.channel.sendFile(canvas.toBuffer());
 
 });
 
+
+client.on('message', ra3d => {
+var prefix = "$";
+                        let args = ra3d.content.split(" ").slice(1).join(" ")
+if(ra3d.content.startsWith(prefix + 'cc')) {
+    if(!args) return ra3d.channel.send('`يرجا عليك كتابه رقم الالوان`');
+             if (!ra3d.member.hasPermission('MANAGE_ROLES')) return ra3d.channel.sendMessage('`**⚠ | `[MANAGE_ROLES]` لا يوجد لديك صلاحية**'); 
+              ra3d.channel.send(`**✅ |تم صنع __${args}__ الوان**`);
+                  setInterval(function(){})
+                    let count = 0;
+                    let ecount = 0;
+          for(let x = 1; x < `${parseInt(args)+1}`; x++){
+            ra3d.guild.createRole({name:x,
+              color: 'RANDOM'})
+              }
+            }
+       });
+	   
+	   
 var moment = require("moment");
 client.on('message', message => {
   var prefix = '$';
