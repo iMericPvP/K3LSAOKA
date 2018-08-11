@@ -4,7 +4,7 @@ const prefix = '$'
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`$help | $inv | ${client.guilds.size} Servers `,"http://twitch.tv/Noobbot")
+client.user.setGame(`$help | $inv | ${client.guilds.size} Servers `,"http://twitch.tv/NoobBot")
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
@@ -2019,7 +2019,6 @@ message.channel.send('**اديك 15 ثاني�� لتوجد العاصمه ا�
 }
 });
 
-const fs = require("fs")
 
 let points = JSON.parse(fs.readFileSync('./Points.json', 'utf8'));
 client.on('message', message => {
