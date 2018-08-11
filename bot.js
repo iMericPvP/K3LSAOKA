@@ -31,7 +31,52 @@ client.user.setGame(`$help | $inv | ${client.guilds.size} Servers `,"http://twit
 client.login(process.env.BOT_TOKEN);
 
 
+client.on("message", function(message) {
+	var prefix = "$";
+   if(message.content.startsWith(prefix + "test-code")) {
+    let messageArgs = message.content.split(" ").slice(1).join(" ");
+    let helps = ['**Puplic**','**Admin**','**Music**','Info','Music'];
+    var RpsEmbed = new Discord.RichEmbed()
+    .setAuthor(message.author.username)
+    .setThumbnail(message.author.avatarURL)
+    .addField("Puplic | عام","🗣️",true)
+    .addField("Admin | ادمنيه","🔴",true)
+    .addField("Info | معلومات","ℹ️",true)
+	.addField("Music | ميوزج","🎵",true)
+	.addField("Boardcast | بوردكاست","📢",true)
+    message.channel.send(RpsEmbed).then(msg => {
+        msg.react('🗣️')
+        msg.react("🔴")
+        msg.react("ℹ️")
+		msg.react("🎵")
+		msg.react("📢")
+.then(() => msg.react('🗣️'))
+.then(() =>msg.react('🔴'))
+.then(() => msg.react('ℹ️'))
+.then(() =>msg.react('🎵'))
+.then(() => msg.react('📢'))
+let reaction1Filter = (reaction, user) => reaction.emoji.name === '🗣️' && user.id === message.author.id;
+let reaction2Filter = (reaction, user) => reaction.emoji.name === '🔴' && user.id === message.author.id;
+let reaction3Filter = (reaction, user) => reaction.emoji.name === '🎵' && user.id === message.author.id;
+let reaction4Filter = (reaction, user) => reaction.emoji.name === '📢' && user.id === message.author.id;
 
+let reaction1 = msg.createReactionCollector(reaction1Filter, { time: 12000 });
+	    
+let reaction2 = msg.createReactionCollector(reaction2Filter, { time: 12000 });
+let reaction3 = msg.createReactionCollector(reaction3Filter, { time: 12000 });
+reaction1.on("collect", r => {
+        message.channel.send('test')
+})
+reaction2.on("collect", r => {
+        message.channel.send('test')
+})
+reaction3.on("collect", r => {
+        message.channel.send('test')
+})
+
+    })
+}
+});
 
 
 client.on('message', function(msg) {
