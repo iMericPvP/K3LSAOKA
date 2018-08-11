@@ -4,7 +4,7 @@ const prefix = '$'
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`$help | $inv | ${client.guilds.size} Servers `,"http://twitch.tv/NoobBot")
+client.user.setGame(`$help | $inv | ${client.guilds.size} Servers `,"http://twitch.tv/Noobbot")
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
@@ -570,15 +570,15 @@ client.on('message', message => {
 let prefix = '$'
     if (message.content.startsWith(prefix + 'ranks')) {
 
-        const List = message.guild.roles.map(e => e.toString()).join(" ");
+        const Rank = message.guild.roles.map(e => e.toString()).join(" ");
 
-        const EmojiList = new Discord.RichEmbed()
+        const RankList = new Discord.RichEmbed()
             .setTitle('➠ Roles.') 
             .setAuthor(message.guild.name, message.guild.iconURL) 
             .setColor('RANDOM') 
             .setDescription(List) 
             .setFooter(message.guild.name) 
-        message.channel.send(EmojiList) 
+        message.channel.send(RankList) 
     }
 });
 
@@ -727,9 +727,8 @@ client.on('message', message => {
 
 
 
-const Discord = require('discord.js');
 const client = new Discord.Client();
-const prefix = "!"
+const prefix = "$"
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -2019,6 +2018,7 @@ message.channel.send('**اديك 15 ثاني�� لتوجد العاصمه ا�
 }
 });
 
+const fs = require("fs")
 
 let points = JSON.parse(fs.readFileSync('./Points.json', 'utf8'));
 client.on('message', message => {
