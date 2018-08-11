@@ -115,17 +115,17 @@ message.channel.createWebhook(message.author.username, message.author.avatarURL)
       .setColor("#000000")
       .setDescription(`
 			:red_circle:   اوامر ادمنيه :red_circle: 
-❖$ban | اعطاء العضو باند
-❖$kick | اعطاء العضو كيك
-❖$mute | اعطاء العضو ميوت
-❖$unmute | ازاله الميوت من العضو
-❖$clean| مسح الرسائل
+❖$ban @someone [reason] | اعطاء العضو باند
+❖$kick @someone [reason] | اعطاء العضو كيك
+❖$mute @someone [reason] | اعطاء العضو ميوت
+❖$unmute @someone [reason] | ازاله الميوت من العضو
+❖$clear [number] | مسح الرسائل
 ❖$role @someone [rank] | اعطاء رتبه لشخص 
 ❖$role all [rank]| اعطاء رتبه للكل
 ❖$role bots [rank]| اعطاء رتبه لكل البوتات
 ❖$role humans [rank] | اعطاء رتبه للبشريين
 ❖$roleremove @someone [rank] | ازاله الرتبه من شخص معين
-❖$comeall | يجيب الكل لرومك الصوتي بس يسحب الي بلرومات الصوتيه
+❖$move @someone | سحب شخص الي روم
 ❖$mutechannel | قفل الشات
 ❖$unmutechannel | فك منع الكتابه بلروم
 `)
@@ -133,6 +133,15 @@ message.channel.createWebhook(message.author.username, message.author.avatarURL)
     
    }
    }); 
+
+   	  client.on('message', message => {
+        let args = message.content.split(" ").slice(1).join(" ")
+        let men = message.mentions.users.first()
+        if(message.content.startsWith(prefix + "roll")){
+            if(!args) return message.channel.send("يجب كتابه رقم")
+            message.channel.send(Math.floor(Math.random() * args))
+        }
+    });
 
 
 
@@ -143,18 +152,19 @@ client.on("message", message => {
       .setColor("#000000")
       .setDescription(`
 			 :speaking_head:  اوامر عامة :speaking_head: 
-❖$avatar | صورتك او صوره الي منشنته
+❖$avatar @somone | صورتك او صوره الي منشنته
 ❖$server | معلومات السيرفر
 ❖$angaz | كتابه كلامك بصوره انجاز ماينكرفتي
 ❖$members | حالات الاعضاء
 ❖$serveravatar | صوره السيرفر
 ❖$inv | رابط اضافه البوت
-❖$say | تكرار كلامك ببوت بنفس صورتك واسمك
+❖$say [message] | تكرار كلامك ببوت بنفس صورتك واسمك
 ❖$support | رابط سيرفر السبورت
 ❖$day | تفاصيل اليوم
 ❖$cat | صور قطط
 ❖$dog | صور كلاب
-❖$draw | كتابه كلامك في صوره
+❖$roll [number] | قرعه
+❖$draw [message] | كتابه كلامك في صوره
 ❖$bot | معلومات البوت
 ❖$id | ايديك
 ❖$stim | منبه
@@ -173,11 +183,11 @@ client.on("message", message => {
       .setColor("#000000")
       .setDescription(`
 			 :loudspeaker:  اوامر بورد كاست :loudspeaker: 
-❖$bc | بورد كاست للكل و مطور
-❖$2bc | بورد كاست للكل غير مطور
-❖$3bc | بورد كاست للونلاين فقط و غير مطور
-❖$user-bc | رساله لشخص واحد 
-❖$role-bc | رساله لكل من يملك الرتبه الممشنه
+❖$bc [message] | بورد كاست للكل و مطور
+❖$2bc [message] | بورد كاست للكل غير مطور
+❖$3bc [message] | بورد كاست للونلاين فقط و غير مطور
+❖$user-bc @someone [message] | رساله لشخص واحد 
+❖$role-bc @rank [message] | رساله لكل من يملك الرتبه الممشنه
 `)
    message.author.sendEmbed(embed)
     
@@ -191,9 +201,9 @@ client.on("message", message => {
       .setColor("#000000")
       .setDescription(`
 			 :joystick:  العاب :joystick: 
-❖$rps [ حجر - ورقه - مقص ] | لعبه حجر ورقه مقص
-❖$hack | لعبه الهكر مع ذكر اسمك للي هكرته
-❖$hac-2 | لعبه الهكر من دون ذكر اسمك للي هكرته
+❖$rps [ورقة - مقص - حجر] 
+❖$hack @somone | لعبه الهكر مع ذكر اسمك للي هكرته
+❖$hac-2 @somone | لعبه الهكر من دون ذكر اسمك للي هكرته
 ❖$لعبه اعلم | اعلم
 ❖$لعبه اموجي | ايموجي
 ❖$لعبه رياضيات | رياضيات
@@ -305,7 +315,7 @@ client.on("message", message => {
       .setColor("#000000")
       .setDescription(`
 			 :information_source:  معلومات البوت :information_source: 
-❖مطورين البوت |  『LB』Mohamed192837465#7033 
+❖مطورين البوت |  『LB』 Mohamed192837465#7033 
 ❖لغه البوت | JS
 ❖رابط البوت | https://discordapp.com/oauth2/authorize?client_id=472111075114876968&permissions=2080374975&scope=bot
 ❖سيرفر السبورت | https://discord.gg/knNsyZd
@@ -465,28 +475,50 @@ var unmuteembeddm = new Discord.RichEmbed()
 });
 
 
-client.on("message", message => {
-  var prefix = "$";
+client.on('message', msg => {
+	var prefix = "$";
+  if (msg.author.bot) return;
+  if (!msg.content.startsWith(prefix)) return;
+  let command = msg.content.split(" ")[0];
+  command = command.slice(prefix.length);
+  let args = msg.content.split(" ").slice(1);
 
-          var args = message.content.substring(prefix.length).split(" ");
-          if (message.content.startsWith(prefix + "clean")) {
- if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('انت لا تملك صلاحيه مسح الشات');
-      var msg;
-      msg = parseInt();
-    
-    message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
-    message.channel.sendMessage("", {embed: {
-      title: "Done | تم",
-      color: 0x06DF00,
-      description: "تم المسح بنجاح",
-      footer: {
-        text: "NoobBot"
-      }
-    }}).then(msg => {msg.delete(3000)});
-                        }
-
-   
+    if(command === "clear") {
+        const emoji = client.emojis.find("name", "wastebasket")
+    let textxt = args.slice(0).join("");
+    if(msg.member.hasPermission("MANAGE_MESSAGES")) {
+    if (textxt == "") {
+        msg.delete().then
+    msg.channel.send("***```يرجا كتابه رقم```***").then(m => m.delete(3000));
+} else {
+    msg.delete().then
+    msg.delete().then
+    msg.channel.bulkDelete(textxt);
+        msg.channel.send("```تم مسح: " + textxt + "\n Messages```").then(m => m.delete(3000));
+        }    
+    }
+}
 });
+
+
+
+
+client.on('message', message => { 
+let prefix = '$'
+    if (message.content.startsWith(prefix + 'ranks')) {
+
+        const List = message.guild.roles.map(e => e.toString()).join(" ");
+
+        const EmojiList = new Discord.RichEmbed()
+            .setTitle('➠ Roles.') 
+            .setAuthor(message.guild.name, message.guild.iconURL) 
+            .setColor('RANDOM') 
+            .setDescription(List) 
+            .setFooter(message.guild.name) 
+        message.channel.send(EmojiList) 
+    }
+});
+
 
 client.on("message", message => {
 	var args = message.content.split(' ').slice(1); 
@@ -535,25 +567,46 @@ client.on("message", message => {
 });
 
 
-
+client.on('guildCreate', guild => {
+  var embed = new Discord.RichEmbed()
+  .setColor(0x5500ff)
+  .setDescription(`**:heart: شكرا لي اضافه البوت لي سيرفرك! ولكي ترا الاوامر قم بكتابه $help**`)
+      guild.owner.send(embed)
+});
 
 
 
 client.on('message', message => {
-if(message.content.startsWith(prefix + '$comeall')) {
- if (!message.member.hasPermission("MOVE_MEMBERS")) return message.channel.send('**لايوجد لديك صلاحية سحب الأعضاء**');
-   if(!message.guild.member(client.user).hasPermission("MOVE_MEMBERS")) return message.reply("**لايوجد لدي صلاحية السحب**");
-if (message.member.voiceChannel == null) return message.channel.send(`**الرجاء الدخول لروم صوتي**`)
- var author = message.member.voiceChannelID;
- var m = message.guild.members.filter(m=>m.voiceChannel)
- message.guild.members.filter(m=>m.voiceChannel).forEach(m => {
- m.setVoiceChannel(author)
- })
- message.channel.send(`**تم سحب جميع الأعضاء إليك**`)
-
-
- }
-   });
+	var prefix = "$";
+if(!message.channel.guild) return;
+if(message.content.startsWith(prefix + 'move')) {
+ if (message.member.hasPermission("MOVE_MEMBERS")) {
+ if (message.mentions.users.size === 0) {
+ return message.channel.send("``عليك كتابه $move @somone``")
+}
+if (message.member.voiceChannel != null) {
+ if (message.mentions.members.first().voiceChannel != null) {
+ var authorchannel = message.member.voiceChannelID;
+ var usermentioned = message.mentions.members.first().id;
+var embed = new Discord.RichEmbed()
+ .setTitle("Succes!")
+ .setColor("#000000")
+ .setDescription(`تم سحب <@${usermentioned}> الي رومك الصوتي!`)
+var embed = new Discord.RichEmbed()
+.setTitle(`تم سحبك الي روم ثاني في سيرفر ${message.guild.name}`)
+ .setColor("RANDOM")
+.setDescription(`**<@${message.author.id}> Moved You To His Channel!\nServer --> ${message.guild.name}**`)
+ message.guild.members.get(usermentioned).setVoiceChannel(authorchannel).then(m => message.channel.send(embed))
+message.guild.members.get(usermentioned).send(embed)
+} else {
+message.channel.send("``لا تستطيع سحب "+ message.mentions.members.first() +" `يجب ان يكون هذه العضو في روم صوتي`")
+}
+} else {
+ message.channel.send("**``يجب ان تكون في روم صوتي لكي تقوم بسحب العضو أليك``**")
+}
+} else {
+message.react("❌")
+ }}});
    
    
    
@@ -871,20 +924,7 @@ setTimeout(function(){
   
 
 
-client.on('message',async message => {
-  let messageArray = message.content.split(' ');
-  let mention = message.mentions.users.first();
-  if(message.content.startsWith(prefix + 'trans')) {
-    if(!mention) return message.channel.send('**منشن شخص**');
-    if(isNaN(messageArray[1])) return message.channel.send('**هذه الخانة يجب ان تكون رقم وليس احرف**');
-    credits[mention.id].credits += (+messageArray[2]);
-    credits[message.author.id].credits += (-messageArray[2]);
-    fs.writeFile('./credits' ,JSON.stringify(credits), (err) => {
-      if(err) console.error(err);
-    });
-    message.channel.send(`**:moneybag: | ${message.author.username}, has transfered ${messageArray[1]}$ to ${mention}**`)
-  }
-});
+
 
 
 
@@ -1254,63 +1294,6 @@ client.on('message' , async (message) => {
 
 
 
-	
-	
-	
-	
-	
-	
-	
-	
-
-	
-	
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
   client.on('message' , async (message) => {
     if (message.content.startsWith(prefix + 'cat')) {
 
