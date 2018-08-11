@@ -567,7 +567,6 @@ client.on('message', msg => {
 
 
 client.on('message', message => { 
-let prefix = '$'
     if (message.content.startsWith(prefix + 'ranks')) {
 
         const Rank = message.guild.roles.map(e => e.toString()).join(" ");
@@ -727,7 +726,6 @@ client.on('message', message => {
 
 
 
-const prefix = "$"
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
