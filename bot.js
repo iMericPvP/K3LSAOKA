@@ -841,7 +841,7 @@ client.on('message', message => {
 client.on('message', message => {
   if(message.content === '$inv') {
   const embed = new Discord.RichEmbed()
-  .setTitle('Click here | قم بلضغت هنا')
+  .setTitle('Click here')
   .setURL('https://discordapp.com/oauth2/authorize?client_id=472111075114876968&permissions=2080374975&scope=bot')
   .setColor('RANDOM')
   message.channel.send({embed: embed});
