@@ -148,7 +148,7 @@ message.channel.createWebhook(message.author.username, message.author.avatarURL)
   const embed = new Discord.RichEmbed() 
       .setColor("#000000")
       .setDescription(`
-			:red_circle:   اوامر ادمنيه :red_circle: 
+			-=- اوامر ادمنيه -=-
 ❖$ban @someone [reason] | اعطاء العضو باند
 ❖$kick @someone [reason] | اعطاء العضو كيك
 ❖$mute @someone [reason] | اعطاء العضو ميوت
@@ -186,7 +186,7 @@ client.on("message", message => {
   const embed = new Discord.RichEmbed() 
       .setColor("#000000")
       .setDescription(`
-			 :speaking_head:  اوامر عامة :speaking_head: 
+			 -=- اوامر عامة -=-
 ❖$avatar @somone | صورتك او صوره الي منشنته
 ❖$server | معلومات السيرفر
 ❖$angaz | كتابه كلامك بصوره انجاز ماينكرفتي
@@ -201,7 +201,7 @@ client.on("message", message => {
 ❖$roll [number] | قرعه
 ❖$draw [message] | كتابه كلامك في صوره
 ❖$bot | معلومات البوت
-❖$ranks | يعرض لك الرتب الي بلسيرفر [NEW]
+❖$ranks | يعرض لك الرتب الي بلسيرفر 
 ❖$user | وقت صنع حسابك ودخولك السيرفر
 ❖$id | معلومات حسابك
 ❖$stim | منبه
@@ -218,10 +218,10 @@ client.on("message", message => {
   const embed = new Discord.RichEmbed() 
       .setColor("#000000")
       .setDescription(`
-			:family_mmbb:   الترحيب :family_mmbb:  [Soon]
-❖$setWlc style [text, embed, image] | تغيير ستايل الترحيب [Soon]
-❖$setWlc channel #channel_name | تغير روم الترحيب [Soon]
-❖$setWlc message [message] | تغير رساله الترحيب [Soon]
+			-=- الترحيب -=- [NEW]
+❖$setWlc style [text, embed, image] | تغيير ستايل الترحيب [NEW]
+❖$setWlc channel #channel_name | تغير روم الترحيب [NEW]
+❖$setWlc message [message] | تغير رساله الترحيب [NEW]
 `)
    message.author.sendEmbed(embed)
     
@@ -235,7 +235,7 @@ client.on("message", message => {
   const embed = new Discord.RichEmbed() 
       .setColor("#000000")
       .setDescription(`
-			 :loudspeaker:  اوامر بورد كاست :loudspeaker: 
+			 -=- اوامر بورد كاست -=-
 ❖$bc [message] | بورد كاست للكل و مطور
 ❖$2bc [message] | بورد كاست للكل غير مطور
 ❖$3bc [message] | بورد كاست للونلاين فقط و غير مطور
@@ -253,7 +253,7 @@ client.on("message", message => {
   const embed = new Discord.RichEmbed() 
       .setColor("#000000")
       .setDescription(`
-			 :joystick:  العاب :joystick: 
+			 -=- العاب -=-
 ❖$rps [ورقة - مقص - حجر] 
 ❖$hack @somone | لعبه الهكر مع ذكر اسمك للي هكرته
 ❖$hac-2 @some
