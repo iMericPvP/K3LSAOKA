@@ -31,52 +31,120 @@ client.user.setGame(`$help | $inv | ${client.guilds.size} Servers `,"http://twit
 client.login(process.env.BOT_TOKEN);
 
 
-client.on("message", function(message) {
-	var prefix = "$";
-   if(message.content.startsWith(prefix + "test-code")) {
-    let messageArgs = message.content.split(" ").slice(1).join(" ");
-    let helps = ['**Puplic**','**Admin**','**Music**','Info','Music'];
-    var RpsEmbed = new Discord.RichEmbed()
-    .setAuthor(message.author.username)
-    .setThumbnail(message.author.avatarURL)
-    .addField("Puplic | عام","🗣️",true)
-    .addField("Admin | ادمنيه","🔴",true)
-    .addField("Info | معلومات","ℹ️",true)
-	.addField("Music | ميوزج","🎵",true)
-	.addField("Boardcast | بوردكاست","📢",true)
-    message.channel.send(RpsEmbed).then(msg => {
-        msg.react('🗣️')
-        msg.react("🔴")
-        msg.react("ℹ️")
-		msg.react("🎵")
-		msg.react("📢")
-.then(() => msg.react('🗣️'))
-.then(() =>msg.react('🔴'))
-.then(() => msg.react('ℹ️'))
-.then(() =>msg.react('🎵'))
-.then(() => msg.react('📢'))
-let reaction1Filter = (reaction, user) => reaction.emoji.name === '🗣️' && user.id === message.author.id;
-let reaction2Filter = (reaction, user) => reaction.emoji.name === '🔴' && user.id === message.author.id;
-let reaction3Filter = (reaction, user) => reaction.emoji.name === '🎵' && user.id === message.author.id;
-let reaction4Filter = (reaction, user) => reaction.emoji.name === '📢' && user.id === message.author.id;
 
-let reaction1 = msg.createReactionCollector(reaction1Filter, { time: 12000 });
-	    
-let reaction2 = msg.createReactionCollector(reaction2Filter, { time: 12000 });
-let reaction3 = msg.createReactionCollector(reaction3Filter, { time: 12000 });
-reaction1.on("collect", r => {
-        message.channel.send('test')
-})
-reaction2.on("collect", r => {
-        message.channel.send('test')
-})
-reaction3.on("collect", r => {
-        message.channel.send('test')
-})
 
-    })
-}
+var gEnteredUsers = [];
+var gDeclareArray = [];
+var gTime;
+var gPrize;
+var msgID;
+var fetchedMsg;
+var fUserId;
+var Active_Giveaway = "false";
+var entryCount = 0;
+var gWinner = "no one";
+ 
+ 
+client.on('message', (message) => {
+ 
+      if ( (message.content.startsWith ('$gstart')) && (Active_Giveaway == "false") && ((message.member.roles.find("name", "Moderator") ) || (message.member.roles.find("name", "Admin") ) || (message.member.roles.find("name", "Giveaways") ))  )
+      {
+        Active_Giveaway = "true";
+        gDeclareArray.push(message.content);
+        gDeclareArray = message.content.split(" ");
+        gDeclareArray.shift();
+        gTime = gDeclareArray[0];
+        gDeclareArray.shift();
+        gPrize = gDeclareArray.toString();
+        gPrize = gPrize.replace(/,/g, " ");
+        console.log(gPrize);
+ 
+        message = message.channel.send
+        ( fetchedMsg = new Discord.RichEmbed()
+           
+            //.setThumbnail("https://i.imgur.com/ii17NzC.png")
+            .setColor([151, 105, 181])
+            .setTitle("𝘞𝘪𝘯𝘯𝘦𝘳 𝘨𝘦𝘵𝘴: "+gPrize)
+            .setDescription(gTime + " Seconds")
+            .setFooter("Type $genter To Enter The GiveAway!")
+ 
+        ).then(message =>
+            {
+                msgID = message.id;
+                //message.react("✅");
+ 
+                var gUpdateCountInt = setInterval(function()
+                {
+ 
+                    gTime = gTime - 1;
+                    if (gTime < 1)
+                    {
+                        gWinner = gEnteredUsers[Math.floor(Math.random()*gEnteredUsers.length)];
+                        Active_Giveaway = "false";
+                        gEnteredUsers = [];
+                        clearInterval(gUpdateCountInt);
+                        clearInterval(gCountInt);
+ 
+                        message.edit
+                    (
+                        fetchedMsg
+                        .setTitle("𝘞𝘪𝘯𝘯𝘦𝘳 𝘨𝘦𝘵𝘴: "+gPrize)
+                        .setDescription("")
+                        .addField("Winner:",gWinner)
+                        .setFooter("")
+                        .setTimestamp()
+                        .setColor([0, 0, 0])
+                    )
+ 
+                    message.channel.send
+                        ( winnerMsg = new Discord.RichEmbed()
+                           
+                            .setThumbnail("https://i.imgur.com/RAAflnr.png")
+                            .setColor([90, 155, 91])
+                            .setTitle("Congratulations!")
+                            .setDescription(gWinner+" has won "+gPrize+"!")
+                            .setTimestamp()
+                        )
+ 
+                        gWinner = "no one";
+ 
+                    }
+ 
+                }, 1000);
+ 
+                var gCountInt = setInterval(function()
+                {
+                    message.edit
+                    (
+                        fetchedMsg
+                        .setTitle("𝘞𝘪𝘯𝘯𝘦𝘳 𝘨𝘦𝘵𝘴: "+gPrize)
+                        .setDescription(gTime + " Seconds\n" + "Entries: "+ entryCount)
+                    )
+ 
+                }, 5000);
+               
+            } );
+ 
+      }
+ 
+      if ((message.content == '$genter') && (Active_Giveaway == "true") )
+      {
+        fUserId = message.author.id;
+        var i;
+        for (i = 0; i < gEnteredUsers.length; i++) {
+            if (gEnteredUsers[i] == "<@"+fUserId+">") {
+                return false;
+            }
+        }
+        console.log(message.author.id);
+        fUserId = message.author.id;
+        gEnteredUsers.push("<@"+fUserId+">");
+        entryCount = gEnteredUsers.length;
+        message.delete(1);
+      }
+ 
 });
+
 
 
 client.on('message', function(msg) {
