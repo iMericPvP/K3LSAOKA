@@ -202,7 +202,8 @@ client.on("message", message => {
 ❖$draw [message] | كتابه كلامك في صوره
 ❖$bot | معلومات البوت
 ❖$ranks | يعرض لك الرتب الي بلسيرفر [NEW]
-❖$id | ايديك
+❖$user | وقت صنع حسابك ودخولك السيرفر
+❖$id | معلومات حسابك
 ❖$stim | منبه
 `)
    message.author.sendEmbed(embed)
@@ -514,7 +515,6 @@ const unmuteembed = new Discord.RichEmbed()
 .setThumbnail(user.displayAvatarURL)
 .addField("**اسم | Name**",  '**[ ' + `${user.tag}` + ' ]**',true)
 .addField("**من قبل | By**", '**[ ' + `${message.author.tag}` + ' ]**',true)
-.addField("**السبب | Reason**", '**[ ' + `${reason}` + ' ]**',true)
 message.channel.send({embed : unmuteembed}).then(msg => msg.delete(5000));
 var unmuteembeddm = new Discord.RichEmbed()
 .setDescription(`تم فك الميوت عنك ${user}`)
@@ -906,7 +906,7 @@ var moment = require("moment");
 client.on('message', message => {
   var prefix = '$';
   
-  if (message.content.startsWith(prefix + "id")) {
+  if (message.content.startsWith(prefix + "user")) {
   if(!message.channel.guild) return message.reply(`هذا الأمر فقط ل السيرفرات ❌`);
    message.guild.fetchInvites().then(invs => {
       let member = client.guilds.get(message.guild.id).members.get(message.author.id);
@@ -1647,4 +1647,55 @@ message.channel.send('**لديك 15 ثانيه لتفكك الكلمه **').then
         })
     })
 }
+});
+
+
+
+
+
+  client.on('message', message => {
+    var prefix = "$"
+var args = message.content.split(" ").slice(1);    
+if(message.content.startsWith(prefix + 'id')) {
+var year = message.author.createdAt.getFullYear()
+var month = message.author.createdAt.getMonth()
+var day = message.author.createdAt.getDate()
+var men = message.mentions.users.first();  
+let args = message.content.split(' ').slice(1).join(' ');
+if (args == '') {
+var z = message.author;
+}else {
+var z = message.mentions.users.first();
+}
+
+let d = z.createdAt;          
+let n = d.toLocaleString();   
+let x;                       
+let y;                        
+
+if (z.presence.game !== null) {
+y = `${z.presence.game.name}`;
+} else {
+y = "No Playing... |💤.";
+}
+if (z.bot) {
+var w = 'بوت';
+}else {
+var w = 'عضو';
+}
+let embed = new Discord.RichEmbed()
+.setColor("#502faf")
+.addField('اسمك | Your Name:',`**<@` + `${z.id}` + `>**`, true)
+.addField('تلعب | Playing:','**'+y+'**' , true)
+.addField('تاق | Discrm:',"**#" +  `${z.discriminator}**`,true)
+.addField("**اخر رسالة لك | 💬  :**", message.author.lastMessage)            
+
+.setThumbnail(`${z.avatarURL}`)
+.setFooter(message.author.username, message.author.avatarURL)
+
+message.channel.send({embed});
+    if (!message) return message.reply('**منشن شخص موجود بلفعل**').catch(console.error);
+
+}
+
 });
