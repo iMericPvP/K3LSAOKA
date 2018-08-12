@@ -630,7 +630,7 @@ client.on("message", message => {
 client.on('guildCreate', guild => {
   var embed = new Discord.RichEmbed()
   .setColor(0x5500ff)
-  .setDescription(`**:heart: شكرا لي اضافه البوت لي سيرفرك! ولكي ترا الاوامر قم بكتابه $help**`)
+  .setDescription(`**شكرا لك لي اضافتي لي سيرفرك :heart: ويارب يفيدك وعليشان تعرف اوامره اكتب $help**`)
       guild.owner.send(embed)
 });
 
