@@ -1586,8 +1586,6 @@ message.channel.send('**لديك 15 ثانيه**').then(msg => {
 });
 
 
-
-
 client.on('message', message => {
 if (!points[message.author.id]) points[message.author.id] = {
     points: 50,
@@ -1657,104 +1655,6 @@ message.channel.send('**لديك 15 ثانيه لتفكك الكلمه **').then
           })
           .catch(collected => { 
             message.channel.send(`:x: لم يقم احد بكتابه الاجابه الصحيحه في الوقت المناسب`);
-            console.log(`[Typing] ماحد فكك الكلمه `);
-          })
-        })
-    })
-}
-});
-
-
-
-
-
-
-
-
-client.on('message', message => {
-if (!points[message.author.id]) points[message.author.id] = {
-    points: 50,
-  };
-if (message.content.startsWith(prefix + 'عكس')) { 
-    if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
-
-const type = require('./3ks/3ks.json'); 
-const item = type[Math.floor(Math.random() * type.length)]; 
-const answer = item.answers
-const filter = response => { 
-    return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
-};
-message.channel.send('**لديك 15 ثانيه لتعكس الكلمه**').then(msg => {
-    let embed = new Discord.RichEmbed()
-    .setColor('#000000')
-    .setFooter("عكس | NoobBot", 'https://cdn.discordapp.com/attachments/462239154630164511/477536845777993728/NOOB_BOT_1.png')
-    .setDescription(`**قم بعكس هذه الكلمه :${item.type}**`)
-
-    msg.channel.sendEmbed(embed).then(() => {
-        message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
-        .then((collected) => {
-        message.channel.send(`${collected.first().author} ✅ **الاجابه صحيحه**`); //mohamed192837465#7033صاحب الكود
-
-        console.log(`[Typing] ${collected.first().author} typed the word.`);
-            let won = collected.first().author; 
-            points[won.id].points++;
-          })
-          .catch(collected => { 
-            message.channel.send(`:x: لم يقم احد بكتابه الاجابه الصحيحه في القوت المناسب`);
-            console.log(`[Typing] ماحد فكك الكلمه `);
-          })
-        })
-    })
-}
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-client.on('message', message => {
-if (!points[message.author.id]) points[message.author.id] = {
-    points: 50,
-  };
-if (message.content.startsWith(prefix + 'دمج')) { 
-    if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
-
-const type = require('./damg/damg.json'); 
-const item = type[Math.floor(Math.random() * type.length)]; 
-const answer = item.answers
-const filter = response => { 
-    return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
-};
-message.channel.send('**لديك 15 ثانيه لتدمج الكلمه**').then(msg => {
-    let embed = new Discord.RichEmbed()
-    .setColor('#000000')
-    .setFooter("دمج | NoobBot", 'https://cdn.discordapp.com/attachments/462239154630164511/477536845777993728/NOOB_BOT_1.png')
-    .setDescription(`**قم بدمج هذه الكلمه :${item.type}**`)
-
-    msg.channel.sendEmbed(embed).then(() => {
-        message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
-        .then((collected) => {
-        message.channel.send(`${collected.first().author} ✅ **الاجابه صحيحه**`); 
-
-        console.log(`[Typing] ${collected.first().author} typed the word.`);
-            let won = collected.first().author; 
-            points[won.id].points++;
-          })
-          .catch(collected => { 
-            message.channel.send(`:x: لم يقم احد بكتابه الاجابه الحيحه في الوقت المناسب`);
             console.log(`[Typing] ماحد فكك الكلمه `);
           })
         })
