@@ -1071,7 +1071,7 @@ let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
 
             if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**تحتاج صلاحيه MANAGE_CHANNELS**")
 
-            if(!ch) {
+            if(!cha) {
 
                 message.channel.send("للستخدام: $setWlc channel <channel name>")
 
@@ -2035,7 +2035,7 @@ let y;
 if (z.presence.game !== null) {
 y = `${z.presence.game.name}`;
 } else {
-y = "No Playing... |💤.";
+y = "لا يلعب";
 }
 if (z.bot) {
 var w = 'بوت';
