@@ -947,7 +947,7 @@ const Canvas = require("canvas")
 const fs = require("fs")
 const jimp = require("jimp")
 
-let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
+let sw = JSON.parse(fs.readFileSync("./setLeave.json", "UTF8"))
 
  
 
@@ -958,23 +958,23 @@ let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
 
         let mothed = ['text', 'embed', 'image'];
 
-        let sets = message.content.split(" ").slice(1).join(" ")
+        let setsleave = message.content.split(" ").slice(1).join(" ")
 
-        let style = message.content.split(" ").slice(2).join(" ")
+        let stylerleave = message.content.split(" ").slice(2).join(" ")
 
-        let stym = message.content.split(" ").slice(3).join(" ")
+        let stymleave = message.content.split(" ").slice(3).join(" ")
 
-        let msz = message.content.split(" ").slice(2).join(" ")
+        let mszleave = message.content.split(" ").slice(2).join(" ")
 
-        let cha = message.content.split(" ").slice(2).join(" ")
+        let chaleave = message.content.split(" ").slice(2).join(" ")
 
-        let r = message.content.split(" ").slice(4).join(" ")
-
- 
+        let rleave = message.content.split(" ").slice(4).join(" ")
 
  
 
-        if(message.content.startsWith(prefix + "setWlc")) {
+ 
+
+        if(message.content.startsWith(prefix + "setLeave")) {
 
     if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**تحتاج صلاحيه**")
 
@@ -990,12 +990,12 @@ let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
 
  
 
-            if(!sets) {
+            if(!setsleave) {
 
                 message.channel.send(`**للستخدام:
-            ${prefix}setWlc style <text, image, embed>
-            ${prefix}setWlc msg <message>
-            ${prefix}setWlc channal <channel name>**`)
+            ${prefix}setLeave style <text, image, embed>
+            ${prefix}setLeave msg <message>
+            ${prefix}setLeave channal <channel name>**`)
 
             }
 
@@ -1003,17 +1003,17 @@ let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
 
             if(!mothed) {
 
-                message.channel.send(`**للستخدام: ${prefix}setWlc style <text, imgae, embed>**`)
+                message.channel.send(`**للستخدام: ${prefix}setLeave style <text, imgae, embed>**`)
 
             }
 
  
 
-            if(message.content === prefix + 'setWlc style image') {
+            if(message.content === prefix + 'setLeave style image') {
 
                 if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**تحتاج صلاحيه MANAGE_CHANNELS**")
 
-                sw[message.guild.id].styler = 'image'
+                sw[message.guild.id].stylerleave = 'image'
 
                 message.channel.send(`**تم تغير الي ${sw[message.guild.id].styler}**`)
 
@@ -1021,21 +1021,21 @@ let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
 
  
 
-            if(message.content === prefix + 'setWlc style embed') {
+            if(message.content === prefix + 'setLeave style embed') {
 
                 if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**تحتاج صلاحيه MANAGE_CHANNELS**")
 
-                 sw[message.guild.id].styler = 'embed'
+                 sw[message.guild.id].stylerleave = 'embed'
 
                 message.channel.send(`**تم تغير الي ${sw[message.guild.id].styler}**`)            }
 
  
 
-            if(message.content === prefix + 'setWlc style text') {
+            if(message.content === prefix + 'set style text') {
 
                 if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**تحتاج صلاحيه MANAGE_CHANNELS**")
 
-                 sw[message.guild.id].styler = 'text'
+                 sw[message.guild.id].stylerleave = 'text'
 
                 message.channel.send(`**تم تغير الي  ${sw[message.guild.id].styler}**`)
 
@@ -1047,13 +1047,13 @@ let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
 
  
 
-        if(message.content.startsWith(prefix + "setWlc msg")) {
+        if(message.content.startsWith(prefix + "setLeave msg")) {
 
             if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("**تحتاج صلاحيه MANAGE_CHANNELS**")
 
             if(!msz) {
 
-                message.channel.send("للستخدام: $setWlc msg <message>")
+                message.channel.send("للستخدام: $setLeave msg <message>")
 
             } else {
 
@@ -1067,17 +1067,17 @@ let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
 
  
 
-        if(message.content.startsWith(prefix + "setWlc channel")) {
+        if(message.content.startsWith(prefix + "setLeave channel")) {
 
             if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**تحتاج صلاحيه MANAGE_CHANNELS**")
 
-            if(!cha) {
+            if(!ch) {
 
-                message.channel.send("للستخدام: $setWlc channel <channel name>")
+                message.channel.send("للستخدام: $setLeave channel <channel name>")
 
             }
 
-            let cha = message.guild.channels.find("name", cha)
+            let chn = message.guild.channels.find("name", ch)
 
             if(!chn) {
 
@@ -1287,21 +1287,6 @@ ctx.font = '35px Aeland';
  
 
 })
-var dat = JSON.parse("{}");
-function forEachObject(obj, func) {
-    Object.keys(obj).forEach(function (key) { func(key, obj[key]) });
-}
-client.on("ready", () => {
-    var guild;
-    while (!guild)
-        guild = client.guilds.get("398497261635764224");
-    guild.fetchInvites().then((data) => {
-        data.forEach((Invite, key, map) => {
-            var Inv = Invite.code;
-            dat[Inv] = Invite.uses;
-        });
-    });
-});
 
 
    const ms = require("ms");
