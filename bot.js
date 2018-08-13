@@ -1077,7 +1077,7 @@ let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
 
             }
 
-            let chn = message.guild.channels.find("name", ch)
+            let cha = message.guild.channels.find("name", cha)
 
             if(!chn) {
 
