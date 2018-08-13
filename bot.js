@@ -539,12 +539,12 @@ client.on('message', msg => {
     if(msg.member.hasPermission("MANAGE_MESSAGES")) {
     if (textxt == "") {
         msg.delete().then
-    msg.channel.send("***```يرجا كتابه رقم```***").then(m => m.delete(3000));
+    msg.channel.send("***يجب كتابه رقم`***").then(m => m.delete(3000));
 } else {
     msg.delete().then
     msg.delete().then
     msg.channel.bulkDelete(textxt);
-        msg.channel.send("```تم مسح: " + textxt + "\n Messages```").then(m => m.delete(3000));
+        msg.channel.send("```تم مسح: " + textxt + "\n رسائل```").then(m => m.delete(3000));
         }    
     }
 }
@@ -819,7 +819,7 @@ message.channel.send({embed});
 client.on('message', message => {
   if(message.content === '$support') {
   const embed = new Discord.RichEmbed()
-  .setTitle('Click here | قم بلضغت هنا')
+  .setTitle('Click here')
   .setURL('https://discord.gg/knNsyZd')
   .setColor('RANDOM')
   message.channel.send({embed: embed});
@@ -949,158 +949,155 @@ const jimp = require("jimp")
 
 let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
 
- 
+ 
 
-    client.on('message', message => {
+    client.on('message', message => {
 
 
- 
+ 
 
-        let mothed = ['text', 'embed', 'image'];
+        let mothed = ['text', 'embed', 'image'];
 
-        let sets = message.content.split(" ").slice(1).join(" ")
+        let sets = message.content.split(" ").slice(1).join(" ")
 
-        let style = message.content.split(" ").slice(2).join(" ")
+        let style = message.content.split(" ").slice(2).join(" ")
 
-        let stym = message.content.split(" ").slice(3).join(" ")
+        let stym = message.content.split(" ").slice(3).join(" ")
 
-        let msz = message.content.split(" ").slice(2).join(" ")
+        let msz = message.content.split(" ").slice(2).join(" ")
 
-        let ch = message.content.split(" ").slice(2).join(" ")
+        let ch = message.content.split(" ").slice(2).join(" ")
 
-        let r = message.content.split(" ").slice(4).join(" ")
+        let r = message.content.split(" ").slice(4).join(" ")
 
- 
+ 
 
- 
+ 
 
-        if(message.content.startsWith(prefix + "setWlc")) {
+        if(message.content.startsWith(prefix + "setWlc")) {
 
-    if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**تحتاج صلاحيه**")
+    if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**تحتاج صلاحيه**")
 
-            if(!sw[message.guild.id]) sw[message.guild.id] = {
+            if(!sw[message.guild.id]) sw[message.guild.id] = {
 
-                cha: "welcome",
+                cha: "welcome",
 
-                msz: "Welcome Bro",
+                msz: "Welcome Bro",
 
-                styler: "text"
+                styler: "text"
 
-            };
+            };
 
- 
+ 
 
-            if(!sets) {
+            if(!sets) {
 
-                message.channel.send(`**للستخدام:
+                message.channel.send(`**للستخدام:
+            ${prefix}setWlc style <text, image, embed>
+            ${prefix}setWlc msg <message>
+            ${prefix}setWlc channal <channel name>**`)
 
-            ${prefix}setWlc style <text, image, embed>
+            }
 
-            ${prefix}setWlc msg <message>
+ 
 
-            ${prefix}setWlc channal <channel name>**`)
+            if(!mothed) {
 
-            }
+                message.channel.send(`**للستخدام: ${prefix}setWlc style <text, imgae, embed>**`)
 
- 
+            }
 
-            if(!mothed) {
+ 
 
-                message.channel.send(`**للستخدام: ${prefix}setWlc style <text, imgae, embed>**`)
+            if(message.content === prefix + 'setWlc style image') {
 
-            }
+                if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**تحتاج صلاحيه MANAGE_CHANNELS**")
 
- 
+                sw[message.guild.id].styler = 'image'
 
-            if(message.content === prefix + 'setWlc style image') {
+                message.channel.send(`**تم تغير الي ${sw[message.guild.id].styler}**`)
 
-                if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**تحتاج صلاحيه**")
+            }
 
-                sw[message.guild.id].styler = 'image'
+ 
 
-                message.channel.send(`**تم تغير الي ${sw[message.guild.id].styler}**`)
+            if(message.content === prefix + 'setWlc style embed') {
 
-            }
+                if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**تحتاج صلاحيه MANAGE_CHANNELS**")
 
- 
+                 sw[message.guild.id].styler = 'embed'
 
-            if(message.content === prefix + 'setWlc style embed') {
+                message.channel.send(`**تم تغير الي ${sw[message.guild.id].styler}**`)            }
 
-                if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**تحتاج صلاحيه**")
+ 
 
-                 sw[message.guild.id].styler = 'embed'
+            if(message.content === prefix + 'setWlc style text') {
 
-                message.channel.send(`**تم تغير الي ${sw[message.guild.id].styler}**`)            }
+                if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**تحتاج صلاحيه MANAGE_CHANNELS**")
 
- 
+                 sw[message.guild.id].styler = 'text'
 
-            if(message.content === prefix + 'setWlc style text') {
+                message.channel.send(`**تم تغير الي  ${sw[message.guild.id].styler}**`)
 
-                if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**لا تملك صلاحيات**")
+            }
 
-                 sw[message.guild.id].styler = 'text'
+ 
 
-                message.channel.send(`**تم تغير الي  ${sw[message.guild.id].styler}**`)
+        }
 
-            }
+ 
 
- 
+        if(message.content.startsWith(prefix + "setWlc msg")) {
 
-        }
+            if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("**تحتاج صلاحيه MANAGE_CHANNELS**")
 
- 
+            if(!msz) {
 
-        if(message.content.startsWith(prefix + "setWlc msg")) {
+                message.channel.send("للستخدام: $setWlc msg <message>")
 
-            if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("**لا تملك صلاحيه**")
+            } else {
 
-            if(!msz) {
+                message.channel.send(`**تم تغير الي __${msz}__**`)
 
-                message.channel.send("للستخدام: $setWlc msg <message>")
+                sw[message.guild.id].msk = msz
 
-            } else {
+            }
 
-                message.channel.send(`**تم تغير الي __${msz}__**`)
+        }
 
-                sw[message.guild.id].msk = msz
+ 
 
-            }
+        if(message.content.startsWith(prefix + "setWlc channel")) {
 
-        }
+            if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**تحتاج صلاحيه MANAGE_CHANNELS**")
 
- 
+            if(!ch) {
 
-        if(message.content.startsWith(prefix + "setWlc channel")) {
+                message.channel.send("للستخدام: $setWlc channel <channel name>")
 
-            if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**لا تملك صلاحيه**")
+            }
 
-            if(!ch) {
+            let chn = message.guild.channels.find("name", ch)
 
-                message.channel.send("للستخدام: $setWlc channel <channel name>")
+            if(!chn) {
 
-            }
+                message.channel.send("**لا ينكنني ان ارا هذه الروم**")
 
-            let chn = message.guild.channels.find("name", ch)
+            }
 
-            if(!chn) {
+            else {
 
-                message.channel.send("**لا ينكنني ان ارا هذه الروم**")
+                 sw[message.guild.id].cha = chn.name
 
-            }
+                 message.channel.send(`**تم تغير الي __${chn.name}__**`)
 
-            else {
+                 }
 
-                 sw[message.guild.id].cha = chn.name
+        }
 
-                 message.channel.send(`**تم تغير الي __${chn.name}__**`)
+ 
 
-                 }
-
-        }
-
- 
-
-        fs.writeFile('./setWlc.json', JSON.stringify(sw), (err) => {
+        fs.writeFile('./setWlc.json', JSON.stringify(sw), (err) => {
 
 if (err) console.error(err);
 
@@ -1108,186 +1105,186 @@ if (err) console.error(err);
 
 })
 
- 
+ 
 
- 
+ 
 
 client.on('guildMemberAdd', member => {
 
-    let channel = member.guild.channels.find("name", sw[member.guild.id].cha)
+    let channel = member.guild.channels.find("name", sw[member.guild.id].cha)
 
- 
+ 
 
-    if(sw[member.guild.id].styler === "text") {
+    if(sw[member.guild.id].styler === "text") {
 
-        channel.sendMessage(`<@${member.user.id}>, ${sw[member.guild.id].msk}`)
+        channel.sendMessage(`<@${member.user.id}>, ${sw[member.guild.id].msk}`)
 
-    }
+    }
 
- 
+ 
 
-    if(sw[member.guild.id].styler === "embed") {
+    if(sw[member.guild.id].styler === "embed") {
 
- 
+ 
 
-        const embed = new Discord.RichEmbed()
+        const embed = new Discord.RichEmbed()
 
-        .setTitle("Member joind.")
+        .setTitle("Member joind.")
 
-        .setColor("GREEN")
+        .setColor("GREEN")
 
-        .setThumbnail(member.user.avatarURL)
+        .setThumbnail(member.user.avatarURL)
 
-        .setDescription(`**${sw[member.guild.id].msk}**`)
+        .setDescription(`**${sw[member.guild.id].msk}**`)
 
-        .addField("**Member name**", `[<@${member.user.id}>]`,true)
+        .addField("**Member name**", `[<@${member.user.id}>]`,true)
 
-        .addField("**Now we are**", `[${member.guild.memberCount}]`,true)
+        .addField("**Now we are**", `[${member.guild.memberCount}]`,true)
 
-        channel.sendMessage(`<@${member.user.id}>`)
+        channel.sendMessage(`<@${member.user.id}>`)
 
-        channel.sendEmbed(embed)
+        channel.sendEmbed(embed)
 
-    }
+    }
 
- 
+ 
 
-    if(sw[member.guild.id].styler === "image") {
+    if(sw[member.guild.id].styler === "image") {
 
-        if (member.user.bot) return;
+        if (member.user.bot) return;
 
 const w = ['./setwelcome.png'];
 
-        let Image = Canvas.Image,
+        let Image = Canvas.Image,
 
-            canvas = new Canvas(749, 198),
+            canvas = new Canvas(749, 198),
 
-            ctx = canvas.getContext('2d');
+            ctx = canvas.getContext('2d');
 
-        ctx.patternQuality = 'bilinear';
+        ctx.patternQuality = 'bilinear';
 
-        ctx.filter = 'bilinear';
+        ctx.filter = 'bilinear';
 
-        ctx.antialias = 'subpixel';
+        ctx.antialias = 'subpixel';
 
-        ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
 
-        ctx.shadowOffsetY = 2;
+        ctx.shadowOffsetY = 2;
 
-        ctx.shadowBlur = 2;
+        ctx.shadowBlur = 2;
 
-        ctx.stroke();
+        ctx.stroke();
 
-        ctx.beginPath();
+        ctx.beginPath();
 
- 
+ 
 
-        fs.readFile(`${w[Math.floor(Math.random() * w.length)]}`, function (err, Background) {
+        fs.readFile(`${w[Math.floor(Math.random() * w.length)]}`, function (err, Background) {
 
-            if (err) return console.log(err);
+            if (err) return console.log(err);
 
-            let BG = Canvas.Image;
+            let BG = Canvas.Image;
 
-            let ground = new Image;
+            let ground = new Image;
 
-            ground.src = Background;
+            ground.src = Background;
 
-            ctx.drawImage(ground, 0, 0, 749, 198);
+            ctx.drawImage(ground, 0, 0, 749, 198);
 
- 
+ 
 
 })
 
- 
+ 
 
-                let url = member.user.displayAvatarURL.endsWith(".webp") ? member.user.displayAvatarURL.slice(5, -20) + ".png" : member.user.displayAvatarURL;
+                let url = member.user.displayAvatarURL.endsWith(".webp") ? member.user.displayAvatarURL.slice(5, -20) + ".png" : member.user.displayAvatarURL;
 
-                jimp.read(url, (err, ava) => {
+                jimp.read(url, (err, ava) => {
 
-                    if (err) return console.log(err);
+                    if (err) return console.log(err);
 
-                    ava.getBuffer(jimp.MIME_PNG, (err, buf) => {
+                    ava.getBuffer(jimp.MIME_PNG, (err, buf) => {
 
-                 if (err) return console.log(err);
+                 if (err) return console.log(err);
 
- 
+ 
 
 ctx.font = '35px Aeland';
 
-                        ctx.fontSize = '40px';
+                        ctx.fontSize = '40px';
 
-                        ctx.fillStyle = "#FFFFFF";
+                        ctx.fillStyle = "#FFFFFF";
 
-                        ctx.textAlign = "center";
+                        ctx.textAlign = "center";
 
 
- 
+ 
 
-                        //ur name
+                        //ur name
 
-                        ctx.font = '40px Impact';
+                        ctx.font = '40px Impact';
 
-                        ctx.fontSize = '48px';
+                        ctx.fontSize = '48px';
 
-                        ctx.fillStyle = "#FFFFFF";
+                        ctx.fillStyle = "#FFFFFF";
 
-                        ctx.textAlign = "center";
+                        ctx.textAlign = "center";
 
-                        ctx.fillText(member.user.username, 420, 100);
+                        ctx.fillText(member.user.username, 420, 100);
 
- 
+ 
 
-                         ctx.font = '30px Impact';
+                         ctx.font = '30px Impact';
 
-                        ctx.fontSize = '20px';
+                        ctx.fontSize = '20px';
 
-                        ctx.fillStyle = "#FFFFFF";
+                        ctx.fillStyle = "#FFFFFF";
 
-                        ctx.textAlign = "center";
+                        ctx.textAlign = "center";
 
-                        ctx.fillText(sw[member.guild.id].msk, 410, 170);
+                        ctx.fillText(sw[member.guild.id].msk, 410, 170);
 
- 
+ 
 
- 
+ 
 
-                        //Avatar
+                        //Avatar
 
-                        let Avatar = Canvas.Image;
+                        let Avatar = Canvas.Image;
 
-                              let ava = new Avatar;
+                              let ava = new Avatar;
 
-                              ava.src = buf;
+                              ava.src = buf;
 
-                              ctx.beginPath();
+                              ctx.beginPath();
 
-                              ctx.arc(115, 100, 90, 0, Math.PI*2);
+                              ctx.arc(115, 100, 90, 0, Math.PI*2);
 
-                                 ctx.closePath();
+                                 ctx.closePath();
 
-                                 ctx.clip();
+                                 ctx.clip();
 
-                                 ctx.drawImage(ava, 5, 5, 200, 200);
+                                 ctx.drawImage(ava, 5, 5, 200, 200);
 
-              
- 
-        channel.sendFile(canvas.toBuffer())
+              
+ 
+        channel.sendFile(canvas.toBuffer())
 
- 
+ 
 
- 
+ 
 
- 
-
-})
+ 
 
 })
 
- 
+})
 
-    }
+ 
 
- 
+    }
+
+ 
 
 })
 var dat = JSON.parse("{}");
@@ -1759,7 +1756,7 @@ client.on('message' , async (message) => {
     .get('https://dog.ceo/api/breeds/image/random');
     const embed = new Discord.RichEmbed()
     .setColor(0x954D23)
-    .setTitle("Dog")
+    .setTitle("Dog | كلب")
     .setImage(body.message)
     message.channel.send({embed})
     
