@@ -966,7 +966,7 @@ let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
 
         let msz = message.content.split(" ").slice(2).join(" ")
 
-        let ch = message.content.split(" ").slice(2).join(" ")
+        let cha = message.content.split(" ").slice(2).join(" ")
 
         let r = message.content.split(" ").slice(4).join(" ")
 
