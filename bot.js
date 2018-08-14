@@ -32,7 +32,7 @@ client.login(process.env.BOT_TOKEN);
 
 
 
-
+const fs = require("fs")
 let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
 
  
