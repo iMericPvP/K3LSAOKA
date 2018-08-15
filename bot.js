@@ -32,6 +32,31 @@ client.login(process.env.BOT_TOKEN);
 
 
 
+client.on('message',async message => {
+    if(message.content.startsWith(prefix + "setdata")) {
+    if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('❌ **انت لا تمتلك صلاحيه**');
+    if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS','MANAGE_ROLES_OR_PERMISSIONS'])) return message.reply('❌ **البوت لا يتملك صلاحيه**');
+    var today = new Date()
+let Day = today.toString().split(" ")[0].concat("day");
+let Month = today.toString().split(" ")[1]
+let Year = today.toString().split(" ")[3]
+    message.channel.send('**لقد تم صنع الروم بنجاح**');
+    message.guild.createChannel(`Date: [ Data : [ ${day} , ${Month} , ${Year} ]` , 'voice').then(c => {
+      console.log(`تم صنع روم معلومات اليوم في سيرفر: \n ${message.guild.name}`);
+      c.overwritePermissions(message.guild.id, {
+        CONNECT: false,
+        SPEAK: false
+      });
+      setInterval(() => {
+        c.setName(`Data : [ ${day} , ${Month} , ${Year} ]`)
+      },1000);
+    });
+    }
+  });
+  
+
+
+
 client.on('message', message =>{
 	var prefix = "$";
     if(message.author.bot) return;
