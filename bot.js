@@ -80,7 +80,7 @@ client.on('message', function(msg) {
       .addField('Servers | سيرفرات',`[** __${client.guilds.size}__ **]`,true)
       .addField('Users | مستخدمين',`[** __${client.users.size}__ **]`,true)
       .addField('Channels | رومات',`[** __${client.channels.size}__** ]`,true)
-	  .addField('Language',`[** JS**]`,true)
+	  .addField('Language | لغه',`[** JS**]`,true)
 	  .addField('Support Server | سيرفر السبورت',`[** __https://discord.gg/knNsyZ__ **]`,true)
 	  .setFooter("NoobBot")  
       msg.channel.send({embed:embed});
