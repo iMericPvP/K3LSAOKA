@@ -32,67 +32,51 @@ client.login(process.env.BOT_TOKEN);
 
 
 
-client.on('message',async message => {
-    if(message.content.startsWith(prefix + "setdata")) {
-    if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('❌ **انت لا تمتلك صلاحيه**');
-    if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS','MANAGE_ROLES_OR_PERMISSIONS'])) return message.reply('❌ **البوت لا يتملك صلاحيه**');
-    var today = new Date()
-let Day = today.toString().split(" ")[0].concat("day");
-let Month = today.toString().split(" ")[1]
-let Year = today.toString().split(" ")[3]
-    message.channel.send('**لقد تم صنع الروم بنجاح**');
-    message.guild.createChannel(`Date: [ Data : [ ${day} , ${Month} , ${Year} ]` , 'voice').then(c => {
-      console.log(`تم صنع روم معلومات اليوم في سيرفر: \n ${message.guild.name}`);
-      c.overwritePermissions(message.guild.id, {
-        CONNECT: false,
-        SPEAK: false
-      });
-      setInterval(() => {
-        c.setName(`Data : [ ${day} , ${Month} , ${Year} ]`)
-      },1000);
-    });
+client.on('message', msg => {
+  if (msg.author.bot) return;
+  if (!msg.content.startsWith(prefix)) return;
+  let command = msg.content.split(" ")[0];
+  command = command.slice(prefix.length);
+  let args = msg.content.split(" ").slice(1);
+
+    if(command === "clear") {
+        const emoji = client.emojis.find("name", "wastebasket")
+    let textxt = args.slice(0).join("");
+    if(msg.member.hasPermission("MANAGE_MESSAGES")) {
+    if (textxt == "") {
+        msg.delete().then
+    msg.channel.send("***```ضع عدد الرسائل التي تريد مسحها 👌```***").then(m => m.delete(3000));
+} else {
+    msg.delete().then
+    msg.delete().then
+    msg.channel.bulkDelete(textxt);
+        msg.channel.send("```php\nعدد الرسائل التي تم مسحها: " + textxt + "\n```").then(m => m.delete(3000));
+        }    
     }
-  });
-  
-
-
-
-client.on('message', message =>{
-	var prefix = "$";
-    if(message.author.bot) return;
-    if(!message.content == (prefix+'clear'))
-if(!true) return;
-    if(message.content.split(' ')[0] == (prefix+'clear')){
-    var lmt = message.content.split(' ')[1]
-    ,  hang = 0
-    ,  max  = 0;
-    
-    if(!lmt) lmt = 200;
-    if(typeof lmt !== 'number') return;
-    if(lmt > 100){
-        for(;lmt > 100;){
-        lmt--;
-        hang++;
-        }
-        }
-     message.channel.fetchMessages({limite:lmt}).then(msgs=>{
-     msgs.channel.bulkDelete(msgs);
-     });
-     if(hang > 100){
-         hang = 100;
-     }
-        message.channel.fetchMessages({limite:hang}).then(msgs=>{
-        message.channel.bulkDelete(msgs);
-     });
-     
-    max= hang+lmt;
-    message.reply(` **Done, i have delete ${max} messages!**.`).catch(()=>{
-        message.reply(` **Sorry, i can only bulk delete messages that are under 14 days old**.`)
-    });
-    }
+}
 });
 
 
+
+client.on('message', message => {
+if (message.content.startsWith(prefix+"cv")) {
+    var args = message.content.split(" ").slice(1);
+    var argrst = args.join(' ');
+                message.guild.createChannel(`${argrst}`,'voice')
+         
+        }
+});
+
+
+
+ 
+client.on('message', message => {
+if (message.content.startsWith(prefix+"ct")) {
+    var args = message.content.split(" ").slice(1);
+    var argrst = args.join(' ');
+                message.guild.createChannel(`${argrst}`, 'text')
+      }
+});
 
 
 const jackeo = ['' , '452292328569307137' , '424313545421750274' , ''];
