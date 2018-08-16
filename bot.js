@@ -405,10 +405,10 @@ client.on("message", message => {
 let reaction1Filter = (reaction, user) => reaction.emoji.name === '🗣️' && user.id === message.author.id;
 let reaction2Filter = (reaction, user) => reaction.emoji.name === '🔴' && user.id === message.author.id;
 let reaction3Filter = (reaction, user) => reaction.emoji.name === '🕹️' && user.id === message.author.id;
-let reaction1 = msg.createReactionCollector(reaction1Filter, { time: 12000 });
+let reaction1 = msg.createReactionCollector(reaction1Filter, { time: 20000 });
 	    
-let reaction2 = msg.createReactionCollector(reaction2Filter, { time: 12000 });
-let reaction3 = msg.createReactionCollector(reaction3Filter, { time: 12000 });
+let reaction2 = msg.createReactionCollector(reaction2Filter, { time: 19000 });
+let reaction3 = msg.createReactionCollector(reaction3Filter, { time: 18000 });
 reaction1.on("collect", r => {
   const embed = new Discord.RichEmbed() 
       .setColor("#000000")
