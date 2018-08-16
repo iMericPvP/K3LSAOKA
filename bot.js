@@ -188,39 +188,7 @@ message.channel.createWebhook(message.author.username, message.author.avatarURL)
 
 
 
-   client.on("message", message => {
-	var prefix = "$";
- if (message.content === "$help") {
-         message.react('👌')
-	 message.channel.send('**تم ارسالك في الخاص** :mailbox_with_mail: ');
-  const embed = new Discord.RichEmbed() 
-      .setColor("#000000")
-      .setDescription(`
-			-=- اوامر ادمنيه -=-
-❖$ban @name [reason] | اعطاء العضو باند
-❖$kick @name [reason] | اعطاء العضو كيك
-❖$mute @name [reason] | اعطاء العضو ميوت
-❖$unmute @name [reason] | ازاله الميوت من العضو
-❖$cc [number] | صنع رتب برقم
-❖$clear [number] | مسح الرسائل 
-❖$dr [name] | مسح روم [NEW]
-❖$hidec | اخفاء الرومات [NEW]
-❖$showc | فتح الرومات [NEW]
-❖$ct [name] | صنع روم كتابي [NEW]
-❖$cv [name] | صنع روم صوتي [NEW]
-❖$role @someone [rank] | اعطاء رتبه لشخص 
-❖$role all [rank]| اعطاء رتبه للكل
-❖$role bots [rank]| اعطاء رتبه لكل البوتات
-❖$role humans [rank] | اعطاء رتبه للبشريين
-❖$roleremove @someone [rank] | ازاله الرتبه من شخص معين
-❖$move @someone | سحب شخص الي روم 
-❖$mutechannel | قفل الشات
-❖$unmutechannel | فك منع الكتابه بلروم
-`)
-   message.author.sendEmbed(embed)
-    
-   }
-   }); 
+
 
    	  client.on('message', message => {
         let args = message.content.split(" ").slice(1).join(" ")
@@ -254,40 +222,7 @@ message.channel.sendEmbed(cat);
 });
 
 
-client.on("message", message => {
-	var prefix = "$";
- if (message.content === "$help") {
-  const embed = new Discord.RichEmbed() 
-      .setColor("#000000")
-      .setDescription(`
-			 -=- اوامر عامة -=-
-❖$avatar @somone | صورتك او صوره الي منشنته
-❖$server | معلومات السيرفر
-❖$angaz | كتابه كلامك بصوره انجاز ماينكرفتي
-❖$members | حالات الاعضاء
-❖$serveravatar | صوره السيرفر
-❖$inv | رابط اضافه البوت
-❖$say [message] | تكرار كلامك ببوت بنفس صورتك واسمك
-❖$support | رابط سيرفر السبورت
-❖$bans | عدد الاشخاص المبندين [NEW]
-❖$emojilist | قائمه اليموجيات [NEW]
-❖$day | تفاصيل اليوم
-❖$perms | يوريك الصلاحيات الي معك [NEW]
-❖$cat | صور قطط
-❖$dog | صور كلاب
-❖$skin [name] | يجيبلك سكن الي كتبت اسمه [NEW]
-❖$roll [number] | قرعه
-❖$draw [message] | كتابه كلامك في صوره
-❖$bot | معلومات البوت
-❖$ranks | يعرض لك الرتب الي بلسيرفر 
-❖$user | وقت صنع حسابك ودخولك السيرفر
-❖$id | معلومات حسابك
-❖$stim | منبه
-`)
-   message.author.sendEmbed(embed)
-    
-   }
-   }); 
+
    
    
    
@@ -362,23 +297,7 @@ if (message.content.startsWith(prefix + 'perms')) {
 });
 
    
-client.on("message", message => {
-	var prefix = "$";
- if (message.content === "$help") {
-  const embed = new Discord.RichEmbed() 
-      .setColor("#000000")
-      .setDescription(`
-			 -=- اوامر بورد كاست -=-
-❖$bc [message] | بورد كاست للكل و مطور
-❖$2bc [message] | بورد كاست للكل غير مطور
-❖$3bc [message] | بورد كاست للونلاين فقط و غير مطور
-❖$user-bc @name [message] | رساله لشخص واحد 
-❖$role-bc @rank [message] | رساله لكل من يملك الرتبه الممشنه
-`)
-   message.author.sendEmbed(embed)
-    
-   }
-   }); 
+
    
    
    
@@ -607,36 +526,7 @@ client.on("message", message => {
 
 
 
-      client.on("message", message => {
-	var prefix = "$";
- if (message.content === "$help") {
-  const embed = new Discord.RichEmbed() 
-      .setColor("#000000")
-      .setDescription(`
-			 :musical_note:  موسيقي :musical_note: 
-قريبا
-`)
-   message.author.sendEmbed(embed)
-    
-   }
-   }); 
-   
-         client.on("message", message => {
-	var prefix = "$";
- if (message.content === "$help") {
-  const embed = new Discord.RichEmbed() 
-      .setColor("#000000")
-      .setDescription(`
-			 :information_source:  معلومات البوت :information_source: 
-❖مطورين البوت |  『LB』 Mohamed192837465#3597
-❖لغه البوت | JS
-❖رابط البوت | https://discordapp.com/oauth2/authorize?client_id=472111075114876968&permissions=2080374975&scope=bot
-❖سيرفر السبورت | https://discord.gg/RRxGfXp
-`)
-   message.author.sendEmbed(embed)
-    
-   }
-   }); 
+
 
    
    
