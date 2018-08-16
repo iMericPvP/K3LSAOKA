@@ -395,7 +395,7 @@ client.on("message", message => {
       .setColor("#000000")
       .setDescription(`
 			 :information_source:  معلومات البوت :information_source: 
-❖مطورين البوت |  『LB』 Mohamed192837465#7033 
+❖مطورين البوت |  『LB』 Mohamed192837465#3597
 ❖لغه البوت | JS
 ❖رابط البوت | https://discordapp.com/oauth2/authorize?client_id=472111075114876968&permissions=2080374975&scope=bot
 ❖سيرفر السبورت | https://discord.gg/RRxGfXp
