@@ -31,6 +31,12 @@ client.user.setGame(`$help | $inv | ${client.guilds.size} Servers `,"http://twit
 client.login(process.env.BOT_TOKEN);
 
 
+client.on('message' , async (message) => {
+    if (message.content.startsWith(prefix + 'count')) {
+        message.channel.send(`${msg.guild.memberCount} Members.`);
+    }
+});
+
 
 client.on('message', msg => {
   if (msg.author.bot) return;
