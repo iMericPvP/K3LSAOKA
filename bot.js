@@ -32,7 +32,15 @@ client.login(process.env.BOT_TOKEN);
 
 
 
-
+client.on('message', message => {
+    if (message.content.startsWith('هلا')) {
+        message.reply('ش')
+        message.edit('شق')
+        message.edit('شقل')
+        message.edit('شقلح')
+        message.edit('شقلح!')
+    }
+});
 
 
 client.on('message', msg => {
