@@ -200,8 +200,11 @@ message.channel.createWebhook(message.author.username, message.author.avatarURL)
 ❖$unmute @name [reason] | ازاله الميوت من العضو
 ❖$cc [number] | صنع رتب برقم
 ❖$clear [number] | مسح الرسائل 
-❖$ct [name] | صنع روم كتابي
-❖$cv [name] | صنع روم صوتي
+❖$dr [name] | مسح روم [NEW]
+❖$hidec | اخفاء الرومات [NEW]
+❖$showc | فتح الرومات [NEW]
+❖$ct [name] | صنع روم كتابي [NEW]
+❖$cv [name] | صنع روم صوتي [NEW]
 ❖$role @someone [rank] | اعطاء رتبه لشخص 
 ❖$role all [rank]| اعطاء رتبه للكل
 ❖$role bots [rank]| اعطاء رتبه لكل البوتات
@@ -224,7 +227,28 @@ message.channel.createWebhook(message.author.username, message.author.avatarURL)
             message.channel.send(Math.floor(Math.random() * args))
         }
     });
+	
+	
+	
+	client.on('message', message => {
+    if (message.content.startsWith("$bans")) {
+        message.guild.fetchBans()
+        .then(bans => message.channel.send(`${bans.size} عدد اشخاص المبندة من السيرفر `))
+  .catch(console.error);
+}
+});
 
+
+    client.on('message', message => {
+var prefix = "$";
+var cats = ["http://palestine-kitchen.ps/wp-content/uploads/2017/12/%D9%86%D9%83%D8%AA-%D8%AF%D8%A8%D8%A7%D9%86%D8%A9.png","http://www.i7lm.com/wp-content/uploads/2017/04/136769797816.jpg","https://4.bp.blogspot.com/-p62zmDIDXmI/WKzqNt9smaI/AAAAAAAAC4Q/sW_bSIB8OaQhwOYFeplc3uzz8PBN7l3YACEw/s1600/13602501135.jpg","https://www.universemagic.com/images/2016/03/7938-2-or-1457539273.jpg","https://1.bp.blogspot.com/-yFk-FzHSyE8/WR9fmPcsCUI/AAAAAAAAE6c/AmvjLadOiLY9GiCqMLHgA121bY2RS_dCwCLcB/s1600/%25D9%2586%25D9%2583%25D8%25AA%2B%25D9%2585%25D8%25B6%25D8%25AD%25D9%2583%25D8%25A9%2B1.jpg","https://l7zaat.com/wp-content/uploads/2018/02/423.jpg","https://www.petfinder.com/wp-content/uploads/2012/11/101438745-cat-conjunctivitis-causes.jpg","https://i.fatafeat.com/storage/attachments/15/image3_698123_large.jpg","http://www.shuuf.com/shof/uploads/2018/02/08/jpg/shof_97d686082bdb0a2.jpg"];
+        var args = message.content.split(" ").slice(1);
+    if(message.content.startsWith(prefix + 'نكت')) {
+         var cat = new Discord.RichEmbed()
+.setImage(cats[Math.floor(Math.random() * cats.length)])
+message.channel.sendEmbed(cat);
+    }
+});
 
 
 client.on("message", message => {
@@ -242,9 +266,13 @@ client.on("message", message => {
 ❖$inv | رابط اضافه البوت
 ❖$say [message] | تكرار كلامك ببوت بنفس صورتك واسمك
 ❖$support | رابط سيرفر السبورت
+❖$bans | عدد الاشخاص المبندين [NEW]
+❖$emojilist | قائمه اليموجيات [NEW]
 ❖$day | تفاصيل اليوم
+❖$perms | يوريك الصلاحيات الي معك [NEW]
 ❖$cat | صور قطط
 ❖$dog | صور كلاب
+❖$skin [name] | يجيبلك سكن الي كتبت اسمه [NEW]
 ❖$roll [number] | قرعه
 ❖$draw [message] | كتابه كلامك في صوره
 ❖$bot | معلومات البوت
@@ -260,6 +288,77 @@ client.on("message", message => {
    
    
    
+   
+   
+   client.on('message', message => {
+var prefix = "$";
+      if(message.content === prefix + "hidec") {
+      if(!message.channel.guild) return;
+      if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('You Dont Have Perms :x:');
+             message.channel.overwritePermissions(message.guild.id, {
+             READ_MESSAGES: false
+ })
+              message.channel.send('تم اخفاء الرومات بنجاح')
+ }
+});
+
+client.on('message', message => { 
+let prefix = '$'
+    if (message.content.startsWith(prefix + 'emojilist')) {
+
+        const List = message.guild.emojis.map(e => e.toString()).join(" ");
+
+        const EmojiList = new Discord.RichEmbed()
+            .setTitle('➠ Emojis') 
+            .setAuthor(message.guild.name, message.guild.iconURL) 
+            .setColor('RANDOM') 
+            .setDescription(List) 
+            .setFooter(message.guild.name) 
+        message.channel.send(EmojiList) 
+    }
+});
+
+
+client.on("message", (message) => {
+    if (message.content.startsWith('$dr')) {
+        if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply("You Don't Have `MANAGE_CHANNELS` Premissions ");
+
+        let args = message.content.split(' ').slice(1);
+        let channel = message.client.channels.find('name', args.join(' '));
+        if (!channel) return message.reply('**لا يوجد روم بهذه الاسم**').catch(console.error);
+        channel.delete()
+    }
+});  
+
+
+client.on('message', message => {
+var prefix = "$";
+      if(message.content === prefix + "showc") {
+      if(!message.channel.guild) return;
+      if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply(':x:');
+             message.channel.overwritePermissions(message.guild.id, {
+             READ_MESSAGES: true
+ })
+              message.channel.send('تم تظهير الرومات بنجاح')
+ }
+});
+
+
+   client.on('message', message => {
+  var prefix ="$"; 
+if (message.content.startsWith(prefix + 'perms')) {
+         if(!message.channel.guild) return;
+         var perms = JSON.stringify(message.channel.permissionsFor(message.author).serialize(), null, 4);
+         var zPeRms = new Discord.RichEmbed()
+         .setColor('RANDOM')
+         .setTitle(':tools: Permissions')
+         .addField('Your Permissions:',perms)
+                  message.channel.send({embed:zPeRms});
+
+    }
+});
+
+   
 client.on("message", message => {
 	var prefix = "$";
  if (message.content === "$help") {
@@ -270,7 +369,7 @@ client.on("message", message => {
 ❖$bc [message] | بورد كاست للكل و مطور
 ❖$2bc [message] | بورد كاست للكل غير مطور
 ❖$3bc [message] | بورد كاست للونلاين فقط و غير مطور
-❖$user-bc @someone [message] | رساله لشخص واحد 
+❖$user-bc @name [message] | رساله لشخص واحد 
 ❖$role-bc @rank [message] | رساله لكل من يملك الرتبه الممشنه
 `)
    message.author.sendEmbed(embed)
@@ -286,8 +385,9 @@ client.on("message", message => {
       .setDescription(`
 			 -=- العاب -=-
 ❖$rps [ورقة - مقص - حجر] 
-❖$hack @somone | لعبه الهكر مع ذكر اسمك للي هكرته
-❖$hac-2 @some
+❖$hack @name | لعبه الهكر مع ذكر اسمك للي هكرته
+❖$hac-2 @name
+❖$نكت مضحكه | نكت
 ❖$لعبه اعلم | اعلم
 ❖$لعبه اموجي | ايموجي
 ❖$لعبه ماينكرفت | ماينكرفت
@@ -1309,68 +1409,60 @@ client.on('message',  (message) => {
 
 
 
-client.on('message' , async (message) => {
-       if(message.content.startsWith(`$rps حجر`)) {
-              
- let responses = [
-        'انا اخترت ورقة وانا فزت',
-        'انا اخترت مقص وانا خسرت',
-        'انا اخترت حجر وهو تعادل',
-    ]
-    
-    // Fetch a random item from the array
-    let fetched = responses[Math.floor(Math.random() * responses.length)];
-   message.reply(fetched)
-       }
-  
+client.on("message", function(message) {
+	var prefix = "$";
+   if(message.content.startsWith(prefix + "rps")) {
+    let messageArgs = message.content.split(" ").slice(1).join(" ");
+    let messageRPS = message.content.split(" ").slice(2).join(" ");
+    let arrayRPS = ['**# - Rock**','**# - Paper**','**# - Scissors**'];
+    let result = `${arrayRPS[Math.floor(Math.random() * arrayRPS.length)]}`;
+    var RpsEmbed = new Discord.RichEmbed()
+    .setAuthor(message.author.username)
+    .setThumbnail(message.author.avatarURL)
+    .addField("Rock","🇷",true)
+    .addField("Paper","🇵",true)
+    .addField("Scissors","🇸",true)
+    message.channel.send(RpsEmbed).then(msg => {
+        msg.react(' 🇷')
+        msg.react("🇸")
+        msg.react("🇵")
+.then(() => msg.react('🇷'))
+.then(() =>msg.react('🇸'))
+.then(() => msg.react('🇵'))
+let reaction1Filter = (reaction, user) => reaction.emoji.name === '🇷' && user.id === message.author.id;
+let reaction2Filter = (reaction, user) => reaction.emoji.name === '🇸' && user.id === message.author.id;
+let reaction3Filter = (reaction, user) => reaction.emoji.name === '🇵' && user.id === message.author.id;
+let reaction1 = msg.createReactionCollector(reaction1Filter, { time: 12000 });
+	    
+let reaction2 = msg.createReactionCollector(reaction2Filter, { time: 12000 });
+let reaction3 = msg.createReactionCollector(reaction3Filter, { time: 12000 });
+reaction1.on("collect", r => {
+        message.channel.send(result)
+})
+reaction2.on("collect", r => {
+        message.channel.send(result)
+})
+reaction3.on("collect", r => {
+        message.channel.send(result)
+})
+
+    })
+}
 });
 
 
-
-
-
-client.on('message' , async (message) => {
-       if(message.content.startsWith(`$rps مقص`)) {
-              
- let responses = [
-        'انا اخترت ورقة وانا خسرت',
-        'انا اخترت مقص وهو تعادل',
-        'انا اخترت حجر وانا فزت',
-    ]
-    
-    // Fetch a random item from the array
-    let fetched = responses[Math.floor(Math.random() * responses.length)];
-   message.reply(fetched)
-       }
-  
-});
-
-
-
-
-
-
-
-
-
-
-
-
-client.on('message' , async (message) => {
-       if(message.content.startsWith(`$rps ورقة`)) {
-              
- let responses = [
-        'انا اخترت ورقة وهاذا تعادل',
-        'انا اخترت حجر وانا خسرت ',
-        'انا اخترت مقص وانا فزت',
-    ]
-    
-    // Fetch a random item from the array
-    let fetched = responses[Math.floor(Math.random() * responses.length)];
-   message.reply(fetched)
-       }
-  
-});
+client.on("message", message => {
+    var prefix = "$"
+    if (!message.content.startsWith(prefix)) return;
+      let command = message.content.split(" ")[0];
+      command = command.slice(prefix.length);
+        if(command === "skin") {
+                const args = message.content.split(" ").slice(1).join(" ")
+        if (!args) return message.channel.send("** Type your skin name **");
+        const image = new Discord.Attachment(`https://visage.surgeplay.com/full/256/${args}`, "skin.png");
+    message.channel.send(image)
+        }
+    });
 
 
 
