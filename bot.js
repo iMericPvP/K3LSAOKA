@@ -482,6 +482,7 @@ reaction3.on("collect", r => {
 ❖$لعبه فكك | فكك
 `)
    message.author.sendEmbed(embed)
+   message.send('تم ارسالك بلخاص')
 })
 
     })
