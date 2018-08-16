@@ -123,7 +123,7 @@ client.on('message', function(msg) {
       .addField('Users | مستخدمين',`[** __${client.users.size}__ **]`,true)
       .addField('Channels | رومات',`[** __${client.channels.size}__** ]`,true)
 	  .addField('Language | لغه',`[** JS**]`,true)
-	  .addField('Support Server | سيرفر السبورت',`[** __https://discord.gg/knNsyZ__ **]`,true)
+	  .addField('Support Server | سيرفر السبورت',`[** __https://discord.gg/RRxGfXp__ **]`,true)
 	  .setFooter("NoobBot")  
       msg.channel.send({embed:embed});
     }
@@ -398,7 +398,7 @@ client.on("message", message => {
 ❖مطورين البوت |  『LB』 Mohamed192837465#7033 
 ❖لغه البوت | JS
 ❖رابط البوت | https://discordapp.com/oauth2/authorize?client_id=472111075114876968&permissions=2080374975&scope=bot
-❖سيرفر السبورت | https://discord.gg/knNsyZd
+❖سيرفر السبورت | https://discord.gg/RRxGfXp
 `)
    message.author.sendEmbed(embed)
     
@@ -826,7 +826,7 @@ client.on('message', message => {
   if(message.content === '$support') {
   const embed = new Discord.RichEmbed()
   .setTitle('Click here')
-  .setURL('https://discord.gg/knNsyZd')
+  .setURL('https://discord.gg/RRxGfXp')
   .setColor('RANDOM')
   message.channel.send({embed: embed});
   }
