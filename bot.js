@@ -194,18 +194,20 @@ message.channel.createWebhook(message.author.username, message.author.avatarURL)
       .setColor("#000000")
       .setDescription(`
 			-=- اوامر ادمنيه -=-
-❖$ban @someone [reason] | اعطاء العضو باند
-❖$kick @someone [reason] | اعطاء العضو كيك
-❖$mute @someone [reason] | اعطاء العضو ميوت
+❖$ban @name [reason] | اعطاء العضو باند
+❖$kick @name [reason] | اعطاء العضو كيك
+❖$mute @name [reason] | اعطاء العضو ميوت
+❖$unmute @name [reason] | ازاله الميوت من العضو
 ❖$cc [number] | صنع رتب برقم
-❖$unmute @someone [reason] | ازاله الميوت من العضو
-❖$clear [number] | مسح الرسائل [NEW]
+❖$clear [number] | مسح الرسائل 
+❖$ct [name] | صنع روم كتابي
+❖$cv [name] | صنع روم صوتي
 ❖$role @someone [rank] | اعطاء رتبه لشخص 
 ❖$role all [rank]| اعطاء رتبه للكل
 ❖$role bots [rank]| اعطاء رتبه لكل البوتات
 ❖$role humans [rank] | اعطاء رتبه للبشريين
 ❖$roleremove @someone [rank] | ازاله الرتبه من شخص معين
-❖$move @someone | سحب شخص الي روم [NEW]
+❖$move @someone | سحب شخص الي روم 
 ❖$mutechannel | قفل الشات
 ❖$unmutechannel | فك منع الكتابه بلروم
 `)
