@@ -392,17 +392,17 @@ client.on("message", message => {
     var RpsEmbed = new Discord.RichEmbed()
     .setAuthor(message.author.username)
     .setThumbnail(message.author.avatarURL)
-    .addField("Puplic | عامه","🗣️",true)
+    .addField("Puplic | عامه","🗣",true)
     .addField("Admin | ادمنيه","🔴",true)
     .addField("Games | العاب","🕹️",true)
     message.channel.send(RpsEmbed).then(msg => {
-        msg.react('🗣️')
+        msg.react('🗣')
         msg.react("🔴")
         msg.react("🕹️")
-.then(() => msg.react('🗣️'))
+.then(() => msg.react('🗣'))
 .then(() =>msg.react('🔴'))
 .then(() => msg.react('🕹️'))
-let reaction1Filter = (reaction, user) => reaction.emoji.name === '🗣️' && user.id === message.author.id;
+let reaction1Filter = (reaction, user) => reaction.emoji.name === '🗣' && user.id === message.author.id;
 let reaction2Filter = (reaction, user) => reaction.emoji.name === '🔴' && user.id === message.author.id;
 let reaction3Filter = (reaction, user) => reaction.emoji.name === '🕹️' && user.id === message.author.id;
 let reaction1 = msg.createReactionCollector(reaction1Filter, { time: 20000 });
