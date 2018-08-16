@@ -395,20 +395,25 @@ client.on("message", message => {
     .addField("Puplic | عامه","🗣",true)
     .addField("Admin | ادمنيه","🔴",true)
     .addField("Games | العاب","🕹",true)
+	    .addField("BoardCast | بورد كاست","📢",true)
     message.channel.send(RpsEmbed).then(msg => {
         msg.react('🗣')
         msg.react("🔴")
         msg.react("🕹")
+		        msg.react("📢")
 .then(() => msg.react('🗣'))
 .then(() =>msg.react('🔴'))
 .then(() => msg.react('🕹'))
+.then(() => msg.react('📢'))
 let reaction1Filter = (reaction, user) => reaction.emoji.name === '🗣' && user.id === message.author.id;
 let reaction2Filter = (reaction, user) => reaction.emoji.name === '🔴' && user.id === message.author.id;
 let reaction3Filter = (reaction, user) => reaction.emoji.name === '🕹' && user.id === message.author.id;
+let reaction4Filter = (reaction, user) => reaction.emoji.name === '📢' && user.id === message.author.id;
 let reaction1 = msg.createReactionCollector(reaction1Filter, { time: 20000 });
 	    
 let reaction2 = msg.createReactionCollector(reaction2Filter, { time: 19000 });
 let reaction3 = msg.createReactionCollector(reaction3Filter, { time: 18000 });
+let reaction4 = msg.createReactionCollector(reaction4Filter, { time: 18000 });
 reaction1.on("collect", r => {
   const embed = new Discord.RichEmbed() 
       .setColor("#000000")
@@ -438,6 +443,7 @@ reaction1.on("collect", r => {
 ❖$stim | منبه
 `)
    message.author.sendEmbed(embed)
+      message.reply('تم ارسالك بلخاص')
 })
 reaction2.on("collect", r => {
 	  const embed = new Discord.RichEmbed() 
@@ -465,6 +471,7 @@ reaction2.on("collect", r => {
 ❖$unmutechannel | فك منع الكتابه بلروم
 `)
    message.author.sendEmbed(embed)
+      message.reply('تم ارسالك بلخاص')
 })
 reaction3.on("collect", r => {
   const embed = new Discord.RichEmbed() 
@@ -484,7 +491,19 @@ reaction3.on("collect", r => {
    message.author.sendEmbed(embed)
    message.reply('تم ارسالك بلخاص')
 })
-
+reaction3.on("collect", r => {
+  const embed = new Discord.RichEmbed() 
+      .setColor("#000000")
+      .setDescription(`
+			 -=- اوامر بورد كاست -=-
+❖$bc [message] | بورد كاست للكل و مطور
+❖$2bc [message] | بورد كاست للكل غير مطور
+❖$3bc [message] | بورد كاست للونلاين فقط و غير مطور
+❖$user-bc @name [message] | رساله لشخص واحد 
+❖$role-bc @rank [message] | رساله لكل من يملك الرتبه الممشنه
+`)
+   message.author.sendEmbed(embed)
+})
     })
 }
 });
