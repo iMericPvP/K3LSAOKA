@@ -410,9 +410,6 @@ let reaction1 = msg.createReactionCollector(reaction1Filter, { time: 20000 });
 let reaction2 = msg.createReactionCollector(reaction2Filter, { time: 19000 });
 let reaction3 = msg.createReactionCollector(reaction3Filter, { time: 18000 });
 reaction1.on("collect", r => {
-	client.on("message", message => {
-	var prefix = "$";
- if (message.content === "$help") {
   const embed = new Discord.RichEmbed() 
       .setColor("#000000")
       .setDescription(`
@@ -443,9 +440,33 @@ reaction1.on("collect", r => {
    message.author.sendEmbed(embed)
 })
 reaction2.on("collect", r => {
-      client.on("message", message => {
-	var prefix = "$";
- if (message.content === "$help") {
+	  const embed = new Discord.RichEmbed() 
+      .setColor("#000000")
+      .setDescription(`
+			-=- اوامر ادمنيه -=-
+❖$ban @name [reason] | اعطاء العضو باند
+❖$kick @name [reason] | اعطاء العضو كيك
+❖$mute @name [reason] | اعطاء العضو ميوت
+❖$unmute @name [reason] | ازاله الميوت من العضو
+❖$cc [number] | صنع رتب برقم
+❖$clear [number] | مسح الرسائل 
+❖$dr [name] | مسح روم [NEW]
+❖$hidec | اخفاء الرومات [NEW]
+❖$showc | فتح الرومات [NEW]
+❖$ct [name] | صنع روم كتابي [NEW]
+❖$cv [name] | صنع روم صوتي [NEW]
+❖$role @someone [rank] | اعطاء رتبه لشخص 
+❖$role all [rank]| اعطاء رتبه للكل
+❖$role bots [rank]| اعطاء رتبه لكل البوتات
+❖$role humans [rank] | اعطاء رتبه للبشريين
+❖$roleremove @someone [rank] | ازاله الرتبه من شخص معين
+❖$move @someone | سحب شخص الي روم 
+❖$mutechannel | قفل الشات
+❖$unmutechannel | فك منع الكتابه بلروم
+`)
+   message.author.sendEmbed(embed)
+})
+reaction3.on("collect", r => {
   const embed = new Discord.RichEmbed() 
       .setColor("#000000")
       .setDescription(`
@@ -460,9 +481,7 @@ reaction2.on("collect", r => {
 ❖$لعبه عواصم | عواصم
 ❖$لعبه فكك | فكك
 `)
-   message.author.sendEmbed(embed)})
-reaction3.on("collect", r => {
-        message.channel.send('test')
+   message.author.sendEmbed(embed)
 })
 
     })
