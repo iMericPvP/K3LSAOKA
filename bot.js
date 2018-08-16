@@ -394,37 +394,73 @@ client.on("message", message => {
     .setThumbnail(message.author.avatarURL)
     .addField("Puplic | عامه","🗣",true)
     .addField("Admin | ادمنيه","🔴",true)
-    .addField("Games | العاب","🕹️",true)
+    .addField("Games | العاب","🕹",true)
     message.channel.send(RpsEmbed).then(msg => {
         msg.react('🗣')
         msg.react("🔴")
-        msg.react("🕹️")
+        msg.react("🕹")
 .then(() => msg.react('🗣'))
 .then(() =>msg.react('🔴'))
-.then(() => msg.react('🕹️'))
+.then(() => msg.react('🕹'))
 let reaction1Filter = (reaction, user) => reaction.emoji.name === '🗣' && user.id === message.author.id;
 let reaction2Filter = (reaction, user) => reaction.emoji.name === '🔴' && user.id === message.author.id;
-let reaction3Filter = (reaction, user) => reaction.emoji.name === '🕹️' && user.id === message.author.id;
+let reaction3Filter = (reaction, user) => reaction.emoji.name === '🕹' && user.id === message.author.id;
 let reaction1 = msg.createReactionCollector(reaction1Filter, { time: 20000 });
 	    
 let reaction2 = msg.createReactionCollector(reaction2Filter, { time: 19000 });
 let reaction3 = msg.createReactionCollector(reaction3Filter, { time: 18000 });
 reaction1.on("collect", r => {
+	client.on("message", message => {
+	var prefix = "$";
+ if (message.content === "$help") {
   const embed = new Discord.RichEmbed() 
       .setColor("#000000")
       .setDescription(`
-			 -=- اوامر بورد كاست -=-
-❖$bc [message] | بورد كاست للكل و مطور
-❖$2bc [message] | بورد كاست للكل غير مطور
-❖$3bc [message] | بورد كاست للونلاين فقط و غير مطور
-❖$user-bc @name [message] | رساله لشخص واحد 
-❖$role-bc @rank [message] | رساله لكل من يملك الرتبه الممشنه
+			 -=- اوامر عامة -=-
+❖$avatar @somone | صورتك او صوره الي منشنته
+❖$server | معلومات السيرفر
+❖$angaz | كتابه كلامك بصوره انجاز ماينكرفتي
+❖$members | حالات الاعضاء
+❖$serveravatar | صوره السيرفر
+❖$inv | رابط اضافه البوت
+❖$say [message] | تكرار كلامك ببوت بنفس صورتك واسمك
+❖$support | رابط سيرفر السبورت
+❖$bans | عدد الاشخاص المبندين [NEW]
+❖$emojilist | قائمه اليموجيات [NEW]
+❖$day | تفاصيل اليوم
+❖$perms | يوريك الصلاحيات الي معك [NEW]
+❖$cat | صور قطط
+❖$dog | صور كلاب
+❖$skin [name] | يجيبلك سكن الي كتبت اسمه [NEW]
+❖$roll [number] | قرعه
+❖$draw [message] | كتابه كلامك في صوره
+❖$bot | معلومات البوت
+❖$ranks | يعرض لك الرتب الي بلسيرفر 
+❖$user | وقت صنع حسابك ودخولك السيرفر
+❖$id | معلومات حسابك
+❖$stim | منبه
 `)
    message.author.sendEmbed(embed)
 })
 reaction2.on("collect", r => {
-        message.channel.send('test')
-})
+      client.on("message", message => {
+	var prefix = "$";
+ if (message.content === "$help") {
+  const embed = new Discord.RichEmbed() 
+      .setColor("#000000")
+      .setDescription(`
+			 -=- العاب -=-
+❖$rps [ورقة - مقص - حجر] 
+❖$hack @name | لعبه الهكر مع ذكر اسمك للي هكرته
+❖$hac-2 @name
+❖$نكت مضحكه | نكت
+❖$لعبه اعلم | اعلم
+❖$لعبه اموجي | ايموجي
+❖$لعبه ماينكرفت | ماينكرفت
+❖$لعبه عواصم | عواصم
+❖$لعبه فكك | فكك
+`)
+   message.author.sendEmbed(embed)})
 reaction3.on("collect", r => {
         message.channel.send('test')
 })
