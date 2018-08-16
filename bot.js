@@ -32,11 +32,7 @@ client.login(process.env.BOT_TOKEN);
 
 
 
-client.on('message', message => {
-    if (message.content.startsWith('هلا')) {
-        message.channel.send('هلا ولله')
-    }
-});
+
 
 
 client.on('message', msg => {
