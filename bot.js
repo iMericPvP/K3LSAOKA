@@ -840,7 +840,6 @@ client.on('message', function(msg) {
       .addField('الرومات الكتابيه',`[** __${msg.guild.channels.filter(m => m.type === 'text').size}__** ]`,true)
       .addField('الرومات الصوتيه',`[** __${msg.guild.channels.filter(m => m.type === 'voice').size}__ **]`,true)
 	  .addField('اونر السيرفر',`[** __${msg.guild.owner}__ **]`,true)
-	  .addField('اخر عضو دخل السيرفر',`[** __${Array.from(message.channel.guild.members.values()).sort((a, b) => b.joinedAt - a.joinedAt).map(m => `<@!${m.id}>`).splice(0, 1)}__ **]`,true)
       .addField('صنع السيرفر في',msg.guild.createdAt.toLocaleString())
 	  .setFooter("لكي تعرف حالات الاعضاء  قم بكتابه $members | لكي تعرف ماهي رتب السيرفر قم بكتابه $ranks")  
       msg.channel.send({embed:embed});
