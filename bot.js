@@ -34,7 +34,7 @@ client.login(process.env.BOT_TOKEN);
 
 client.on('message', message => {
     if (message.content.startsWith('هلا')) {
-        channel.send.message('نيقا')
+        guild.channel.send('نيقا')
     }
 });
 
