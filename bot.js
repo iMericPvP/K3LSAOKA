@@ -236,7 +236,7 @@ var prefix = "$";
              message.channel.overwritePermissions(message.guild.id, {
              READ_MESSAGES: false
  })
-              message.channel.send('تم اخفاء الرومات بنجاح')
+              message.channel.send('تم اخفاء الروم بنجاح')
  }
 });
 
@@ -277,7 +277,7 @@ var prefix = "$";
              message.channel.overwritePermissions(message.guild.id, {
              READ_MESSAGES: true
  })
-              message.channel.send('تم تظهير الرومات بنجاح')
+              message.channel.send('تم اظهار الروم بنجاح')
  }
 });
 
@@ -376,8 +376,8 @@ reaction2.on("collect", r => {
 ❖$cc [number] | صنع رتب برقم
 ❖$clear [number] | مسح الرسائل 
 ❖$dr [name] | مسح روم [NEW]
-❖$hidec | اخفاء الرومات [NEW]
-❖$showc | فتح الرومات [NEW]
+❖$hidec | اخفاء الروم [NEW]
+❖$showc | فتح الروم [NEW]
 ❖$ct [name] | صنع روم كتابي [NEW]
 ❖$cv [name] | صنع روم صوتي [NEW]
 ❖$role @someone [rank] | اعطاء رتبه لشخص 
