@@ -32,11 +32,7 @@ client.login(process.env.BOT_TOKEN);
 
 
 
-client.on('message', message => {
-    if (message.content.startsWith('هلا')) {
-        guild.channel.send('نيقا')
-    }
-});
+
 
 
 client.on('message', msg => {
@@ -431,27 +427,7 @@ reaction3.on("collect", r => {
 }
 });
    
-      client.on("message", message => {
-	var prefix = "$";
- if (message.content === "$help") {
-  const embed = new Discord.RichEmbed() 
-      .setColor("#000000")
-      .setDescription(`
-			 -=- العاب -=-
-❖$rps [ورقة - مقص - حجر] 
-❖$hack @name | لعبه الهكر مع ذكر اسمك للي هكرته
-❖$hac-2 @name
-❖$نكت مضحكه | نكت
-❖$لعبه اعلم | اعلم
-❖$لعبه اموجي | ايموجي
-❖$لعبه ماينكرفت | ماينكرفت
-❖$لعبه عواصم | عواصم
-❖$لعبه فكك | فكك
-`)
-   message.author.sendEmbed(embed)
-    
-   }
-   }); 
+
 
 
 
