@@ -1762,3 +1762,46 @@ message.channel.send({embed});
 }
 
 });
+
+
+
+
+
+client.on('message',async message => {
+    if(message.content.startsWith(prefix + "setmembers")) {
+    if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('❌ **لا تمتلك صلاحيه**');
+    if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS','MANAGE_ROLES_OR_PERMISSIONS'])) return message.reply('❌ **لا امتلك صلاحيه**');
+    message.channel.send('✅| **تم عمل الروم بنجاح**');
+    message.guild.createChannel(`Members : [ ${message.guild.members.size} ]` , 'voice').then(c => {
+      console.log(`Done make room in: \n ${message.guild.name}`);
+      c.overwritePermissions(message.guild.id, {
+        CONNECT: false,
+        SPEAK: false
+      });
+      setInterval(() => {
+        c.setName(`Members : [ ${message.guild.members.size} ]`)
+      },1000);
+    });
+    }
+  });
+  
+  
+  
+  
+    client.on('message',async message => {
+    if(message.content.startsWith(prefix + "setbot")) {
+    if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('❌ **لا تمتلك صلاحيه**');
+    if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS','MANAGE_ROLES_OR_PERMISSIONS'])) return message.reply('❌ **لا امتلك صلاحيه**');
+    message.channel.send('✅| **تم عمل الروم بنجاح**');
+    message.guild.createChannel(`Bots : : [ ${message.guild.members.filter(m=>m.user.bot).size} ]` , 'voice').then(c => {
+      console.log(`Done make room in: \n ${message.guild.name}`);
+      c.overwritePermissions(message.guild.id, {
+        CONNECT: false,
+        SPEAK: false
+      });
+      setInterval(() => {
+        c.setName(`Bots : [ ${message.guild.members.filter(m=>m.user.bot).size} ]`)
+      },1000);
+    });
+    }
+  });
