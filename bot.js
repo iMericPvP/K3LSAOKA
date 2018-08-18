@@ -380,6 +380,8 @@ reaction2.on("collect", r => {
 ❖$showc | فتح الروم [NEW]
 ❖$ct [name] | صنع روم كتابي [NEW]
 ❖$cv [name] | صنع روم صوتي [NEW]
+❖$setbot | صنع روم يكون فيه عدد البوتات بلسيرفر
+❖$setmember | صنع روم يكون فيه عدد الاعضاء بلسيرفر
 ❖$role @someone [rank] | اعطاء رتبه لشخص 
 ❖$role all [rank]| اعطاء رتبه للكل
 ❖$role bots [rank]| اعطاء رتبه لكل البوتات
@@ -1768,7 +1770,7 @@ message.channel.send({embed});
 
 
 client.on('message',async message => {
-    if(message.content.startsWith(prefix + "setmembers")) {
+    if(message.content.startsWith(prefix + "setmember")) {
     if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('❌ **لا تمتلك صلاحيه**');
     if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS','MANAGE_ROLES_OR_PERMISSIONS'])) return message.reply('❌ **لا امتلك صلاحيه**');
     message.channel.send('✅| **تم عمل الروم بنجاح**');
