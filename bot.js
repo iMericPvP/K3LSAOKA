@@ -37,15 +37,11 @@ if (msg.content.startsWith(`$sug`)) {
 // تعريف الارجس
    let args = msg.content.split(" ").slice(1);
 // لو ما منشن احد يرد عيله
-  if (!msg.mentions.members.first()) return msg.reply(`يجب عليك منشن شخص`)
-// لو ما كتب تبليغ بيقوله اكتب تبليغ
-  if (!args[1]) return msg.reply(`اكتب تبيلغك`)
+  if (!args[1]) return msg.reply(`اكتب اقتراحك`)
 // استبدل <الروم> بأسم الروم حقك
     msg.guild.channels.find('name', 'suggests').send(`
-  تبليغ على : ${msg.mentions.members.first()}
-  بلغ عليه من قبل : ${msg.member}
-  في روم : ${msg.channel.name}
-  السبب : **${args.join(" ").split(msg.mentions.members.first()).slice(' ')}**
+  صاحب الاقتراح  : ${msg.member}
+  الاقتراح : **${args.join(" ").split(msg.mentions.members.first()).slice(' ')}**
   `)
   }
 })
