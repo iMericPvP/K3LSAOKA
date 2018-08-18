@@ -48,7 +48,6 @@ if (msg.content.startsWith(`$sug`)) {
   السبب : **${args.join(" ").split(msg.mentions.members.first()).slice(' ')}**
   `)
   }
-}
 })
 
 client.on('message', msg => { 
@@ -67,7 +66,6 @@ if (msg.content.startsWith(`$report`)) {
   السبب : **${args.join(" ").split(msg.mentions.members.first()).slice(' ')}**
   `)
   }
-}
 })
 
 
