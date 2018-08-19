@@ -38,8 +38,8 @@ const jimp = require("jimp")
 
 let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
   client.on('message', message => {
-        let ch = message.content.split(" ").slice(1).join(" ")
-        let msk = message.content.split(" ").slice(2).join(" ")
+        let ch = message.content.split(" ").slice(2).join(" ")
+        let msk = message.content.split(" ").slice(3).join(" ")
                     let chn = message.guild.channels.find("name", ch)
 
                 cha: "welcome" 
