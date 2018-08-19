@@ -36,7 +36,15 @@ client.login(process.env.BOT_TOKEN);
 
 
 
+const hi = "ه"
 
+client.on('message', function(msg) {
+    if(msg.content.startsWith (hi  + 'لا')) {
+        channel.send('نيقا')
+
+
+    }
+});
 
 client.on('message', msg => { 
 if (msg.content.startsWith(`$sug`)) {
