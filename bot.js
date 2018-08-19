@@ -61,9 +61,9 @@ let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
 
  
 
-        if(message.content.startsWith(prefix + "setWlc")) {
+        if(message.content.startsWith(prefix + "setwlc")) {
 
-    if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**You need `Manage Channels` permission**")
+    if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**لا تمتلك صلاحيه**")
 
             if(!sw[message.guild.id]) sw[message.guild.id] = {
 
@@ -81,11 +81,11 @@ let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
 
                 message.channel.send(`**Usage:
 
-            ${prefix}setWlc style <text, image, embed>
+            ${prefix}setwlc style <text, image, embed>
 
-            ${prefix}setWlc msg <message>
+            ${prefix}setwlc msg <message>
 
-            ${prefix}setWlc channal <channel name>**`)
+            ${prefix}setwlc channal <channel name>**`)
 
             }
 
@@ -93,13 +93,13 @@ let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
 
             if(!mothed) {
 
-                message.channel.send(`**Usage: ${prefix}setWlc style <text, imgae, embed>**`)
+                message.channel.send(`**Usage: ${prefix}setwlc style <text, imgae, embed>**`)
 
             }
 
  
 
-            if(message.content === prefix + 'setWlc style image') {
+            if(message.content === prefix + 'setwlc style image') {
 
                 if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**You need `Manage Channels` permission**")
 
@@ -111,7 +111,7 @@ let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
 
  
 
-            if(message.content === prefix + 'setWlc style embed') {
+            if(message.content === prefix + 'setwlc style embed') {
 
                 if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**You need `Manage Channels` permission**")
 
@@ -121,7 +121,7 @@ let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
 
  
 
-            if(message.content === prefix + 'setWlc style text') {
+            if(message.content === prefix + 'setwlc style text') {
 
                 if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**You need `Manage Channels` permission**")
 
@@ -137,7 +137,7 @@ let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
 
  
 
-        if(message.content.startsWith(prefix + "setWlc msg")) {
+        if(message.content.startsWith(prefix + "setwlc msg")) {
 
             if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("**You need `Manage Messages` permission**")
 
@@ -157,7 +157,7 @@ let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
 
  
 
-        if(message.content.startsWith(prefix + "setWlc channel")) {
+        if(message.content.startsWith(prefix + "setwlc channel")) {
 
             if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**You need `Manage Channels` permission**")
 
