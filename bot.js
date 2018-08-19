@@ -481,6 +481,7 @@ reaction3.on("collect", r => {
 })
 reaction3.on("collect", r => {
   const embed = new Discord.RichEmbed() 
+  .setThumbnail('https://cdn.discordapp.com/attachments/476524644115939338/480592850925387776/bc.png')
       .setColor("#000000")
       .setDescription(`
 			 -=- اوامر بورد كاست -=-
