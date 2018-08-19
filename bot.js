@@ -33,6 +33,63 @@ client.login(process.env.BOT_TOKEN);
 
 
 
+  const fs = require("fs")
+
+
+    client.on('message', message => {
+
+let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
+
+
+
+
+      if(message.content.startsWith(prefix + "setWlc channel")) {
+                    cha: "welcome"
+        let ch = message.content.split(" ").slice(1).join(" ")
+
+
+                if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**You need `Manage Channels` permission**")
+    
+                if(!ch) {
+    
+                    message.channel.send("Usage: $setWlc channel <channel name>")
+    
+                }
+    
+                let chn = message.guild.channels.find("name", ch)
+    
+                if(!chn) {
+    
+                    message.channel.send("**I can't find this channel**")
+    
+                }
+    
+                else {
+    
+                     sw[message.guild.id].cha = chn.name
+    
+                     message.channel.send(`**Your server welcome channel has been changed to __${chn.name}__**`)
+    
+                     }
+    
+            }
+    client.on('guildMemberAdd', member => {
+
+            let channel = member.guild.channels.find("name", sw[member.guild.id].cha)
+        
+         
+        
+        
+                channel.sendMessage(`<@${member.user.id}>, ${sw[member.guild.id].msk}`)
+
+
+    })
+});
+
+
+
+
+
 client.on("guildMemberAdd", (member) => {
     let channel = member.guild.channels.get("456847657936355329");
     if (!channel) {
