@@ -265,16 +265,7 @@ message.channel.sendEmbed(cat);
 
 
 
-    client.on('message', message => {
-var prefix = "$";
-var cats = ["https://www.tenor.co/Y6cg.gif","https://www.tenor.co/Y9jK.gif","https://www.tenor.co/Zqgg.gif","https://www.tenor.co/Zveh.gif ","https://www.tenor.co/MyUr.gif ","https://www.tenor.co/ZYyu.gif "];
-        var args = message.content.split(" ").slice(1);
-    if(message.content.startsWith(prefix + 'kiki')) {
-         var cat = new Discord.RichEmbed()
-.setImage(cats[Math.floor(Math.random() * cats.length)])
-message.channel.sendEmbed(cat);
-    }
-});
+
 
 
 
@@ -903,6 +894,7 @@ client.on('message', function(msg) {
       .addField('الرومات الصوتيه',`[** __${msg.guild.channels.filter(m => m.type === 'voice').size}__ **]`,true)
 	  .addField('اونر السيرفر',`[** __${msg.guild.owner}__ **]`,true)
       .addField('صنع السيرفر في',msg.guild.createdAt.toLocaleString())
+	  .addField('اسم السيرفر',`[** __${msg.guild.name}__ **]`,true)
 	  .setFooter("لكي تعرف حالات الاعضاء  قم بكتابه $members | لكي تعرف ماهي رتب السيرفر قم بكتابه $ranks")  
       msg.channel.send({embed:embed});
     }
@@ -1475,18 +1467,7 @@ client.on('message',  (message) => {
 
 
 
-client.on("message", message => {
-    var prefix = "$"
-    if (!message.content.startsWith(prefix)) return;
-      let command = message.content.split(" ")[0];
-      command = command.slice(prefix.length);
-        if(command === "skin") {
-                const args = message.content.split(" ").slice(1).join(" ")
-        if (!args) return message.channel.send("** Type your skin name **");
-        const image = new Discord.Attachment(`https://visage.surgeplay.com/full/256/${args}`, "skin.png");
-    message.channel.send(image)
-        }
-    });
+
 
 
 
