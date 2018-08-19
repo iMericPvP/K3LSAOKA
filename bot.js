@@ -32,6 +32,73 @@ client.login(process.env.BOT_TOKEN);
 
 
 
+   const fs = require("fs")
+const jimp = require("jimp")
+
+
+
+  client.on('message', message => {
+    
+     
+    
+            if(message.content.startsWith(prefix + "setWlc channel")) {
+    
+                if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**You need `Manage Channels` permission**")
+    
+                if(!ch) {
+    
+                    message.channel.send("Usage: $setWlc channel <channel name>")
+    
+                }
+    
+                let chn = message.guild.channels.find("name", ch)
+    
+                if(!chn) {
+    
+                    message.channel.send("**I can't find this channel**")
+    
+                }
+    
+                else {
+    
+                     sw[message.guild.id].cha = chn.name
+    
+                     message.channel.send(`**Your server welcome channel has been changed to __${chn.name}__**`)
+    
+                     }
+    
+            }
+    
+     
+    
+            fs.writeFile('./setWlc.json', JSON.stringify(sw), (err) => {
+    
+    if (err) console.error(err);
+
+})
+
+})
+
+
+
+
+
+
+
+
+
+
+
+client.on('guildMemberAdd', member => {
+
+        let channel = member.guild.channels.find("name", sw[member.guild.id].cha)
+    
+     
+    
+    
+            channel.sendMessage(`<@${member.user.id}>, ${sw[member.guild.id].msk}`)
+    
+        });
 
 
 
@@ -1738,7 +1805,6 @@ message.channel.send('**اديك 15 ثاني�� لتوجد العاصمه ا�
 });
 
 
-   const fs = require("fs")
 let points = JSON.parse(fs.readFileSync('./Points.json', 'utf8'));
 client.on('message', message => {
 if (!points[message.author.id]) points[message.author.id] = {
