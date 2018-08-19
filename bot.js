@@ -34,13 +34,14 @@ client.login(process.env.BOT_TOKEN);
   const fs = require("fs")
 
 let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
-        let ch = message.content.split(" ").slice(1).join(" ")
 
 
 
 
       if(message.content.startsWith(prefix + "setWlc channel")) {
                     cha: "welcome"
+        let ch = message.content.split(" ").slice(1).join(" ")
+
 
                 if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**You need `Manage Channels` permission**")
     
