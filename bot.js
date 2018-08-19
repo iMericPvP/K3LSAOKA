@@ -287,6 +287,21 @@ message.channel.sendEmbed(cat);
 
 
 
+
+
+    client.on('message', message => {
+var prefix = "$";
+var cats = ["https://www.tenor.co/Y6cg.gif","https://www.tenor.co/Y9jK.gif","https://www.tenor.co/Zqgg.gif","https://www.tenor.co/Zveh.gif ","https://www.tenor.co/MyUr.gif ","https://www.tenor.co/ZYyu.gif "];
+        var args = message.content.split(" ").slice(1);
+    if(message.content.startsWith(prefix + 'kiki')) {
+         var cat = new Discord.RichEmbed()
+.setImage(cats[Math.floor(Math.random() * cats.length)])
+message.channel.sendEmbed(cat);
+    }
+});
+
+
+
    
    
    
