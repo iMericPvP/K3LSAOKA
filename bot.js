@@ -38,8 +38,12 @@ const jimp = require("jimp")
 
 let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
   client.on('message', message => {
-        let ch = message.content.split(" ").slice(2).join(" ")
-                cha: "welcome"
+        let ch = message.content.split(" ").slice(1).join(" ")
+        let msk = message.content.split(" ").slice(2).join(" ")
+                    let chn = message.guild.channels.find("name", ch)
+
+                cha: "welcome" 
+                msk: "welcome"
 
 
      
@@ -54,7 +58,6 @@ let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
     
                 }
     
-                let chn = message.guild.channels.find("name", ch)
     
                 if(!chn) {
     
@@ -94,7 +97,7 @@ let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
 
 client.on('guildMemberAdd', member => {
 
-        let channel = member.guild.channels.find("name", sw[member.guild.id].cha)
+        let channel = member.guild.channels.find("name", sw[member.guild.id].chn)
     
      
     
@@ -102,7 +105,6 @@ client.on('guildMemberAdd', member => {
             channel.sendMessage(`<@${member.user.id}>, ${sw[member.guild.id].msk}`)
     
         });
-
 
 
 
