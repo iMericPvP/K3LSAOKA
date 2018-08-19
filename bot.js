@@ -67,7 +67,7 @@ let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
     
                 else {
     
-                     sw[message.guild.id].cha = chn.name
+                     sw[message.guild.id].ch = chn.name
     
                      message.channel.send(`**Your server welcome channel has been changed to __${chn.name}__**`)
     
