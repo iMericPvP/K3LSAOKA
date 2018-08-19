@@ -40,7 +40,7 @@ const hi = "ه"
 
 client.on('message', function(msg) {
     if(msg.content.startsWith (hi  + 'لا')) {
-        message.channel.send('نيقا')
+        message.channel.sendMessage('test')
 
 
     }
