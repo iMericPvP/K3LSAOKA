@@ -33,21 +33,32 @@ client.login(process.env.BOT_TOKEN);
 
 
 
-  const fs = require("fs")
+  const fs = require("fs")
 
 
-    client.on('message', message => {
+  client.on('message', message => {
+          if(message.content.startsWith(prefix + "setWlc msg")) {
 
-let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
-
-
-
-
-      if(message.content.startsWith(prefix + "setWlc channel")) {
-                    cha: "welcome"
-        let ch = message.content.split(" ").slice(1).join(" ")
-
-
+                if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("**You need `Manage Messages` permission**")
+    
+                if(!msz) {
+    
+                    message.channel.send("Usage: $setWlc msg <message>")
+    
+                } else {
+    
+                    message.channel.send(`**Your server welcome message has been changed to __${msz}__**`)
+    
+                    sw[message.guild.id].msk = msz
+    
+                }
+    
+            }
+    
+     
+    
+            if(message.content.startsWith(prefix + "setWlc channel")) {
+    
                 if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**You need `Manage Channels` permission**")
     
                 if(!ch) {
@@ -73,17 +84,64 @@ let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
                      }
     
             }
-    client.on('guildMemberAdd', member => {
+    
+     
+    
+            fs.writeFile('./setWlc.json', JSON.stringify(sw), (err) => {
+    
+    if (err) console.error(err);
 
-            let channel = member.guild.channels.find("name", sw[member.guild.id].cha)
-        
-         
-        
-        
-                channel.sendMessage(`<@${member.user.id}>, ${sw[member.guild.id].msk}`)
+})
+
+})
 
 
-    })
+
+
+
+
+
+
+
+
+
+client.on('guildMemberAdd', member => {
+
+        let channel = member.guild.channels.find("name", sw[member.guild.id].cha)
+    
+     
+    
+        if(sw[member.guild.id].styler === "text") {
+    
+            channel.sendMessage(`<@${member.user.id}>, ${sw[member.guild.id].msk}`)
+    
+        }
+    
+     
+    
+        if(sw[member.guild.id].styler === "embed") {
+    
+     
+    
+            const embed = new Discord.RichEmbed()
+    
+            .setTitle("Member joind.")
+    
+            .setColor("GREEN")
+    
+            .setThumbnail(member.user.avatarURL)
+    
+            .setDescription(`**${sw[member.guild.id].msk}**`)
+    
+            .addField("**Member name**", `[<@${member.user.id}>]`,true)
+    
+            .addField("**Now we are**", `[${member.guild.memberCount}]`,true)
+    
+            channel.sendMessage(`<@${member.user.id}>`)
+    
+            channel.sendEmbed(embed)
+    
+        }
 });
 
 
