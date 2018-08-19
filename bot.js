@@ -42,7 +42,7 @@ let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
         let msk = message.content.split(" ").slice(3).join(" ")
                     let chn = message.guild.channels.find("name", ch)
 
-                cha: "welcome" 
+                chn: "welcome" 
                 msk: "welcome"
 
 
@@ -97,7 +97,7 @@ let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
 
 client.on('guildMemberAdd', member => {
 
-        let channel = member.guild.channels.find("name", sw[member.guild.id].cha)
+        let channel = member.guild.channels.find("name", sw[member.guild.id].chn)
     
      
     
