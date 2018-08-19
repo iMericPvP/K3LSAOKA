@@ -30,6 +30,61 @@ client.user.setGame(`$help | $inv | ${client.guilds.size} Servers `,"http://twit
 
 client.login(process.env.BOT_TOKEN);
 
+client.on('message', MEGA => { 
+  var sender = MEGA.author
+  if(!MEGA.guild) return
+  if(!sw[MEGA.guild.id]) sw[MEGA.guild.id] = {
+  onoff: 'Off',
+  ch:    'Welcome',
+  msk:   'Welcome'
+}
+        if(MEGA.content.startsWith(prefix + `setwlc`)) {        
+        let perms = MEGA.member.hasPermission(`MANAGE_CHANNELS`)
+        if(!perms) return MEGA.channel.send('**You need `Manage Channels` permission**')
+        let args = MEGA.content.split(" ").slice(1)
+        if(!args.join(" ")) return MEGA.reply(`
+  ** ${prefix}setwlc toggle **
+  ** ${prefix}setwlc set [اسم الروم] **
+  ** ${prefix}setwlc msg [رساله الترحيب] **`) // ->set-wlc toggle - ->set-wlc set - ->set-wlc msg
+        let state = args[0]
+        if(!state.trim().toLowerCase() == 'toggle' || !state.trim().toLowerCase() == 'set' || !state.trim().toLowerCase() == 'msg' ) return MEGA.reply(`
+ ** ${prefix}setwlc toggle **
+ ** ${prefix}setwlc set [Channel Name] **
+ ** ${prefix}setwlc msg [Welcome MEGA] **`) // ->set-wlc toggle - ->set-wlc set - ->set-wlc msg
+        if(state.trim().toLowerCase() == 'toggle') { 
+        if(sw[MEGA.guild.id].onoff === 'Off') return [MEGA.channel.send(`**تم اغلاق الترحيب**`), sw[MEGA.guild.id].onoff = 'On']
+        if(sw[MEGA.guild.id].onoff === 'On')  return [MEGA.channel.send(`**تم فتح الترحيب**`), sw[MEGA.guild.id].onoff = 'Off']
+}
+        if(state.trim().toLowerCase() == 'set') {
+        let newch = MEGA.content.split(" ").slice(2).join(" ")
+        if(!newch) return MEGA.reply(`${prefix}setwlc set [اسم الروم]`)
+        if(!MEGA.guild.channels.find(`name`,newch)) return MEGA.reply(`**I Cant Find This Channel.**`)
+            sw[MEGA.guild.id].ch = newch
+            MEGA.channel.send(`**تم تغير الروم الي ${newch}.**`)
+} 
+        if(state.trim().toLowerCase() == 'msg') {
+        let newmsg = MEGA.content.split(" ").slice(2).join(" ")
+        if(!newmsg) return MEGA.reply(`${prefix}setwlc msg [New MEGA]`)
+            sw[MEGA.guild.id].msk = newmsg
+            MEGA.channel.send(`**تم تغير الرساله الي ${newmsg}.**`)
+} 
+}
+        if(MEGA.content === prefix + 'setwlc info') {
+        let perms = MEGA.member.hasPermission(`MANAGE_GUILD`) 
+        if(!perms) return MEGA.reply(`لا تمتلك صلاحيه`)
+        var embed = new Discord.RichEmbed()
+        .addField(`Welcome MEGA  `, `
+On/Off  : __${sw[MEGA.guild.id].onoff}__
+Channel : __${sw[MEGA.guild.id].ch}__
+Message : __${sw[MEGA.guild.id].msk}__`)
+        .setColor(`BLUE`)
+            MEGA.channel.send({embed})
+}
+        fs.writeFile("./setwlc.json", JSON.stringify(sw), (err) => {
+        if (err) console.error(err)
+});
+})
+//by MEGA
 
 
 client.on('message', msg => { 
