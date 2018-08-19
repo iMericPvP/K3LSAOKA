@@ -96,14 +96,17 @@ if (msg.content.startsWith(`$report`)) {
 
 
 
+var cla = "$clea
+
+
 client.on('message', msg => {
   if (msg.author.bot) return;
-  if (!msg.content.startsWith(prefix)) return;
+  if (!msg.content.startsWith(cla)) return;
   let command = msg.content.split(" ")[0];
-  command = command.slice(prefix.length);
+  command = command.slice(cla.length);
   let args = msg.content.split(" ").slice(1);
 
-    if(command === "clear") {
+    if(command === "r") {
         const emoji = client.emojis.find("name", "wastebasket")
     let textxt = args.slice(0).join("");
     if(msg.member.hasPermission("MANAGE_MESSAGES")) {
