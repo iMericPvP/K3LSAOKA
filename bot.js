@@ -97,7 +97,7 @@ let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
 
 client.on('guildMemberAdd', member => {
 
-        let channel = member.guild.channels.find("name", sw[member.guild.id].chn)
+        let channel = member.guild.channels.find("name", sw[member.guild.id].cha)
     
      
     
