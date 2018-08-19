@@ -36,7 +36,7 @@ client.login(process.env.BOT_TOKEN);
 const jimp = require("jimp")
 
 
-
+let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
   client.on('message', message => {
     
      
