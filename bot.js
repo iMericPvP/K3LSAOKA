@@ -399,6 +399,7 @@ let reaction3 = msg.createReactionCollector(reaction3Filter, { time: 18000 });
 let reaction4 = msg.createReactionCollector(reaction4Filter, { time: 18000 });
 reaction1.on("collect", r => {
   const embed = new Discord.RichEmbed() 
+  	  .setThumbnail('https://images-ext-2.discordapp.net/external/JD7xvknBVacXHoC2re78AtJN4PUY5IjUZy1uWIqzObI/https/s3.amazonaws.com/eclincher.wp.upload/wp-content/uploads/2015/08/25155834/people-icon.png')
       .setColor("#000000")
       .setDescription(`
 			 -=- اوامر عامة -=-
@@ -461,6 +462,7 @@ reaction2.on("collect", r => {
 })
 reaction3.on("collect", r => {
   const embed = new Discord.RichEmbed() 
+  .setThumbnail('https://images-ext-1.discordapp.net/external/4IGqoA1bqVqu_o2I-jY51fqJFy2S8f8NrzcnzxhFtVU/http/reli.sh/wp-content/themes/relish/assets/img/services/icon-games.png')
       .setColor("#000000")
       .setDescription(`
 			 -=- العاب -=-
