@@ -430,6 +430,7 @@ reaction1.on("collect", r => {
 })
 reaction2.on("collect", r => {
 	  const embed = new Discord.RichEmbed() 
+	  .setThumbnail('https://images-ext-1.discordapp.net/external/DbPeTYlfGrBFd0B-SDcdVZPbPJRE8xiNcH9sG2sC5sA/http/www.expertizacontabila.com/images/staffmap-icon.png')
       .setColor("#000000")
       .setDescription(`
 			-=- اوامر ادمنيه -=-
