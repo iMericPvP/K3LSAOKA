@@ -418,7 +418,7 @@ reaction1.on("collect", r => {
 ❖$stim | منبه
 `)
    message.author.sendEmbed(embed)
-      message.reply('تم ارسالك بلخاص')
+      message.reply('تم ارسالك اوامر العامه بلخاص')
 })
 reaction2.on("collect", r => {
 	  const embed = new Discord.RichEmbed() 
@@ -449,7 +449,7 @@ reaction2.on("collect", r => {
 ❖$unmutechannel | فك منع الكتابه بلروم
 `)
    message.author.sendEmbed(embed)
-      message.reply('تم ارسالك بلخاص')
+      message.reply('تم ارسالك الاوامر الاداريه بلخاص')
 })
 reaction3.on("collect", r => {
   const embed = new Discord.RichEmbed() 
@@ -468,7 +468,7 @@ reaction3.on("collect", r => {
 ❖$لعبه فكك | فكك
 `)
    message.author.sendEmbed(embed)
-   message.reply('تم ارسالك بلخاص')
+   message.reply('تم ارسالك اوامر الالعاب بلخاص')
 })
 reaction3.on("collect", r => {
   const embed = new Discord.RichEmbed() 
@@ -483,6 +483,7 @@ reaction3.on("collect", r => {
 ❖$role-bc @rank [message] | رساله لكل من يملك الرتبه الممشنه
 `)
    message.author.sendEmbed(embed)
+   message.reply('تم ارسالك اوامر البورد كاست بلخاص')
 })
     })
 }
