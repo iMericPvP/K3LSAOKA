@@ -38,7 +38,10 @@ const jimp = require("jimp")
 
 let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
   client.on('message', message => {
-    
+        let ch = message.content.split(" ").slice(2).join(" ")
+                cha: "welcome"
+
+
      
     
             if(message.content.startsWith(prefix + "setWlc channel")) {
