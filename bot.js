@@ -96,7 +96,7 @@ if (msg.content.startsWith(`$report`)) {
 
 
 
-var cla = "$clea
+var cla = "$clea"
 
 
 client.on('message', msg => {
