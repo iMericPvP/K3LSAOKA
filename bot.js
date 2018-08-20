@@ -36,14 +36,35 @@ client.login(process.env.BOT_TOKEN);
 
 
 
-const hi = "ه"
-
-client.on('message', function(msg) {
-    if(msg.content.startsWith (hi  + 'لا')) {
-        message.guild.send('نيقا')
-
+client.on('message', msg => { 
+    if (msg.content.startsWith(`هلا`)) {
+       let args = msg.content.split(" ").slice(1);
+       
+        msg.guild.channels.find('name', '<الروم>').send(`
+      تبليغ على : ${msg.mentions.members.first()}
+      بلغ عليه من قبل : ${msg.member}
+      في روم : ${msg.channel.name}
+      السبب : **${args.join(" ").split(msg.mentions.members.first()).slice(' ')}**
+      `)
+      }
     }
-});
+    })
+
+
+
+    
+client.on('message', msg => { 
+    if (msg.content.startsWith(`هلا`)) {
+    // تعريف الارجس
+       let args = msg.content.split(" ").slice(1);
+    // لو ما منشن احد يرد عيله
+      if (!args[1]) return msg.reply(`اكتب اقتراحك`)
+    // استبدل <الروم> بأسم الروم حقك
+        msg.guild.channels.find('name', 'msg.channel.name').send(`
+هلا ولله
+      `)
+      }
+    })
 
 client.on('message', msg => { 
 if (msg.content.startsWith(`$sug`)) {
