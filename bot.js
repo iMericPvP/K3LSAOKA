@@ -35,19 +35,7 @@ client.login(process.env.BOT_TOKEN);
 
 
 
-  Client.on('message', message => {
 
-    if (message.content === "$count") {
-
-    let embed = new Discord.RichEmbed()
-
-.addField('**Servers**: ' , client.guilds.size)
-.setColor("#51cde6")
-.setDescription(`${message.guild.name}`)
-     message.channel.sendEmbed(embed);
-} 
-
-});
   
   
 
