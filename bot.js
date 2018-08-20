@@ -35,11 +35,20 @@ client.login(process.env.BOT_TOKEN);
 
 
 
-client.on('message', message => { //حقوق الفا كودز
-            if (message.content.startsWith(prefix + "servers")) {//حقوق الفا كودز
-message.reply('${client.guilds.size} Servers.!')//حقوق الفا كودز
-    }//حقوق الفا كودز
-});//حقوق الفا كودز
+  client.on('message', alphacodes => { //alphacodes.!
+//alphacodes.!
+    if (alphacodes.content === "$count") {//alphacodes.!
+//alphacodes.!
+    let alphacodes = new Discord.RichEmbed()//alphacodes.!
+//alphacodes.!
+.addField('**Servers**: ' , alphacodes.guilds.size)
+.setColor("#51cde6")
+.setDescription(`${alphacodes.guild.name}`)
+     alphacodes.channel.sendEmbed(alphacodes);
+} 
+
+});
+  
 
 
 
