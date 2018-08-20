@@ -35,19 +35,20 @@ client.login(process.env.BOT_TOKEN);
 
 
 
-  client.on('message', alphacodes => { //alphacodes.!
-//alphacodes.!
-    if (alphacodes.content === "$count") {//alphacodes.!
-//alphacodes.!
-    let alphacodes = new Discord.RichEmbed()//alphacodes.!
-//alphacodes.!
+  Client.on('message', message => {
+
+    if (message.content === "$count") {
+
+    let embed = new Discord.RichEmbed()
+
 .addField('**Servers**: ' , client.guilds.size)
 .setColor("#51cde6")
-.setDescription(`${alphacodes.guild.name}`)
-     alphacodes.channel.sendEmbed(alphacodes);
+.setDescription(`${message.guild.name}`)
+     message.channel.sendEmbed(embed);
 } 
 
 });
+  
   
 
 
