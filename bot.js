@@ -41,7 +41,7 @@ client.login(process.env.BOT_TOKEN);
 //alphacodes.!
     let alphacodes = new Discord.RichEmbed()//alphacodes.!
 //alphacodes.!
-.addField('**Servers**: ' , alphacodes.guilds.size)
+.addField('**Servers**: ' , client.guilds.size)
 .setColor("#51cde6")
 .setDescription(`${alphacodes.guild.name}`)
      alphacodes.channel.sendEmbed(alphacodes);
