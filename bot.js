@@ -35,7 +35,11 @@ client.login(process.env.BOT_TOKEN);
 
 
 
-
+client.on('message', message => { //حقوق الفا كودز
+            if (message.content.startsWith(prefix + "servers")) {//حقوق الفا كودز
+message.reply('${client.guilds.size} Servers.!')//حقوق الفا كودز
+    }//حقوق الفا كودز
+});//حقوق الفا كودز
 
 
 
