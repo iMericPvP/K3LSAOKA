@@ -37,7 +37,168 @@ client.login(process.env.BOT_TOKEN);
 
 
   
-  
+  const fs = require("fs")
+const jimp = require("jimp")
+
+
+let sinvite = JSON.parse(fs.readFileSync("./setinvite.json", "UTF8"))
+   client.on('message', message => {
+        if(message.content.startsWith(prefix + "setib")) {
+        if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**You need `Manage Channels` permission**")
+                    message.channel.send(`**Usage:
+
+                ${prefix}setinviteby [channel name]**`)
+    
+                }
+
+            if(message.content.startsWith(prefix + "setib")) {
+		
+		
+		        let setibb = message.content.split(" ").slice(1).join(" ")
+
+
+                    if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**You need `Manage Channels` permission**")
+        
+                    if(!seibb) {
+        
+                        message.channel.send("Usage: $setib channel <channel name>")
+        
+                    }
+        
+                    let setibb = message.guild.channels.find("name", setib)
+        
+                    if(!setibb) {
+        
+                        message.channel.send("**I can't find this channel**")
+        
+                    }
+        
+                    else {
+        
+                         sinvite[message.guild.id].setib = setib.name
+        
+                         message.channel.send(`**Done Change InviteBy Room To __${seib.name}__**`)
+        
+                         }
+    }
+    {
+
+
+
+
+                let msz = message.content.split(" ").slice(2).join(" ")
+
+                let ch = message.content.split(" ").slice(2).join(" ")
+                    cha: "welcome"
+    
+                    msz: "Welcome Bro"
+    
+            if(message.content.startsWith(prefix + "setWlc msg")) {
+    
+                    if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("**You need `Manage Messages` permission**")
+        
+                    if(!msz) {
+        
+                        message.channel.send("Usage: $setWlc msg <message>")
+        
+                    } else {
+        
+                        message.channel.send(`**Your server welcome message has been changed to __${msz}__**`)
+        
+                        sw[message.guild.id].msk = msz
+        
+                    }
+        
+                }
+        
+         
+        let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
+                if(message.content.startsWith(prefix + "setWlc channel")) {
+        
+                    if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**You need `Manage Channels` permission**")
+        
+                    if(!ch) {
+        
+                        message.channel.send("Usage: $setWlc channel <channel name>")
+        
+                    }
+        
+                    let chn = message.guild.channels.find("name", ch)
+        
+                    if(!chn) {
+        
+                        message.channel.send("**I can't find this channel**")
+        
+                    }
+        
+                    else {
+        
+                         sw[message.guild.id].cha = chn.name
+        
+                         message.channel.send(`**Your server welcome channel has been changed to __${chn.name}__**`)
+    }
+        
+         
+        
+                fs.writeFile('./setinvite.json', JSON.stringify(sw), (err) => {
+        
+        if (err) console.error(err);
+        
+
+    
+
+                if(!sinvite[message.guild.id]) sinvite[message.guild.id] = {
+                        setib: "invite-by",
+
+
+
+
+
+    
+
+
+        }})
+    }
+}
+    });
+
+
+
+
+const invites = {};
+const wait = require('util').promisify(setTimeout);
+client.on('ready', () => {
+  wait(1000);
+
+  client.guilds.forEach(g => {
+    g.fetchInvites().then(guildInvites => {
+      invites[g.id] = guildInvites;
+    });
+  });
+});
+client.on('guildMemberAdd', member => {
+  member.guild.fetchInvites().then(guildInvites => {
+    const ei = invites[member.guild.id];
+    const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
+    const inviter = client.users.get(invite.inviter.id);
+    const yumz = member.guild.channels.find("name", sinvite[member.guild.id].setib);
+     yumz.send(`<@${member.user.id}> joined by <@${inviter.id}>`);
+
+  {
+      let channel = member.guild.channels.find("name", sw[member.guild.id].cha)
+        
+         
+        
+        
+          channel.sendMessage(`<@${member.user.id}>, ${sw[member.guild.id].msk}`)
+}
+  }); 
+});
+
+
+
+
+
 
 
 
@@ -1726,7 +1887,6 @@ message.channel.send('**اديك 15 ثاني�� لتوجد العاصمه ا�
 
 
 
-const fs = require("fs")
 
 
 let points = JSON.parse(fs.readFileSync('./Points.json', 'utf8'));
