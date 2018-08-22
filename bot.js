@@ -143,7 +143,7 @@ let sinvite = JSON.parse(fs.readFileSync("./setinvite.json", "UTF8"))
         
          
         
-                fs.writeFile('./setinvite.json', JSON.stringify(sw), (err) => {
+                fs.writeFile('./sinvite.json', JSON.stringify(sw), (err) => {
         
         if (err) console.error(err);
         
@@ -197,6 +197,9 @@ client.on('guildMemberAdd', member => {
 }
   }); 
 });
+
+
+
 
 
 
