@@ -37,7 +37,7 @@ client.login(process.env.BOT_TOKEN);
 
 
   
-  const fs = require("fs")
+const fs = require("fs")
 const jimp = require("jimp")
 
 
@@ -54,7 +54,7 @@ let sinvite = JSON.parse(fs.readFileSync("./setinvite.json", "UTF8"))
             if(message.content.startsWith(prefix + "setib")) {
 		
 		
-		        let setibb = message.content.split(" ").slice(1).join(" ")
+		        let setib = message.content.split(" ").slice(1).join(" ")
 
 
                     if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**You need `Manage Channels` permission**")
@@ -86,26 +86,29 @@ let sinvite = JSON.parse(fs.readFileSync("./setinvite.json", "UTF8"))
 
 
 
-                let msz = message.content.split(" ").slice(2).join(" ")
-
-                let ch = message.content.split(" ").slice(2).join(" ")
-                    cha: "welcome"
+                if(message.content.startsWith(prefix + "setib channel")) {
     
-                    msz: "Welcome Bro"
-    
-            if(message.content.startsWith(prefix + "setWlc msg")) {
-    
-                    if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("**You need `Manage Messages` permission**")
-        
-                    if(!msz) {
-        
-                        message.channel.send("Usage: $setWlc msg <message>")
-        
-                    } else {
-        
-                        message.channel.send(`**Your server welcome message has been changed to __${msz}__**`)
-        
-                        sw[message.guild.id].msk = msz
+                        if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**You need `Manage Channels` permission**")
+            
+                        if(!setib) {
+            
+                            message.channel.send("Usage: $setib channel <channel name>")
+            
+                        }
+            
+                        let setibbb = message.guild.channels.find("name", setib)
+            
+                        if(!setibbb) {
+            
+                            message.channel.send("**I can't find this channel**")
+            
+                        }
+            
+                        else {
+            
+                             sinvite[message.guild.id].setibb = setib.name
+            
+                             message.channel.send(`**Your server welcome channel has been changed to __${setib.name}__**`)
         
                     }
         
@@ -194,6 +197,10 @@ client.on('guildMemberAdd', member => {
 }
   }); 
 });
+
+
+
+
 
 
 
