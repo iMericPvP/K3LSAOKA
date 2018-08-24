@@ -174,21 +174,7 @@ if (command == "emb")    {
 
 
 
-client.on('message', function(msg) {
-    if(msg.content.startsWith (prefix  + 'bot')) {
-      let embed = new Discord.RichEmbed()
-      .setColor('RANDOM')
-      .setThumbnail(msg.guild.iconURL)
-      .setTitle(`Noobbot`)
-      .addField('Servers | سيرفرات',`[** __${client.guilds.size}__ **]`,true)
-      .addField('Users | مستخدمين',`[** __${client.users.size}__ **]`,true)
-      .addField('Channels | رومات',`[** __${client.channels.size}__** ]`,true)
-	  .addField('Language | لغه',`[** JS**]`,true)
-	  .addField('Support Server | سيرفر السبورت',`[** __https://discord.gg/RRxGfXp__ **]`,true)
-	  .setFooter("NoobBot")  
-      msg.channel.send({embed:embed});
-    }
-  });
+
 
 
 client.on('message' , message => {
@@ -361,7 +347,22 @@ if (message.content.startsWith(prefix + 'perms')) {
 });
 
    
-
+client.on('message', function(msg) {
+    if(msg.content.startsWith (prefix  + 'bot')) {
+      let embed = new Discord.RichEmbed()
+      .setColor('RANDOM')
+      .setThumbnail('http://i8.ae/ASM7p')
+      .setTitle(`Noobbot`)
+      .addField('Servers | سيرفرات',`[** __${client.guilds.size}__ **]`,true)
+      .addField('Users | مستخدمين',`[** __${client.users.size}__ **]`,true)
+      .addField('Channels | رومات',`[** __${client.channels.size}__** ]`,true)
+	  .addField('Language | لغه',`[** JS**]`,true)
+	  .addFiled('Prefix | برفكس',`[** $**]`,true)
+	  .addField('Support Server | سيرفر السبورت',`[** __https://discord.gg/RRxGfXp__ **]`,true)
+	  .setFooter("NoobBot")  
+      msg.channel.send({embed:embed});
+    }
+  });
    
    
    
@@ -487,7 +488,8 @@ reaction3.on("collect", r => {
 			 -=- اوامر بورد كاست -=-
 ❖$bc [message] | بورد كاست للكل و مطور
 ❖$2bc [message] | بورد كاست للكل غير مطور
-❖$3bc [message] | بورد كاست للونلاين فقط و غير مطور
+❖$3bc [message] | بورد كاست للونلاين غير مطور
+❖$4bc [message] | بورد كاست للونلاين مطور
 ❖$user-bc @name [message] | رساله لشخص واحد 
 ❖$role-bc @rank [message] | رساله لكل من يملك الرتبه الممشنه
 `)
@@ -508,14 +510,16 @@ client.on('message', message => {
    let embed = new Discord.RichEmbed()
     let args = message.content.split(' ').slice(1).join(' ');
 if(message.content.split(' ')[0] == prefix + 'bc') {
+    message.channel.send(`: عدد الاعضاء المستلمين  ${msg.guild.memberCount}`)
     if (!args[1]) {
 return;
 }
         message.guild.members.forEach(m => {
    if(!message.member.hasPermission('ADMINISTRATOR')) return;
             var bc = new Discord.RichEmbed()
-            .addField(' » الرسالة : ', args)
-            .addField(' » سيرفر : ', message.guild.name)
+			.addField(':earth_americas:  » سيرفر : ', message.guild.name)
+			.addField(':thinking:  » راسل : ', message.author.username)
+            .addField(':pencil:  » الرسالة : ', args)
             .setColor('#ff0000')
             // m.send(`[${m}]`);
             m.send(`${m}`,{embed: bc});
@@ -542,9 +546,6 @@ return;
   message.guild.members.forEach(m => {
 if(!message.member.hasPermission('ADMINISTRATOR')) return;
       var bc = new Discord.RichEmbed()
-      .addField('args')
-      .setThumbnail(message.guild.iconURL)
-      .setColor('RANDOM')
       m.sendMessage(args)
   });
          if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply(":x: **ليس لديك صلاحية للنشر هنا**");
@@ -569,6 +570,25 @@ client.on("message", message => {
   message.guild.members.filter(m => m.presence.status !== 'offline').forEach(m => {
  m.send(`${argresult}\n ${m}`);
 })
+ message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'online').size}\` : عدد الاعضاء المستلمين`); 
+ message.delete(); 
+};     
+});
+
+
+client.on("message", message => {
+
+            if (message.content.startsWith(prefix + "4bc")) {
+                         if (!message.member.hasPermission("ADMINISTRATOR"))  return;
+  let args = message.content.split(" ").slice(1);
+  var argresult = args.join(' '); 
+  message.guild.members.filter(m => m.presence.status !== 'offline').forEach(m => {
+      var bc = new Discord.RichEmbed()
+	  		.addField(':earth_americas:  » سيرفر : ', message.guild.name)
+			.addField(':thinking:  » راسل : ', message.author.username)
+            .addField(':pencil:  » الرسالة : ', args)
+			            m.send(`${m}`,{embed: bc});
+  })
  message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'online').size}\` : عدد الاعضاء المستلمين`); 
  message.delete(); 
 };     
@@ -1013,7 +1033,7 @@ client.on('message', message => {
   if(message.content === '$support') {
   const embed = new Discord.RichEmbed()
   .setTitle('Click here')
-  .setURL('https://discord.gg/RRxGfXp')
+  .setURL('https://discord.gg/a3GtXPr')
   .setColor('RANDOM')
   message.channel.send({embed: embed});
   }
@@ -1342,64 +1362,6 @@ client.on("message", message => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 client.on('message' , message => {
   var prefix = "$";
   if(message.author.bot) return;
@@ -1437,24 +1399,6 @@ client.on('message' , message => {
 });
 
 
-
-
-
-
-
-
-
-
-
-
-	
-	
-
-	
-	
-	
-	
-
 client.on('message',  (message) => {
         if(message.content.startsWith('$punch')) {
   let user = message.mentions.users.first();
@@ -1489,19 +1433,6 @@ client.on('message',  (message) => {
   })
         }  
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1544,20 +1475,6 @@ client.on('message' , async (message) => {
   
   
   
-  
-  
-  
-  
-  
-  
-
-
-
-
-
-
-
-
 
 client.on('message', message => {
 if (!points[message.author.id]) points[message.author.id] = {
@@ -1631,83 +1548,6 @@ m.edit({embed: new Discord.RichEmbed().setTitle('لديك 15 ثانيه للاج
     }
     });
 
-
-
-
-client.on('message', message => {
-if (!points[message.author.id]) points[message.author.id] = {
-    points: 50,
-  };
-if (message.content.startsWith(prefix + 'رياضيات')) { 
-    if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
-
-const type = require('./read/read.json'); 
-const item = type[Math.floor(Math.random() * type.length)]; 
-const answer = item.answers
-const filter = response => { 
-    return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
-};
-message.channel.send('**لديك 15 ثانيه**').then(msg => {
-    let embed = new Discord.RichEmbed()
-    .setColor('#000000')
-    .setFooter("رياضيات  | NoobBot", 'https://cdn.discordapp.com/attachments/462239154630164511/477536845777993728/NOOB_BOT_1.png')
-    .setDescription(`** ${item.type}**`)
-
-    msg.channel.sendEmbed(embed).then(() => {
-        message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
-        .then((collected) => {
-        message.channel.send(`${collected.first().author} ✅ **الاجابه صحيحه**`); //mohamed192837465#7033صاحب الكود
-
-        console.log(`[Typing] ${collected.first().author} typed the word.`);
-            let won = collected.first().author; 
-            points[won.id].points++;
-          })
-          .catch(collected => { 
-            message.channel.send(`:x: لم يقم احد بكتابه الاجابه الصحيحه في الوقت المناسب`);
-            console.log(`[Typing] ماحد قال الاجابه `);
-          })
-        })
-    })
-}
-});
-
-
-client.on('message', message => {
-if (!points[message.author.id]) points[message.author.id] = {
-    points: 50,
-  };
-if (message.content.startsWith(prefix + 'ماينكرفت')) { 
-    if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
-
-const type = require('./minecraft/minecraft.json'); 
-const item = type[Math.floor(Math.random() * type.length)]; 
-const answer = item.answers
-const filter = response => { 
-    return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
-};
-message.channel.send('**لديك 15 ثانيه**').then(msg => {
-    let embed = new Discord.RichEmbed()
-    .setColor('#000000')
-    .setFooter("ماينكرفت  | NoobBot", 'https://cdn.discordapp.com/attachments/462239154630164511/477536845777993728/NOOB_BOT_1.png')
-    .setDescription(`** ${item.type}**`)
-
-    msg.channel.sendEmbed(embed).then(() => {
-        message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
-        .then((collected) => {
-        message.channel.send(`${collected.first().author} ✅ **الاجابه صحيحه**`); //mohamed192837465#7033صاحب الكود
-
-        console.log(`[Typing] ${collected.first().author} typed the word.`);
-            let won = collected.first().author; 
-            points[won.id].points++;
-          })
-          .catch(collected => { 
-            message.channel.send(`:x: لم يقم احد بكتابه الجواب الصحيح في الوقت المناسب`);
-            console.log(`[Typing] ماحد قال الاجابه `);
-          })
-        })
-    })
-}
-});
 
 
 client.on('message', message => {
@@ -1844,7 +1684,7 @@ message.channel.send({embed});
 
 
 client.on('message',async message => {
-    if(message.content.startsWith(prefix + "setmember")) {
+    if(message.content.startsWith(prefix + "setmembers count")) {
     if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('❌ **لا تمتلك صلاحيه**');
     if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS','MANAGE_ROLES_OR_PERMISSIONS'])) return message.reply('❌ **لا امتلك صلاحيه**');
     message.channel.send('✅| **تم عمل الروم بنجاح**');
@@ -1868,7 +1708,7 @@ client.on('message',async message => {
   
   
     client.on('message',async message => {
-    if(message.content.startsWith(prefix + "setbot")) {
+    if(message.content.startsWith(prefix + "setbots count")) {
     if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('❌ **لا تمتلك صلاحيه**');
     if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS','MANAGE_ROLES_OR_PERMISSIONS'])) return message.reply('❌ **لا امتلك صلاحيه**');
     message.channel.send('✅| **تم عمل الروم بنجاح**');
