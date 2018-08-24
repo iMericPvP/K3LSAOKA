@@ -282,7 +282,7 @@ message.channel.sendEmbed(cat);
 var prefix = "$";
       if(message.content === prefix + "hidec") {
       if(!message.channel.guild) return;
-      if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('You Dont Have Perms :x:');
+      if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('انت لا تمتلك صلاحيه ADMINISTRATOR');
              message.channel.overwritePermissions(message.guild.id, {
              READ_MESSAGES: false
  })
@@ -309,7 +309,7 @@ let prefix = '$'
 
 client.on("message", (message) => {
     if (message.content.startsWith('$dr')) {
-        if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply("You Don't Have `MANAGE_CHANNELS` Premissions ");
+        if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply("انت لا تمتلك صلاحيه MANAGE_CHANNELS");
 
         let args = message.content.split(' ').slice(1);
         let channel = message.client.channels.find('name', args.join(' '));
@@ -323,7 +323,7 @@ client.on('message', message => {
 var prefix = "$";
       if(message.content === prefix + "showc") {
       if(!message.channel.guild) return;
-      if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply(':x:');
+      if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('انت لا تمتلك صلاحيه ADMINISTRATOR');
              message.channel.overwritePermissions(message.guild.id, {
              READ_MESSAGES: true
  })
@@ -371,7 +371,6 @@ client.on('message', function(msg) {
    if(message.content.startsWith(prefix + "help")) {
     let messageArgs = message.content.split(" ").slice(1).join(" ");
     let messageRPS = message.content.split(" ").slice(2).join(" ");
-    let arrayRPS = ['**# - Rock**','**# - Paper**','**# - Scissors**'];
     let result = `${arrayRPS[Math.floor(Math.random() * arrayRPS.length)]}`;
     var RpsEmbed = new Discord.RichEmbed()
     .setAuthor(message.author.username)
@@ -473,7 +472,6 @@ reaction3.on("collect", r => {
 ❖$نكت مضحكه | نكت
 ❖$لعبه اعلم | اعلم
 ❖$لعبه اموجي | ايموجي
-❖$لعبه ماينكرفت | ماينكرفت
 ❖$لعبه عواصم | عواصم
 ❖$لعبه فكك | فكك
 `)
@@ -510,13 +508,13 @@ client.on('message', message => {
    let embed = new Discord.RichEmbed()
     let args = message.content.split(' ').slice(1).join(' ');
 if(message.content.split(' ')[0] == prefix + 'bc') {
-    message.channel.send(`: عدد الاعضاء المستلمين  ${message.guild.memberCount}`)
+    message.channel.send(`\`${message.guild.memberCount}\` : عدد الاعضاء المستلمين`); 
     if (!args[1]) {
 return;
 }
         message.guild.members.forEach(m => {
-   if(!message.member.hasPermission('ADMINISTRATOR')) return;
-            var bc = new Discord.RichEmbed()
+                 if (!message.member.hasPermission("ADMINISTRATOR"))  return;
+		var bc = new Discord.RichEmbed()
 			.addField(':earth_americas:  » سيرفر : ', message.guild.name)
 			.addField(':thinking:  » راسل : ', message.author.username)
             .addField(':pencil:  » الرسالة : ', args)
@@ -549,9 +547,8 @@ if(!message.member.hasPermission('ADMINISTRATOR')) return;
       m.sendMessage(args)
   });
          if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply(":x: **ليس لديك صلاحية للنشر هنا**");
-  const AziRo = new Discord.RichEmbed()   
-  .setColor('RANDOM')
-  message.channel.sendEmbed(AziRo);          
+         message.channel.send(`\`${message.guild.memberCount}\` : عدد الاعضاء المستلمين`); 
+
 }
 } else {
   return;
@@ -574,6 +571,9 @@ client.on("message", message => {
  message.delete(); 
 };     
 });
+
+
+
 
 
 client.on("message", message => {
@@ -614,8 +614,8 @@ client.on("message", message => {
   if (command == "ban") {
                if(!message.channel.guild) return message.reply('** This command only for servers**');
          
-  if(!message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return message.reply("**You Don't Have ` BAN_MEMBERS ` Permission**");
-  if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.reply("**I Don't Have ` BAN_MEMBERS ` Permission**");
+  if(!message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return message.reply("**انت لا تمتلك صلاحيه BAN_MEMBERS**");
+  if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.reply("**انا لا امتلك صلاحيه MANAGE_MESSAGES**");
   let user = message.mentions.users.first();
   let reason = message.content.split(" ").slice(2).join(" ");
   /*let b5bzlog = client.channels.find("name", "5bz-log");
@@ -656,8 +656,8 @@ client.on('message', message => {
   if (command == "kick") {
                if(!message.channel.guild) return message.reply('** This command only for servers**');
          
-  if(!message.guild.member(message.author).hasPermission("KICK_MEMBERS")) return message.reply("**انت لا تملك صلاحيات**");
-  if(!message.guild.member(client.user).hasPermission("KICK_MEMBERS")) return message.reply("**انا لا املك صلاحيات**");
+  if(!message.guild.member(message.author).hasPermission("KICK_MEMBERS")) return message.reply("**انت لا تمتلك صلاحيه KICK_MEMBERS**");
+  if(!message.guild.member(client.user).hasPermission("KICK_MEMBERS")) return message.reply("**انا لا امتلك صلاحيه KICK_MEMBERS**");
   let user = message.mentions.users.first();
   let reason = message.content.split(" ").slice(2).join(" ");
   /*let b5bzlog = client.channels.find("name", "5bz-log");
@@ -695,8 +695,8 @@ command = command.slice(prefix.length);
 let args = message.content.split(" ").slice(1);
 if (command == "mute") {
 if (!message.channel.guild) return;
-if(!message.guild.member(message.author).hasPermission("MANAGE_MESSAGES")) return message.reply("انت لا تملك صلاحيات !! ").then(msg => msg.delete(5000));
-if(!message.guild.member(client.user).hasPermission("MANAGE_MESSAGES")) return message.reply("البوت لايملك صلاحيات ").then(msg => msg.delete(5000));;
+if(!message.guild.member(message.author).hasPermission("MANAGE_MESSAGES")) return message.reply("انت لا تمتلك صلاحيه BAN_MEMBERS").then(msg => msg.delete(5000));
+if(!message.guild.member(client.user).hasPermission("MANAGE_MESSAGES")) return message.reply("انا لا امتلك صلاحيه BAN_MEMBERS").then(msg => msg.delete(5000));;
 let user = message.mentions.users.first();
 let muteRole = message.guild.roles.find("name", "Muted");
 if (!muteRole) return message.reply("** لا يوجد رتبة الميوت 'Muted' **").then(msg => {msg.delete(5000)});
@@ -773,9 +773,9 @@ client.on('message', message => {
 
 
 client.on('guildCreate', guild => {
-  var embed = new Discord.RichEmbed()
-  .setColor(0x5500ff)
-  .setDescription(`**شكرا لك لي اضافتي لي سيرفرك :heart: ويارب يفيدك وعليشان تعرف اوامره اكتب $help**`)
+    var embed = new Discord.RichEmbed()
+    .addField('`$help` شكرا لك لي اضافه البوت هذه هو امر المساعده')
+    .setColor('#ff0000')
       guild.owner.send(embed)
 });
 
@@ -819,11 +819,11 @@ message.react("❌")
 	var msg = message.content.toLowerCase();
 	if( !message.guild ) return;
     if( !msg.startsWith( prefix + 'role' ) ) return;
-    if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**انا لا املك صلاحيات**");
-    if(!message.member.hasPermission('MANAGE_ROLES')) return message.reply(' ليس لديك صلاحيات');
+    if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**انا لا امتلك صلاحيه MANAGE_ROLES**");
+    if(!message.member.hasPermission('MANAGE_ROLES')) return message.reply('انت لا تمتلك صلاحيه MANAGE_ROLES');
 	if( msg.toLowerCase().startsWith( prefix + 'roleremove' ) ){
-        if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**انا لا املك صلاحيات**");
-        if(!message.member.hasPermission('MANAGE_ROLES')) return message.reply(' ليس لديك صلاحيات');
+        if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**انا لا امتلك صلاحيه MANAGE_ROLES**");
+        if(!message.member.hasPermission('MANAGE_ROLES')) return message.reply('انت لا تمتلك صلاحيه MANAGE_ROLES');
 		if( !args[0] ) return message.reply( '**:x: يرجى وضع الشخص المراد سحب منه الرتبة**' );
 		if( !args[1] ) return message.reply( '**:x: يرجى وضع الرتبة المراد سحبها من الشخص**' );
 		var role = msg.split(' ').slice(2).join(" ").toLowerCase(); 
@@ -833,18 +833,18 @@ message.react("❌")
 			return message.reply('**:white_check_mark: [ '+role1.name+' ] رتبة [ '+args[0]+' ] تم سحب من **');
 		}
 		if( args[0].toLowerCase() == "all" ){
-            if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**انا لا املك صلاحيات**");
-            if(!message.member.hasPermission('MANAGE_ROLES')) return message.reply(' ليس لديك صلاحيات');
+            if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**انا لا امتلك صلاحيه MANAGE_ROLES**");
+            if(!message.member.hasPermission('MANAGE_ROLES')) return message.reply('انت لا تمتلك صلاحيه MANAGE_ROLES');
 			message.guild.members.forEach(m=>m.removeRole( role1 ))
 			return	message.reply('**:white_check_mark: [ '+role1.name+' ] تم سحب من الكل رتبة**');
 		} else if( args[0].toLowerCase() == "bots" ){
-            if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**انا لا املك صلاحيات**");
-            if(!message.member.hasPermission('MANAGE_ROLES')) return message.reply(' ليس لديك صلاحيات');
+            if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**انا لا امتلك صلاحيه MANAGE_ROLES**");
+            if(!message.member.hasPermission('MANAGE_ROLES')) return message.reply('انت لا تمتلك صلاحيه MANAGE_ROLES');
 			message.guild.members.filter(m=>m.user.bot).forEach(m=>m.removeRole(role1))
 			return	message.reply('**:white_check_mark: [ '+role1.name+' ] تم سحب من البوتات رتبة**');
 		} else if( args[0].toLowerCase() == "humans" ){
-            if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**انا لا املك صلاحيات**");
-            if(!message.member.hasPermission('MANAGE_ROLES')) return message.reply(' ليس لديك صلاحيات');
+            if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**انا لا امتلك صلاحيه MANAGE_ROLES**");
+            if(!message.member.hasPermission('MANAGE_ROLES')) return message.reply('انت لا تمتلك صلاحيه MANAGE_ROLES');
 			message.guild.members.filter(m=>!m.user.bot).forEach(m=>m.removeRole(role1))
 			return	message.reply('**:white_check_mark: [ '+role1.name+' ] تم سحب من البشريين رتبة**');
 		} 	
@@ -858,8 +858,8 @@ message.react("❌")
 			return message.reply('**:white_check_mark: [ '+role1.name+' ] رتبة [ '+args[0]+' ] تم اعطاء **');
 		}
 		if( args[0].toLowerCase() == "all" ){
-			  if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**انا لا املك صلاحيات**");
-if(!message.member.hasPermission('MANAGE_ROLES')) return message.reply(' ليس لديك صلاحيات');
+			  if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**انا لا امتلك صلاحيه MANAGE_ROLES**");
+if(!message.member.hasPermission('MANAGE_ROLES')) return message.reply('انت لا تمتلك صلاحيه MANAGE_ROLES');
 			message.guild.members.forEach(m=>m.addRole( role1 ))
 			return	message.reply('**:white_check_mark: [ '+role1.name+' ] تم اعطاء الكل رتبة**');
 		} else if( args[0].toLowerCase() == "bots" ){
@@ -877,8 +877,8 @@ if(!message.member.hasPermission('MANAGE_ROLES')) return message.reply(' ليس 
 
     if (message.content === "$mutechannel") {
                         if(!message.channel.guild) return message.reply(' This command only for servers');
-  if(!message.guild.member(client.user).hasPermission("MANAGE_CHANNELS")) return message.reply("**انا لا املك صلاحيات**");
-if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' ليس لديك صلاحيات');
+  if(!message.guild.member(client.user).hasPermission("MANAGE_CHANNELS")) return message.reply("** انت لا تمتلك صلاحيه MANAGE_MESSAGES**");
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('انا لا امتلك صلاحيه MANAGE_MESSAGES');
            message.channel.overwritePermissions(message.guild.id, {
          SEND_MESSAGES: false
 
@@ -889,8 +889,8 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' لي
 //Mohamed192837465
 if (message.content === "$unmutechannel") {
     if(!message.channel.guild) return message.reply(' This command only for servers');
-  if(!message.guild.member(client.user).hasPermission("MANAGE_CHANNELS")) return message.reply("**انا لا املك صلاحيات**");
-if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('ليس لديك صلاحيات');
+  if(!message.guild.member(client.user).hasPermission("MANAGE_CHANNELS")) return message.reply("**انا لا امتلك صلاحيه MANAGE_CHANNELS**");
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('انت لا تمتلك صلاحيه MANAGE_CHANNELS');
            message.channel.overwritePermissions(message.guild.id, {
          SEND_MESSAGES: true
 
@@ -1102,7 +1102,7 @@ var prefix = "$";
                         let args = ra3d.content.split(" ").slice(1).join(" ")
 if(ra3d.content.startsWith(prefix + 'cc')) {
     if(!args) return ra3d.channel.send('`يرجا عليك كتابه رقم الالوان`');
-             if (!ra3d.member.hasPermission('MANAGE_ROLES')) return ra3d.channel.sendMessage('`**⚠ | `[MANAGE_ROLES]` لا يوجد لديك صلاحية**'); 
+             if (!ra3d.member.hasPermission('MANAGE_ROLES')) return ra3d.channel.sendMessage('`**انت لا تمتلك صلاحيه MANAGE_ROLES**'); 
               ra3d.channel.send(`**✅ |تم صنع __${args}__ الوان**`);
                   setInterval(function(){})
                     let count = 0;
