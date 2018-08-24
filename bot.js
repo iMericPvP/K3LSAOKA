@@ -510,7 +510,7 @@ client.on('message', message => {
    let embed = new Discord.RichEmbed()
     let args = message.content.split(' ').slice(1).join(' ');
 if(message.content.split(' ')[0] == prefix + 'bc') {
-    message.channel.send(`: عدد الاعضاء المستلمين  ${msg.guild.memberCount}`)
+    message.channel.send(`: عدد الاعضاء المستلمين  ${message.guild.memberCount}`)
     if (!args[1]) {
 return;
 }
