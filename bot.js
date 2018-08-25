@@ -911,7 +911,101 @@ client.on('message', message => {
 
 
 
+const fs = require("fs")
+const jimp = require("jimp")
 
+let sw = JSON.parse(fs.readFileSync("./setc.json", "UTF8"))
+
+ 
+
+    client.on('message', message => {
+
+
+ 
+
+        let mothed = ['text', 'embed', 'image'];
+
+        let sets = message.content.split(" ").slice(1).join(" ")
+
+        let style = message.content.split(" ").slice(2).join(" ")
+
+        let stym = message.content.split(" ").slice(3).join(" ")
+
+        let msz = message.content.split(" ").slice(2).join(" ")
+
+        let ch = message.content.split(" ").slice(2).join(" ")
+
+        let r = message.content.split(" ").slice(4).join(" ")
+
+ 
+
+ 
+
+        if(message.content.startsWith(prefix + "setChannel")) {
+
+    if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**You need `Manage Channels` permission**")
+
+            if(!sw[message.guild.id]) sw[message.guild.id] = {
+
+                cha: "غير محدد",
+
+
+            };
+
+ 
+
+            if(!sets) {
+
+                message.channel.send(`**الاستخدام:
+
+
+            ${prefix}setChannel <channel name>**`)
+
+            }
+
+ 
+
+}
+
+ 
+
+        if(message.content.startsWith(prefix + "setChannel")) {
+
+            if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**You need `Manage Channels` permission**")
+
+            if(!ch) {
+
+                message.channel.send("للستخدام: $setChannel <channel name>")
+
+            }
+
+            let chn = message.guild.channels.find("name", ch)
+
+            if(!chn) {
+
+                message.channel.send("**I can't find this channel**")
+
+            }
+
+            else {
+
+                 sw[message.guild.id].cha = chn.name
+
+                 message.channel.send(`**تم تغير الروم الائساسي للسيرفر الي __${chn.name}__**`)
+
+                 }
+
+        }
+
+ 
+
+        fs.writeFile('./setc.json', JSON.stringify(sw), (err) => {
+
+if (err) console.error(err);
+
+})
+
+})
 
 
 client.on('message', function(msg) {
@@ -921,6 +1015,7 @@ client.on('message', function(msg) {
       .setThumbnail(msg.guild.iconURL)
       .setTitle(`Noobbot`)
       .addField('عدد الرتب',`[** __${msg.guild.roles.size}__ **]`,true)
+	  .addField('الروم الائساسي للسيرفر',`[** __${chn}__**]`,true)
       .addField('عدد الاعضاء',`[** __${msg.guild.memberCount}__ **]`,true)
       .addField('الرومات الكتابيه',`[** __${msg.guild.channels.filter(m => m.type === 'text').size}__** ]`,true)
       .addField('الرومات الصوتيه',`[** __${msg.guild.channels.filter(m => m.type === 'voice').size}__ **]`,true)
@@ -1572,7 +1667,6 @@ message.channel.send('**اديك 15 ثاني�� لتوجد العاصمه ا�
 
 
 
-const fs = require("fs")
 let points = JSON.parse(fs.readFileSync('./Points.json', 'utf8'));
 client.on('message', message => {
 if (!points[message.author.id]) points[message.author.id] = {
