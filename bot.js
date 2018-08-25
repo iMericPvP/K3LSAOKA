@@ -924,7 +924,6 @@ let sw = JSON.parse(fs.readFileSync("./setc.json", "UTF8"))
  
 
 
-
         let sets = message.content.split(" ").slice(1).join(" ")
 
         let ch = message.content.split(" ").slice(2).join(" ")
@@ -940,7 +939,7 @@ let sw = JSON.parse(fs.readFileSync("./setc.json", "UTF8"))
 
             if(!sw[message.guild.id]) sw[message.guild.id] = {
 
-                ch: "غير محدد",
+                cha: "غير محدد",
 
 
             };
@@ -952,8 +951,8 @@ let sw = JSON.parse(fs.readFileSync("./setc.json", "UTF8"))
                 message.channel.send(`**الاستخدام:
 
 
-            ${prefix}set Channel <channel name>
-          ${prefix}set Wlc <channel name> [SOON]**`)
+            ${prefix}set channel <channel name>
+           ${prefix}set wlc <channel name> [SOON..]**`)
 
             }
 
@@ -963,17 +962,17 @@ let sw = JSON.parse(fs.readFileSync("./setc.json", "UTF8"))
 
  
 
-        if(message.content.startsWith(prefix + "set Channel")) {
+        if(message.content.startsWith(prefix + "set channel")) {
 
             if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**You need `Manage Channels` permission**")
 
             if(!ch) {
 
-                message.channel.send("للستخدام: $set Channel <channel name>")
+                message.channel.send("للستخدام: $set channel <channel name>")
 
             }
 
-            let chn = message.guild.channels.find("name", ch)
+            let chn = message.guild.channels.find("name", cha)
 
             if(!chn) {
 
@@ -995,37 +994,31 @@ let sw = JSON.parse(fs.readFileSync("./setc.json", "UTF8"))
 
         fs.writeFile('./setc.json', JSON.stringify(sw), (err) => {
 
-if (err) console.error(err); {
+if (err) console.error(err);
 
-
-
-
-}
 })
 
 })
 
 
-    client.on('message', message => {
-
-if(msg.content.startsWith (prefix  + 'server')) {
-    let embed = new Discord.RichEmbed()
-    .setColor('RANDOM')
-    .setThumbnail(msg.guild.iconURL)
-    .setTitle(`Noobbot`)
-    .addField('عدد الرتب',`[** __${msg.guild.roles.size}__ **]`,true)
-    .addField('الروم الائساسي للسيرفر',`[** __${sw[member.guild.id].cha}__**]`,true)
-    .addField('عدد الاعضاء',`[** __${msg.guild.memberCount}__ **]`,true)
-    .addField('الرومات الكتابيه',`[** __${msg.guild.channels.filter(m => m.type === 'text').size}__** ]`,true)
-    .addField('الرومات الصوتيه',`[** __${msg.guild.channels.filter(m => m.type === 'voice').size}__ **]`,true)
-    .addField('اونر السيرفر',`[** __${msg.guild.owner}__ **]`,true)
-    .addField('صنع السيرفر في',msg.guild.createdAt.toLocaleString())
-    .addField('اسم السيرفر',`[** __${msg.guild.name}__ **]`,true)
-    .setFooter("لكي تعرف حالات الاعضاء  قم بكتابه $members | لكي تعرف ماهي رتب السيرفر قم بكتابه $ranks")  
-    msg.channel.send({embed:embed});
-}
-});
-
+client.on('message', function(msg) {
+    if(msg.content.startsWith (prefix  + 'server')) {
+      let embed = new Discord.RichEmbed()
+      .setColor('RANDOM')
+      .setThumbnail(msg.guild.iconURL)
+      .setTitle(`Noobbot`)
+      .addField('عدد الرتب',`[** __${msg.guild.roles.size}__ **]`,true)
+	  .addField('الروم الائساسي للسيرفر',`[** __${sw[member.guild.id].cha}__**]`,true)
+      .addField('عدد الاعضاء',`[** __${msg.guild.memberCount}__ **]`,true)
+      .addField('الرومات الكتابيه',`[** __${msg.guild.channels.filter(m => m.type === 'text').size}__** ]`,true)
+      .addField('الرومات الصوتيه',`[** __${msg.guild.channels.filter(m => m.type === 'voice').size}__ **]`,true)
+	  .addField('اونر السيرفر',`[** __${msg.guild.owner}__ **]`,true)
+      .addField('صنع السيرفر في',msg.guild.createdAt.toLocaleString())
+	  .addField('اسم السيرفر',`[** __${msg.guild.name}__ **]`,true)
+	  .setFooter("لكي تعرف حالات الاعضاء  قم بكتابه $members | لكي تعرف ماهي رتب السيرفر قم بكتابه $ranks")  
+      msg.channel.send({embed:embed});
+    }
+  });
 
    
    
