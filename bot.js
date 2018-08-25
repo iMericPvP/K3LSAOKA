@@ -925,6 +925,7 @@ let sw = JSON.parse(fs.readFileSync("./setc.json", "UTF8"))
 
 
 
+        let sets = message.content.split(" ").slice(1).join(" ")
 
         let ch = message.content.split(" ").slice(3).join(" ")
 
