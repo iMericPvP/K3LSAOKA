@@ -927,14 +927,14 @@ let sw = JSON.parse(fs.readFileSync("./setc.json", "UTF8"))
 
         let sets = message.content.split(" ").slice(1).join(" ")
 
-        let ch = message.content.split(" ").slice(3).join(" ")
+        let ch = message.content.split(" ").slice(2).join(" ")
 
 
  
 
  
 
-        if(message.content.startsWith(prefix + "setChannel")) {
+        if(message.content.startsWith(prefix + "set")) {
 
     if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**You need `Manage Channels` permission**")
 
@@ -952,7 +952,8 @@ let sw = JSON.parse(fs.readFileSync("./setc.json", "UTF8"))
                 message.channel.send(`**الاستخدام:
 
 
-            ${prefix}setChannel <channel name>**`)
+            ${prefix}setChannel <channel name>
+            ${prefix}setWlc <channel name> [SOON]**`)
 
             }
 
@@ -962,13 +963,13 @@ let sw = JSON.parse(fs.readFileSync("./setc.json", "UTF8"))
 
  
 
-        if(message.content.startsWith(prefix + "setChannel")) {
+        if(message.content.startsWith(prefix + "set Channel")) {
 
             if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**You need `Manage Channels` permission**")
 
             if(!ch) {
 
-                message.channel.send("للستخدام: $setChannel <channel name>")
+                message.channel.send("للستخدام: $set Channel <channel name>")
 
             }
 
