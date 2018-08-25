@@ -923,19 +923,11 @@ let sw = JSON.parse(fs.readFileSync("./setc.json", "UTF8"))
 
  
 
-        let mothed = ['text', 'embed', 'image'];
 
-        let sets = message.content.split(" ").slice(1).join(" ")
 
-        let style = message.content.split(" ").slice(2).join(" ")
 
-        let stym = message.content.split(" ").slice(3).join(" ")
+        let ch = message.content.split(" ").slice(3).join(" ")
 
-        let msz = message.content.split(" ").slice(2).join(" ")
-
-        let ch = message.content.split(" ").slice(2).join(" ")
-
-        let r = message.content.split(" ").slice(4).join(" ")
 
  
 
@@ -947,7 +939,7 @@ let sw = JSON.parse(fs.readFileSync("./setc.json", "UTF8"))
 
             if(!sw[message.guild.id]) sw[message.guild.id] = {
 
-                cha: "غير محدد",
+                ch: "غير محدد",
 
 
             };
@@ -989,7 +981,7 @@ let sw = JSON.parse(fs.readFileSync("./setc.json", "UTF8"))
 
             else {
 
-                 sw[message.guild.id].cha = chn.name
+                 sw[message.guild.id].ch = chn.name
 
                  message.channel.send(`**تم تغير الروم الائساسي للسيرفر الي __${chn.name}__**`)
 
