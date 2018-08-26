@@ -1001,24 +1001,7 @@ if (err) console.error(err);
 })
 
 
-client.on('message', function(msg) {
-    if(msg.content.startsWith (prefix  + 'server')) {
-      let embed = new Discord.RichEmbed()
-      .setColor('RANDOM')
-      .setThumbnail(msg.guild.iconURL)
-      .setTitle(`Noobbot`)
-      .addField('عدد الرتب',`[** __${msg.guild.roles.size}__ **]`,true)
-	  .addField('الروم الائساسي للسيرفر',`[** __${sw[member.guild.id].cha}__**]`,true)
-      .addField('عدد الاعضاء',`[** __${msg.guild.memberCount}__ **]`,true)
-      .addField('الرومات الكتابيه',`[** __${msg.guild.channels.filter(m => m.type === 'text').size}__** ]`,true)
-      .addField('الرومات الصوتيه',`[** __${msg.guild.channels.filter(m => m.type === 'voice').size}__ **]`,true)
-	  .addField('اونر السيرفر',`[** __${msg.guild.owner}__ **]`,true)
-      .addField('صنع السيرفر في',msg.guild.createdAt.toLocaleString())
-	  .addField('اسم السيرفر',`[** __${msg.guild.name}__ **]`,true)
-	  .setFooter("لكي تعرف حالات الاعضاء  قم بكتابه $members | لكي تعرف ماهي رتب السيرفر قم بكتابه $ranks")  
-      msg.channel.send({embed:embed});
-    }
-  });
+
 
    
    
