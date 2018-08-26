@@ -799,11 +799,11 @@ message.react("❌")
 	var msg = message.content.toLowerCase();
 	if( !message.guild ) return;
     if( !msg.startsWith( prefix + 'role' ) ) return;
-    if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**انا لا امتلك صلاحيه MANAGE_ROLES**");
-    if(!message.member.hasPermission('MANAGE_ROLES')) return message.reply('انت لا تمتلك صلاحيه MANAGE_ROLES');
+    if(!message.guild.member(client.user).hasPermission("ADMINISTRATOR")) return message.reply("**انا لا امتلك صلاحيه ADMINISTRATOR**");
+    if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('انت لا تمتلك صلاحيه ADMINISTRATOR');
 	if( msg.toLowerCase().startsWith( prefix + 'roleremove' ) ){
-        if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**انا لا امتلك صلاحيه MANAGE_ROLES**");
-        if(!message.member.hasPermission('MANAGE_ROLES')) return message.reply('انت لا تمتلك صلاحيه MANAGE_ROLES');
+        if(!message.guild.member(client.user).hasPermission("ADMINISTRATOR")) return message.reply("**انا لا امتلك صلاحيه ADMINISTRATOR**");
+        if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('انت لا تمتلك صلاحيه ADMINISTRATOR');
 		if( !args[0] ) return message.reply( '**:x: يرجى وضع الشخص المراد سحب منه الرتبة**' );
 		if( !args[1] ) return message.reply( '**:x: يرجى وضع الرتبة المراد سحبها من الشخص**' );
 		var role = msg.split(' ').slice(2).join(" ").toLowerCase(); 
@@ -813,18 +813,18 @@ message.react("❌")
 			return message.reply('**:white_check_mark: [ '+role1.name+' ] رتبة [ '+args[0]+' ] تم سحب من **');
 		}
 		if( args[0].toLowerCase() == "all" ){
-            if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**انا لا امتلك صلاحيه MANAGE_ROLES**");
-            if(!message.member.hasPermission('MANAGE_ROLES')) return message.reply('انت لا تمتلك صلاحيه MANAGE_ROLES');
+            if(!message.guild.member(client.user).hasPermission("ADMINISTRATOR")) return message.reply("**انا لا امتلك صلاحيه ADMINISTRATOR**");
+            if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('انت لا تمتلك صلاحيه ADMINISTRATOR');
 			message.guild.members.forEach(m=>m.removeRole( role1 ))
 			return	message.reply('**:white_check_mark: [ '+role1.name+' ] تم سحب من الكل رتبة**');
 		} else if( args[0].toLowerCase() == "bots" ){
-            if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**انا لا امتلك صلاحيه MANAGE_ROLES**");
-            if(!message.member.hasPermission('MANAGE_ROLES')) return message.reply('انت لا تمتلك صلاحيه MANAGE_ROLES');
+            if(!message.guild.member(client.user).hasPermission("ADMINISTRATOR")) return message.reply("**انا لا امتلك صلاحيه ADMINISTRATOR**");
+            if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('انت لا تمتلك صلاحيه ADMINISTRATOR');
 			message.guild.members.filter(m=>m.user.bot).forEach(m=>m.removeRole(role1))
 			return	message.reply('**:white_check_mark: [ '+role1.name+' ] تم سحب من البوتات رتبة**');
 		} else if( args[0].toLowerCase() == "humans" ){
-            if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**انا لا امتلك صلاحيه MANAGE_ROLES**");
-            if(!message.member.hasPermission('MANAGE_ROLES')) return message.reply('انت لا تمتلك صلاحيه MANAGE_ROLES');
+            if(!message.guild.member(client.user).hasPermission("ADMINISTRATOR")) return message.reply("**انا لا امتلك صلاحيه ADMINISTRATOR**");
+            if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('انت لا تمتلك صلاحيه ADMINISTRATOR');
 			message.guild.members.filter(m=>!m.user.bot).forEach(m=>m.removeRole(role1))
 			return	message.reply('**:white_check_mark: [ '+role1.name+' ] تم سحب من البشريين رتبة**');
 		} 	
@@ -838,8 +838,8 @@ message.react("❌")
 			return message.reply('**:white_check_mark: [ '+role1.name+' ] رتبة [ '+args[0]+' ] تم اعطاء **');
 		}
 		if( args[0].toLowerCase() == "all" ){
-			  if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**انا لا امتلك صلاحيه MANAGE_ROLES**");
-if(!message.member.hasPermission('MANAGE_ROLES')) return message.reply('انت لا تمتلك صلاحيه MANAGE_ROLES');
+			  if(!message.guild.member(client.user).hasPermission("ADMINISTRATOR")) return message.reply("**انا لا امتلك صلاحيه ADMINISTRATOR**");
+if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('انت لا تمتلك صلاحيه ADMINISTRATOR');
 			message.guild.members.forEach(m=>m.addRole( role1 ))
 			return	message.reply('**:white_check_mark: [ '+role1.name+' ] تم اعطاء الكل رتبة**');
 		} else if( args[0].toLowerCase() == "bots" ){
