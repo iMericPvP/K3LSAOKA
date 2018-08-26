@@ -430,8 +430,8 @@ reaction2.on("collect", r => {
 ❖$showc | فتح الروم [NEW]
 ❖$ct [name] | صنع روم كتابي [NEW]
 ❖$cv [name] | صنع روم صوتي [NEW]
-❖$setbot | صنع روم يكون فيه عدد البوتات بلسيرفر
-❖$setmember | صنع روم يكون فيه عدد الاعضاء بلسيرفر
+❖$setbots count | صنع روم يكون فيه عدد البوتات بلسيرفر
+❖$setmembers count | صنع روم يكون فيه عدد الاعضاء بلسيرفر
 ❖$role @someone [rank] | اعطاء رتبه لشخص 
 ❖$role all [rank]| اعطاء رتبه للكل
 ❖$role bots [rank]| اعطاء رتبه لكل البوتات
@@ -1001,7 +1001,23 @@ if (err) console.error(err);
 })
 
 
-
+client.on('message', function(msg) {
+    if(msg.content.startsWith (prefix  + 'server')) {
+      let embed = new Discord.RichEmbed()
+      .setColor('RANDOM')
+      .setThumbnail(msg.guild.iconURL)
+      .setTitle(`Noobbot`)
+      .addField('عدد الرتب',`[** __${msg.guild.roles.size}__ **]`,true)
+      .addField('عدد الاعضاء',`[** __${msg.guild.memberCount}__ **]`,true)
+      .addField('الرومات الكتابيه',`[** __${msg.guild.channels.filter(m => m.type === 'text').size}__** ]`,true)
+      .addField('الرومات الصوتيه',`[** __${msg.guild.channels.filter(m => m.type === 'voice').size}__ **]`,true)
+	  .addField('اونر السيرفر',`[** __${msg.guild.owner}__ **]`,true)
+      .addField('صنع السيرفر في',msg.guild.createdAt.toLocaleString())
+	  .addField('اسم السيرفر',`[** __${msg.guild.name}__ **]`,true)
+	  .setFooter("لكي تعرف حالات الاعضاء  قم بكتابه $members | لكي تعرف ماهي رتب السيرفر قم بكتابه $ranks")  
+      msg.channel.send({embed:embed});
+    }
+  });
 
    
    
