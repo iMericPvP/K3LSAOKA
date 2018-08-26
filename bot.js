@@ -341,7 +341,6 @@ client.on('message', function(msg) {
       .addField('Users | مستخدمين',`[** __${client.users.size}__ **]`,true)
       .addField('Channels | رومات',`[** __${client.channels.size}__** ]`,true)
 	  .addField('Language | لغه',`[** JS**]`,true)
-	  .addFiled('Prefix | برفكس',`[** $**]`,true)
 	  .addField('Support Server | سيرفر السبورت',`[** __https://discord.gg/RRxGfXp__ **]`,true)
 	  .setFooter("NoobBot")  
       msg.channel.send({embed:embed});
